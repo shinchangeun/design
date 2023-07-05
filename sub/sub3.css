@@ -13,6 +13,7 @@
     /* for aspect ratio */
     position: relative;
     width: 100%;
+    
   }
   
   .screen:before {
