@@ -50,13 +50,14 @@
           display:inline-block;
           vertical-align:middle;
         }
-        .box{
+        #blackbox{
           width: 444.5px;
           background-color: #1e1e1e;
-          height: 76px;
+          top:0;
+          height: 100%;
           position: absolute;
-          z-index:1;
-          top: 960px;
+          /* z-index:1; */
+          /* top: 960px; */
         }
         button{
           background:#1e1e1e;
@@ -93,16 +94,64 @@
         button:hover:before,button:hover:after{
           width:100%;
           transition:800ms ease all;
-        }  
+        }
+        .subTitle{
+          position :absolute;
+          z-index: 999;
+          text-align: right;
+          top:640px;
+          right:187px;
+        }
+        .subTitle > div{
+          margin-bottom: 18px;
+        }
+
+        .subTitle > div > p{
+          font-size:20px;
+        }
+        .subTitle span{
+          font-weight:900;
+          font-size:21px;
+        }
+        .titleComp{
+          position :absolute;
+          z-index: 999;
+          text-align: left;
+          top:190px;
+          right:87px;
+        }
+        .topTitle p{
+          margin-bottom:17px;
+          font-weight:600;
+        }
+        .mainTitle p{
+          font-family: 'MADE Coachella';
+          font-size: 4em;
+          font-weight:500;
+        }
+        .mouse{
+          position :absolute;
+          z-index: 999;
+          text-align: left;
+          top:652px;
+          right:570px;
+        }
+        .mouse p{
+          font-size:19px;
+          font-weight:500;
+        }
       </style>
     </head>   
 
 
     <body style="overflow-x: hidden">
+      <div id="blackbox"></div>
         <div id="wrap">
+
           <div id="navi"> 
-            <div class="navi_bg"><img src="images/sce_e.jpg"></div>
-            <div class="box"></div>
+            <!-- bg였던것 -->
+            <!-- <div class="navi_bg"><img src="images/sce_c.jpg"></div> -->
+
             <div class="logo_2"><a href="http://hongsi.x-y.net/2021_7/sce/index.html"><img src="images/logo_w.png"  style="-webkit-user-drag: none;"></a></div>
 
             <div class="menu1"><a href="../sub1.html"><font color= #ebebeb> Branding</font></div>
@@ -113,28 +162,53 @@
           </div>
 
           <div id="button">
-                <div class="bt_1"><a href="sce_w.html"><img src="images/b_1_1.png" onmouseover="this.src='images/b_1_2.png';" onmouseout="this.src='images/b_1_1.png';" alt="설명" title="타이틀" /></a></div>
-                <div class="bt_2"><a href="sce_e_2.html"><img src="images/b_2_1.png" onmouseover="this.src='images/b_2_2.png';" onmouseout="this.src='images/b_2_1.png';" alt="설명" title="타이틀" /></a></div> 
-                
+                <div class="bt_1"><a href="../sub3_s/sce_m.html"><img src="images/b_1_1.png" onmouseover="this.src='images/b_1_2.png';" onmouseout="this.src='images/b_1_1.png';" alt="설명" title="타이틀" /></a></div>
+                <div class="bt_2"><a href="../sub3.html"><img src="images/b_2_1.png" onmouseover="this.src='images/b_2_2.png';" onmouseout="this.src='images/b_2_1.png';" alt="설명" title="타이틀" /></a></div> 
           </div>
-
 
           <div class="bt_3"><a href="http://www.hongsi.x-y.net/2020_ui21/sce_e/"><button>Design view</button></a></div> 
     
-
+          <div class="mouse">
+            <p>
+              *Mouse over the monitor
+            </p>
+          </div>
           <div class="imac">
             <div class="screen">
-              <div class="viewport" style="background-image:url('images/e_1.jpg');"></div>
+              <div class="viewport" style="background-image:url('images/b_1_1.png');"></div>
             </div>
             <div class="logo"></div>
             <div class="leg"></div>
             <div class="foot"></div>
           </div>
-
+<!-- 
           <div id="notice"> 
             <div class="notice_1"><img src="images/notice.png"></div>
+          </div> -->
+          <div class="titleComp">
+            <div class="topTitle">
+              <p>개인 포트폴리오 웹사이트 프로세스 페이지</p>
+            </div>
+            <div class = "mainTitle">
+              <p>Promotion</p>
+              <p>Website</p>
+            </div>
           </div>
 
+          <div class = "subTitle">
+            <div>
+              <p><span>Project</span></p>
+              <p>다양한 기획전,배너 제작 <br></p>
+            </div>
+            <div> 
+              <p><span>Date</span></p>
+              <p>March 2021~May 2022<br></p>
+            </div>
+            <div>
+              <p><span>Participation in work</span></p>
+              <p>디자인 100%</p>
+            </div>
+          </div>
 
           <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
           <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
