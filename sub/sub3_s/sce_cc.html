@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>해상도 1920에 최적화 되어있습니다.</title>
+      <link href="sub3.css" rel="stylesheet" type="text/css"/>
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/DB_etc10.css"type="text/css" />
+
+      
+      <!--폰트 : Noto Sans KR--> 
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+
+      <style type="text/css"> 
+        a { text-decoration:none !important } a:hover { text-decoration:none !important }
+        @import url('../sub3.css');
+        *{margin: 0; padding: 0;} 
+        /* #wrap{width: 1920px;  margin: auto;} */
+
+        /* .image { opacity:0; } */
+     
+        /* scroll */
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+        body {
+        margin: 0;
+        background-color: rgb(235, 235, 235);
+        font-family: "Roboto", sans-serif;
+        /* padding: 1rem; */
+        padding: 8em;
+        }
+        h1 {
+        text-align: center;
+        }
+        p {
+        text-align: center;
+        }
+        a {
+        text-decoration: none;
+        }
+        .container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        }
+        .col {
+        border-radius: 5px;
+        border: none;
+        padding: 0;
+        transition: 0.3s;
+        }
+        .col img {
+        width: 100%;
+        border-radius: 5px;
+        transition: 0.3s;
+        cursor: pointer;
+        box-shadow: 0px 6px 30px -9px rgba(0, 0, 0, 0.28);
+        }
+        .col img:hover {
+        transform: scale(1.03);
+        filter: contrast(60%);
+        }
+        .loading {
+        width: 50px;
+        height: 50px;
+        border: 2px solid transparent;
+        border-top-color: #ff7f50;
+        border-radius: 50%;
+        animation: rotate 1.5s ease-in infinite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 1rem auto;
+        }
+        .loading .child-1 {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        border: 2px solid transparent;
+        animation: rotate 1.5s ease-in infinite;
+        border-bottom-color: #ff7f50;
+        transition: 2s all;
+        }
+        @keyframes rotate {
+        to {
+            transform: rotate(360deg);
+        }
+        }
+        @media (max-width: 850px) {
+        .container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        }
+        @media (max-width: 550px) {
+        .container {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        }
+        /*Preview*/
+        .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 2;
+        display: none;
+        }
+        .overlay.open {
+        display: grid;
+        place-items: center;
+        }
+        .overlay img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        }
+        .close {
+        border: 0;
+        background: transparent;
+        font-size: 2rem;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor: pointer;
+        color: rgb(255, 255, 255);
+        }
+        footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100%;
+        color: #fff;
+        z-index: 2;
+        text-align: center;
+        }
+        footer p span {
+        font-family: "Vibur", cursive;
+        font-size: 1.3rem;
+        color: #c6e2ff;
+        animation: neon .08s ease-in-out infinite alternate;
+        }
+        @keyframes neon {
+        from {
+            text-shadow:
+            0 0 6px rgba(202,228,225,0.92),
+            0 0 30px rgba(202,228,225,0.34),
+            0 0 12px rgba(30,132,242,0.52),
+            0 0 21px rgba(30,132,242,0.92),
+            0 0 34px rgba(30,132,242,0.78),
+            0 0 54px rgba(30,132,242,0.92);
+        }
+        to {
+            text-shadow:
+            0 0 6px rgba(202,228,225,0.98),
+            0 0 30px rgba(202,228,225,0.42),
+            0 0 12px rgba(30,132,242,0.58),
+            0 0 22px rgba(30,132,242,0.84),
+            0 0 38px rgba(30,132,242,0.88),
+            0 0 60px rgba(30,132,242,1);
+        }
+        }
+        
+      </style>
+    </head>   
+
+
+    <body>
+        <div id="wrap">
+                <div class="container"></div>
+
+                <div class="loading">
+                <div class="child-1"></div>
+                </div>
+
+                <div class="overlay">
+                <div class="image-preview">
+                    <button class="close">✕</button>
+                    <img>
+                </div>
+                </div>
+                <footer>
+                <p>Created with ❤️ by <span>sce</span></p>
+                </footer>
+
+
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+        <script>
+        AOS.init();
+        </script>
+        
+        <!-- 무한 스크롤-->
+        <script>
+            const container = document.querySelector(".container");
+            const url = "https://picsum.photos/600";
+            var images = [];
+            var page = 1;
+            let arr=[
+                "../sub3_s/images_cc/56777_w.jpg ",
+                "../sub3_s/images_cc/58241_w.jpg",
+                "../sub3_s/images_cc/63211_w.jpg ",
+                "../sub3_s/images_cc/m_planshop (1).jpg ",
+                "../sub3_s/images_cc/m_planshop.jpg ",
+                "../sub3_s/images_cc/m_planshop_1차.jpg ",
+                "../sub3_s/images_cc/splash_ipad_2048X2732_March_version.jpg "
+            ]
+
+            window.addEventListener("scroll", () => {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+            if (clientHeight + scrollTop >= scrollHeight - 5) {
+                loadImages(arr.length);
+                handleClick();
+                close();
+            }
+            });
+
+            function loadImages(range) {
+            for (let i = 0; i < range; i++) {
+                let image = document.createElement("div");
+
+                image.classList.add("col");
+
+                image.innerHTML = `
+                <img src="${arr[i]}" style="" alt="" />
+                `;
+
+                container.appendChild(image);
+            }
+            }
+
+            loadImages(arr.length);
+
+            const overlay = document.querySelector(".overlay");
+            const imagePreview = document.querySelector(".image-preview img");
+            const closeBtn = document.querySelector(".close");
+
+            function handleClick(e) {
+            const src = e.currentTarget.querySelector("img").src;
+            imagePreview.src = src;
+            overlay.classList.add("open");
+            }
+
+            function close() {
+            overlay.classList.remove("open");
+            }
+
+            const imageCon = document.querySelectorAll(".col");
+
+            imageCon.forEach((image) => image.addEventListener("click", handleClick));
+
+            closeBtn.addEventListener("click", close);
+        </script>
+            
+        </div>
+    </body>
+</html>

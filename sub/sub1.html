@@ -1,171 +1,325 @@
 <!DOCTYPE html>
 <html>
-    <head>
-            <meta charset="utf-8">
-            <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            
 
-            <title>해상도 1920에 최적화 되어있습니다.</title>
-            <link href="sub1.css" rel="stylesheet" type="text/css"/>
-            <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-            <link rel="stylesheet" href="css/DB_etc10.css"type="text/css" />
-
-            
-        
-        
-            
-            
-            
-            <!--폰트 : Noto Sans KR--> 
-            <link rel="preconnect" href="https://fonts.gstatic.com">
-            <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-           
-            
-
-            <style type="text/css"> 
-            a { text-decoration:none !important } a:hover { text-decoration:none !important }
-            @import url('../sub/sub1.css');
-            *{margin: 0; padding: 0;} 
-            #wrap{width: 1920px;  margin: auto;}
-            .logo{position:absolute; left:162px; top: 55px;} 
-           
-            .menu1{position:absolute; left:272px; top: 70px;letter-spacing:1.5px;font:400 18px  'Noto Sans KR';} 
-            .menu2{position:absolute; left:392px; top: 70px;letter-spacing:1.5px;font:400 18px  'Noto Sans KR';} 
-            .menu3{position:absolute; left:480px; top: 70px;letter-spacing:1.5px;font:400 18px  'Noto Sans KR';} 
-            .menu4{position:absolute; left:595px; top: 70px;letter-spacing:1.5px;font:400 18px  'Noto Sans KR';} 
-            .menu5{position:absolute; left:725px; top: 70px;letter-spacing:1.5px;font:400 18px  'Noto Sans KR';}
-            
-            
-            .navi_bg{position:absolute; left:0px; top: 0px;} 
-            .bg2{position:absolute; left: 0px; top:150px;}
-            .bg3{position:absolute; left: 0px; top:7280px;}
+  <title>해상도 1920에 최적화 되어있습니다.</title>
+  <link href="sub1.css" rel="stylesheet" type="text/css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/DB_etc10.css" type="text/css" />
 
 
-            .bg1_t{position:absolute; left: 506px; top: 811px;}
-            .bg3_0{position:absolute; left:515px; top:2330px;}
-            .bg3_01{position:absolute; left:455px; top:2787px;}
-            .bg3_02{position:absolute; left: 715px; top:2787px;}
-            .bg3_03{position:absolute; left: 978px; top: 2787px;}
-            .bg3_04{position:absolute; left: 1218px; top: 2787px;}
-            .bg4_01{position:absolute; left: 605px; top:3466px;}
-            .bg4_02{position:absolute; left: 280px; top:3628px;}
-            .bg5_t{position:absolute; left: 580px; top:4786px;}
-            .bg6_t{position:absolute; left: 580px; top:5795px;}
-
-            .w_1{position:absolute; left: 0px; top:1356px;}
-
-            
-
-            .t_1{position:absolute; left: 573px; top:6010px;}
-            .t_2{position:absolute; left: 570px; top:6142px;}
 
 
-            .move_1{position:absolute; left: 720px; top:7500px;}
-            .move_2{position:absolute; left: 970px; top:7500px;}
 
 
-              /*탑 버튼 css 부분*/
-              #topBtn{
-                position: fixed;
-                right: 25px; 
-                bottom: 25px;
-                display: none;
-                z-index: 9;
-              }
+
+  <!--폰트 : Noto Sans KR-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet">
 
 
-         
-         </style>
 
 
-   </head>   
+
+  <style type="text/css">
+    a {
+      text-decoration: none !important
+    }
+
+    a:hover {
+      text-decoration: none !important
+    }
+
+    @import url('../sub/sub1.css');
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #wrap {
+      width: 1920px;
+      margin: auto;
+    }
+
+    .logo {
+      position: absolute;
+      left: 162px;
+      top: 55px;
+    }
+
+    .menu1 {
+      position: absolute;
+      left: 272px;
+      top: 70px;
+      letter-spacing: 1.5px;
+      font: 400 18px 'Noto Sans KR';
+    }
+
+    .menu2 {
+      position: absolute;
+      left: 392px;
+      top: 70px;
+      letter-spacing: 1.5px;
+      font: 400 18px 'Noto Sans KR';
+    }
+
+    .menu3 {
+      position: absolute;
+      left: 480px;
+      top: 70px;
+      letter-spacing: 1.5px;
+      font: 400 18px 'Noto Sans KR';
+    }
+
+    .menu4 {
+      position: absolute;
+      left: 595px;
+      top: 70px;
+      letter-spacing: 1.5px;
+      font: 400 18px 'Noto Sans KR';
+    }
+
+    .menu5 {
+      position: absolute;
+      left: 725px;
+      top: 70px;
+      letter-spacing: 1.5px;
+      font: 400 18px 'Noto Sans KR';
+    }
 
 
-    <body style="overflow-x: hidden">
-        <div id="wrap">
+    .navi_bg {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
 
-            <div id="navi"> 
-                <div class="navi_bg"><img src="images/sub1/bg1.jpg"></div>
-                <div class="logo"><a href="http://hongsi.x-y.net/2021_7/sce/index.html"><img src="images/sub1/logo_1.png"></div>
+    .bg2 {
+      position: absolute;
+      left: 0px;
+      top: 150px;
+    }
 
-                 <div class="menu1"><a href="sub1.html"><font color= #000000> Branding</font></div>
-                 <div class="menu2"><a href="sub2.html"><font color= #000000> About </font></div>
-                 <div class="menu3"><a href="sub3.html"><font color= #000000> Portfolio </font></div>
-                 <div class="menu4"><a href="sub4.html"><font color= #000000> Experience </font></div>
-                 <div class="menu5"><a href="sub5.html"><font color= #000000> Process </font></div>
-             </div>
-
-          
-
-           <div id="bg">
-                
-                 <div class="bg2"><img src="images/sub1/bg2.jpg"></div>
-                 <div class="bg3"><img src="images/sub1/footer.jpg"></div>
-           </div>
-           
-
-           <div id=image>    
-            <div class="bg1_t" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/ty_1.png"></div>
-            <div class="bg3_0" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/ty_2.png"></div>
-            <div class="bg3_01" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/k1.png"></div>
-            <div class="bg3_02" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/k2.png"></div>
-            <div class="bg3_03" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/k3.png"></div>
-            <div class="bg3_04" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/k4.png"></div>
-            <div class="bg4_01" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/ty_3.png"></div>
-            <div class="bg4_02" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/logo.png"></div>
-            <div class="bg5_t" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/ty_4.png"></div>
-            <div class="bg6_t" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/ty_5.png"></div>
-
-            <div class="w_1" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/w_1.png"></div>
+    .bg3 {
+      position: absolute;
+      left: 0px;
+      top: 7280px;
+    }
 
 
-          </div>
+    .bg1_t {
+      position: absolute;
+      left: 506px;
+      top: 811px;
+    }
+
+    .bg3_0 {
+      position: absolute;
+      left: 515px;
+      top: 2330px;
+    }
+
+    .bg3_01 {
+      position: absolute;
+      left: 455px;
+      top: 2787px;
+    }
+
+    .bg3_02 {
+      position: absolute;
+      left: 715px;
+      top: 2787px;
+    }
+
+    .bg3_03 {
+      position: absolute;
+      left: 978px;
+      top: 2787px;
+    }
+
+    .bg3_04 {
+      position: absolute;
+      left: 1218px;
+      top: 2787px;
+    }
+
+    .bg4_01 {
+      position: absolute;
+      left: 605px;
+      top: 3466px;
+    }
+
+    .bg4_02 {
+      position: absolute;
+      left: 280px;
+      top: 3628px;
+    }
+
+    .bg5_t {
+      position: absolute;
+      left: 580px;
+      top: 4786px;
+    }
+
+    .bg6_t {
+      position: absolute;
+      left: 580px;
+      top: 5795px;
+    }
+
+    .w_1 {
+      position: absolute;
+      left: 0px;
+      top: 1356px;
+    }
 
 
-           <div id="typo">    
-            <div class="t_1" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/typo_1.png"></div>
-            <div class="t_2" data-aos="fade-down" data-aos-delay="700"><img src="images/sub1/typo_2.png"></div>
-          </div>
 
-          <div id="move">    
-            <div class="move_1"><a href="sub5.html"><img src="images/sub1/m1.png"></a></div>
-            <div class="move_2"><a href="sub3.html"><img src="images/sub1/m2.png"></a></div>
-          </div>
+    .t_1 {
+      position: absolute;
+      left: 573px;
+      top: 6010px;
+    }
 
-          
-       <!--탑 버튼(이미지)&스크립트 html 부분-->
+    .t_2 {
+      position: absolute;
+      left: 570px;
+      top: 6142px;
+    }
+
+
+    .move_1 {
+      position: absolute;
+      left: 720px;
+      top: 7500px;
+    }
+
+    .move_2 {
+      position: absolute;
+      left: 970px;
+      top: 7500px;
+    }
+
+
+    /*탑 버튼 css 부분*/
+    #topBtn {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      display: none;
+      z-index: 9;
+    }
+
+    img {
+      -webkit-user-drag: none;
+    }
+  </style>
+
+
+</head>
+
+
+<body style="overflow-x: hidden">
+  <div id="wrap">
+
+    <div id="navi">
+      <div class="logo"><a href="http://hongsi.x-y.net/2021_7/sce/index.html"><img src="images/sub1/logo_1.png"></div>
+
+      <div class="menu1"><a href="sub1.html">
+          <font color=#000000> Branding</font>
+      </div>
+      <div class="menu2"><a href="sub2.html">
+          <font color=#000000> About </font>
+      </div>
+      <div class="menu3"><a href="sub3.html">
+          <font color=#000000> Portfolio </font>
+      </div>
+      <div class="menu4"><a href="sub4.html">
+          <font color=#000000> Experience </font>
+      </div>
+      <div class="menu5"><a href="sub5.html">
+          <font color=#000000> Process </font>
+      </div>
+    </div>
+
+
+
+    <div id="bg">
+
+      <div class="bg2"><img src="images/sub1/bg2.jpg"></div>
+      <div class="bg3"><img src="images/sub1/footer.jpg"></div>
+    </div>
+
+
+    <div id=image>
+      <div class="bg1_t" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/ty_1.png"></div>
+      <div class="bg3_0" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/ty_2.png"></div>
+      <div class="bg3_01" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/k1.png"></div>
+      <div class="bg3_02" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/k2.png"></div>
+      <div class="bg3_03" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/k3.png"></div>
+      <div class="bg3_04" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/k4.png"></div>
+      <div class="bg4_01" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/ty_3.png"></div>
+      <div class="bg4_02" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/logo.png"></div>
+      <div class="bg5_t" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/ty_4.png"></div>
+      <div class="bg6_t" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/ty_5.png"></div>
+
+      <div class="w_1" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/w_1.png"></div>
+
+
+    </div>
+
+
+    <div id="typo">
+      <div class="t_1" data-aos="fade-down" data-aos-delay="500"><img src="images/sub1/typo_1.png"></div>
+      <div class="t_2" data-aos="fade-down" data-aos-delay="700"><img src="images/sub1/typo_2.png"></div>
+    </div>
+
+    <div id="move">
+      <div class="move_1"><a href="sub5.html"><img src="images/sub1/m1.png"></a></div>
+      <div class="move_2"><a href="sub3.html"><img src="images/sub1/m2.png"></a></div>
+    </div>
+
+
+    <!--탑 버튼(이미지)&스크립트 html 부분-->
     <!--탑 버튼(이미지)-->
     <a href="/sub/sub1.html"><img id="topBtn" src="images/sub1/top.png" width=73 height=66 href="#"></a>
 
 
-           
-           
- 
-
-          <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-          <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-          <script>
-            AOS.init();
-          </script>
-
-             <!--버튼 숨김/나타남 스크립트-->
-            <script>
-              $(function() {
-                $(window).scroll(function() { 
-                  if ($(this).scrollTop() > 200) { 
-                    $('#topBtn').fadeIn(); } 
-                  else { $('#topBtn').fadeOut(); }
-                }); 
-                $("#topBtn").click(function() { 
-                  $('html, body').animate({ scrollTop : 0  }, 300); 
-                  return false; });
-              });
-              </script>
 
 
-        </div>
-    </body>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+    <!--버튼 숨김/나타남 스크립트-->
+    <script>
+      $(function () {
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 200) {
+            $('#topBtn').fadeIn();
+          }
+          else { $('#topBtn').fadeOut(); }
+        });
+        $("#topBtn").click(function () {
+          $('html, body').animate({ scrollTop: 0 }, 300);
+          return false;
+        });
+      });
+    </script>
+
+
+  </div>
+</body>
+
 </html>
