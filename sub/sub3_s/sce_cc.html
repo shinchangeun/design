@@ -47,7 +47,7 @@
         width: 100%;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-gap: 10px;
+        grid-gap: 20px;
         }
         .col {
         border-radius: 5px;
@@ -121,9 +121,16 @@
         place-items: center;
         }
         .overlay img {
-        width: 100%;
+        width: 500px;
         height: auto;
         object-fit: cover;
+    
+        /* object-fit: contain;
+        overflow: scroll; */
+         /* overflow: hidden; */
+
+        
+
         }
         .close {
         border: 0;
@@ -194,11 +201,7 @@
                 <footer>
                 <p>Created with ❤️ by <span>sce</span></p>
                 </footer>
-                <img src="../sub3_s/images_cc/1.jpg">
-                <img src="../sub3_s/images_cc/2.jpg">
-                <img src="../sub3_s/images_cc/3.jpg">
-                <img src="../sub3_s/images_cc/4.jpg">
-                <img src="../sub3_s/images_cc/5.jpg">
+        
 
 
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -284,7 +287,23 @@
 
             closeBtn.addEventListener("click", close);
         </script>
-            
+
+        <script>
+        // <!-- 모달팝업을 열 때 : -->
+        $('html, body').css({'overflow': 'hidden', 'height': '100%'}); // 모달팝업 중 html,body의 scroll을 hidden시킴
+        $('#element').on('scroll touchmove mousewheel', function(event) { // 터치무브와 마우스휠 스크롤 방지
+            event.preventDefault();
+            event.stopPropagation();
+
+            return false;
+        });
+
+
+        // <!-- 모달팝업을 닫을 때 : -->
+        $('html, body').css({'overflow': 'auto', 'height': '100%'}); //scroll hidden 해제
+        $('#element').off('scroll touchmove mousewheel'); // 터치무브 및 마우스휠 스크롤 가능
+        </script>     
+
         </div>
     </body>
 </html>
