@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" style=""
+    class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="apple-touch-icon" type="image/png"
+        href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>해상도 1920에 최적화 되어있습니다.</title>
+    <link rel="canonical" href="https://codepen.io/zavoloklom/pen/ZEmBGR">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
+        type="text/javascript"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="/css/ccc.css">
+    </style>
+
+    <script>
+        window.console = window.console || function (t) { };
+    </script>
+</head>
+
+<body translate="no">
+    <!-- modal -->
+    <div class="modal">
+        <div class="modalBox"></div>
+    </div>
+    <!-- modal end -->
+
+    <!-- 1 -->
+    <div class="dashboard display-animation" style="margin: 0 auto; width: 1130px;">
+        <a class="tile tile-lg tile-pink ripple-effect animated" href="#" style="animation-delay: 0.34s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/3.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Google Guidelines</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+    <!-- 2 -->
+        <a class="tile tile-lg tile-sqr tile-purple ripple-effect animated" href="#" style="animation-delay: 0.51s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/1.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Material Design Reel</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 3 -->
+        <a class="tile tile-lg tile-sqr tile-cyan ripple-effect animated" href="#" style="animation-delay: 0.62s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/5.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Material Design <span class="caption">PDF</span></span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 4 -->
+        <a class="tile tile-lg tile-sqr tile-amber ripple-effect animated" href="#" style="animation-delay: 0.43s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img tile-img-bg"
+                        style="background-image: url(/sub/sub3_s/images_cc/11.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Doodle Archive</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 5 -->
+        <a class="tile tile-lg tile-light-blue ripple-effect animated" href="#" style="animation-delay: 0.59s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img tile-img-bg"
+                        style="background-image: url(/sub/sub3_s/images_cc/6.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Google+</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 6 -->
+        <a class="tile tile-lg tile-sqr tile-red ripple-effect animated" href="#" style="animation-delay: 0.76s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/10.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Design Minutes</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 7 -->
+        <a class="tile tile-lg tile-sqr tile-indigo ripple-effect animated" href="#" style="animation-delay: 0.57s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/2.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Google Cast UX</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 8 -->
+        <a class="tile tile-lg tile-sqr tile-deep-orange ripple-effect animated" href="#"
+            style="animation-delay: 0.68s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/12.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Glass Design</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 9 -->
+        <a class="tile tile-lg tile-light-green ripple-effect animated" href="#" style="animation-delay: 0.85s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img tile-img-bg"
+                        style="background-image: url(/sub/sub3_s/images_cc/19.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Google Web Designer</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 10 -->
+        <a class="tile tile-lg tile-pink ripple-effect animated" href="#" style="animation-delay: 0.34s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/7.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Google Guidelines</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 11 -->
+        <a class="tile tile-lg tile-sqr tile-purple ripple-effect animated" href="#" style="animation-delay: 0.51s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/21.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Material Design Reel</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 12 -->
+        <a class="tile tile-lg tile-sqr tile-cyan ripple-effect animated" href="#" style="animation-delay: 0.62s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/4.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Material Design <span class="caption">PDF</span>
+                    </span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 13 -->
+        <a class="tile tile-lg tile-sqr tile-amber ripple-effect animated" href="#" style="animation-delay: 0.43s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img tile-img-bg"
+                        style="background-image: url(/sub/sub3_s/images_cc/13.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Doodle Archive</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 14 -->
+        <a class="tile tile-lg tile-light-blue ripple-effect animated" href="#" style="animation-delay: 0.59s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img tile-img-bg"
+                        style="background-image: url(/sub/sub3_s/images_cc/16.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Google+</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 15 -->
+        <a class="tile tile-lg tile-sqr tile-red ripple-effect animated" href="#" style="animation-delay: 0.76s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/20.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Design Minutes</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 16 -->
+        <a class="tile tile-lg tile-sqr tile-indigo ripple-effect animated" href="#" style="animation-delay: 0.57s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/14.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Google Cast UX</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 17 -->
+        <a class="tile tile-lg tile-sqr tile-deep-orange ripple-effect animated" href="#"
+            style="animation-delay: 0.68s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/17.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Glass Design</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 18 -->
+        <a class="tile tile-lg tile-light-green ripple-effect animated" href="#" style="animation-delay: 0.85s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img tile-img-bg"
+                        style="background-image: url(/sub/sub3_s/images_cc/15.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Google Web Designer</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 19 -->
+        <a class="tile tile-lg tile-pink ripple-effect animated" href="#" style="animation-delay: 0.34s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/18.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Google Guidelines</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 20 -->
+        <a class="tile tile-lg tile-sqr tile-purple ripple-effect animated" href="#" style="animation-delay: 0.51s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/8.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Material Design Reel</span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+        <!-- 21 -->
+        <a class="tile tile-lg tile-sqr tile-cyan ripple-effect animated" href="#" style="animation-delay: 0.62s;">
+            <span class="content-wrapper">
+                <span class="tile-content">
+                    <span class="tile-img" style="background-image: url(/sub/sub3_s/images_cc/9.jpg);"></span>
+                    <!-- <span class="tile-holder tile-holder-sm">
+                        <span class="title">Material Design <span class="caption">PDF</span></span>
+                    </span> -->
+                </span>
+            </span>
+        </a>
+
+    </div>
+
+
+    <footer>
+        <p>Created with 🧸🎀 by <span>sce</span></p>
+    </footer>
+
+    <script
+        src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- <script id="rendered-js">
+        /**
+         * Created by Kupletsky Sergey on 16.09.14.
+         *
+         * Hierarchical timing
+         * Add specific delay for CSS3-animation to elements.
+         */
+
+        (function ($) {
+            var speed = 2000;
+            var container = $('.display-animation');
+            container.each(function () {
+                var elements = $(this).children();
+                elements.each(function () {
+                    var elementOffset = $(this).offset();
+                    var offset = elementOffset.left * 0.8 + elementOffset.top;
+                    var delay = parseFloat(offset / speed).toFixed(2);
+                    $(this).
+                        css("-webkit-animation-delay", delay + 's').
+                        css("-o-animation-delay", delay + 's').
+                        css("animation-delay", delay + 's').
+                        addClass('animated');
+                });
+            });
+        })(jQuery);
+
+    // 
+
+        (function ($) {
+            $(".ripple-effect").click(function (e) {
+                var rippler = $(this);
+
+                // create .ink element if it doesn't exist
+                if (rippler.find(".ink").length == 0) {
+                    rippler.append("<span class='ink'></span>");
+                }
+
+                var ink = rippler.find(".ink");
+
+                // prevent quick double clicks
+                ink.removeClass("animate");
+
+                // set .ink diametr
+                if (!ink.height() && !ink.width()) {
+                    var d = Math.max(rippler.outerWidth(), rippler.outerHeight());
+                    ink.css({ height: d, width: d });
+                }
+
+                // get click coordinates
+                var x = e.pageX - rippler.offset().left - ink.width() / 2;
+                var y = e.pageY - rippler.offset().top - ink.height() / 2;
+
+                // set .ink position and add class .animate
+                ink.css({
+                    top: y + 'px',
+                    left: x + 'px'
+                }).
+                    addClass("animate");
+            });
+        })(jQuery);
+  //# sourceURL=pen.js
+    </script> -->
+
+    <!-- modal -->
+    <script>
+        $(function () {
+            // 이미지 클릭시 해당 이미지 모달
+            $(".tile-img").click(function () {
+                let img = new Image();
+                temp = $(this).attr("style")
+                let first = temp.indexOf('(')+1;
+                let last = temp.indexOf(')');
+                temp=temp.substring(first,last)
+                img.src=temp
+                let imgH = img.height
+                let webH = document.body.offsetWidth;
+                $('.modalBox').html(img);
+                $(".modal").show();
+                if(parseInt(imgH)<parseInt(webH)){
+                    $('.modalBox>img').addClass('full')
+                }
+            });
+            // 모달 클릭할때 이미지 닫음
+            $(".modal").click(function (e) {
+                $(".modal").toggle();
+            });
+        });
+    </script>
+</body>
+
+</html>
