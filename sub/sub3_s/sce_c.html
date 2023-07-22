@@ -1,218 +1,435 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <meta charset="utf-8">
-      <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <title>해상도 1920에 최적화 되어있습니다.</title>
-      <link href="sub3.css" rel="stylesheet" type="text/css"/>
-      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-      <link rel="stylesheet" href="css/DB_etc10.css"type="text/css" />
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      
-      <!--폰트 : Noto Sans KR--> 
-      <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <title>해상도 1920에 최적화 되어있습니다.</title>
+  <link href="sub3.css" rel="stylesheet" type="text/css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/DB_etc10.css" type="text/css" />
 
 
-      <style type="text/css"> 
-        a { text-decoration:none !important } a:hover { text-decoration:none !important }
-        @import url('../sub3.css');
-        *{margin: 0; padding: 0;} 
-        #wrap{width: 1920px;  margin: auto;}
-        .logo_2{position:absolute; left:169px; top: 62px;} 
-        
-        .menu1{position:absolute; left:150px; top: 628px;letter-spacing:1.5px;font:400 18px  'Noto Sans KR';-webkit-transform:rotate(-90deg);} 
-        .menu2{position:absolute; left:168px; top: 505px;letter-spacing:1.5px;font:400 18px  'Noto Sans KR';-webkit-transform:rotate(-90deg);} 
-        .menu3{position:absolute; left:155px; top: 375px;letter-spacing:1.5px;font:400 18px  'Noto Sans KR';-webkit-transform:rotate(-90deg);} 
-        .menu4{position:absolute; left:144px; top: 220px;letter-spacing:1.5px;font:400 18px  'Noto Sans KR';-webkit-transform:rotate(-90deg);} 
-          
-        .navi_bg{position:absolute; left:0px; top: 0px;} 
-
-        .bt_1{position:absolute; left:1150px; top: 449px;} 
-        .bt_2{position:absolute; left:1260px; top: 450px;} 
-        /* .bt_3{position:absolute; left:456px; top: 745px;} 
-        .bt_4{position:absolute; left:573px; top: 747px;}  */
-
-        .notice_1{position:absolute; left:773px; top: 647px;} 
+  <!--폰트 : Noto Sans KR-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet">
 
 
-        .bt_3{position:absolute; left:600px; top: 765px;}
-      
-        body{
-          text-align:center;
-        }
-        body:before{
-          content:'';
-          height:100%;
-          display:inline-block;
-          vertical-align:middle;
-        }
-        #blackbox{
-          width: 444.5px;
-          background-color: #1e1e1e;
-          top:0;
-          height: 100%;
-          position: absolute;
-          /* z-index:1; */
-          /* top: 960px; */
-        }
-        button{
-          background:#1e1e1e;
-          color:#fff;
-          border:none;
-          position:relative;
-          height:55px;
-          font-size:18px;
-          padding:0 2em;
-          cursor:pointer;
-          transition:800ms ease all;
-          outline:none;
-        }
-        button:hover{
-          background:#fff;
-          color:#1e1e1e;
-        }
-        button:before,button:after{
-          content:'';
-          position:absolute;
-          top:0;
-          right:0;
-          height:2px;
-          width:0;
-          background: #1e1e1e;
-          transition:400ms ease all;
-        }
-        button:after{
-          right:inherit;
-          top:inherit;
-          left:0;
-          bottom:0;
-        }
-        button:hover:before,button:hover:after{
-          width:100%;
-          transition:800ms ease all;
-        }
-        .subTitle{
-          position :absolute;
-          z-index: 999;
-          text-align: right;
-          top:640px;
-          right:187px;
-        }
-        .subTitle > div{
-          margin-bottom: 18px;
-        }
+  <style type="text/css">
+    a {
+      text-decoration: none !important
+    }
 
-        .subTitle > div > p{
-          font-size:20px;
-        }
-        .subTitle span{
-          font-weight:900;
-          font-size:21px;
-        }
-        .titleComp{
-          position :absolute;
-          z-index: 999;
-          text-align: left;
-          top:190px;
-          right:87px;
-        }
-        .topTitle p{
-          margin-bottom:17px;
-          font-weight:600;
-        }
-        .mainTitle p{
-          font-family: 'MADE Coachella';
-          font-size: 4em;
-          font-weight:500;
-        }
-        .mouse{
-          position :absolute;
-          z-index: 999;
-          text-align: left;
-          top:652px;
-          right:570px;
-        }
-        .mouse p{
-          font-size:19px;
-          font-weight:500;
-        }
-      </style>
-    </head>   
+    a:hover {
+      text-decoration: none !important
+    }
+
+    @import url('../sub3.css');
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #wrap {
+      width: 1920px;
+      margin: auto;
+    }
+
+    .logo_2 {
+      position: absolute;
+      left: 169px;
+      top: 62px;
+    }
+
+    .navi_bg {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
 
 
-    <body style="overflow-x: hidden">
-      <div id="blackbox"></div>
-        <div id="wrap">
 
-          <div id="navi"> 
-            <!-- bg였던것 -->
-            <!-- <div class="navi_bg"><img src="images/sce_c.jpg"></div> -->
+    .notice_1 {
+      position: absolute;
+      left: 773px;
+      top: 647px;
+    }
 
-            <div class="logo_2"><a href="/index.html"><img src="images/logo_w.png"  style="-webkit-user-drag: none;"></a></div>
 
-            <div class="menu1"><a href="../sub1.html"><font color= #ebebeb> Branding</font></div>
-            <div class="menu2"><a href="../sub2.html"><font color= #ebebeb> About </font></div>
-            <div class="menu3"><a href="../sub3_s/sce_w.html"><font color= #ebebeb> Portfolio </font></div>
-            <div class="menu4"><a href="../sub4.html"><font color= #ebebeb> Experience </font></div>
-          </div>
+    .bt_3 {
+      /* position: absolute;
+      left: 721px;
+      top: 765px; */
+      display: inline;
+      padding-top: 8%;
+    }
 
-          <div id="button">
-                <div class="bt_1"><a href="../sub3_s/sce_m.html"><img src="images/b_1_1.png" onmouseover="this.src='images/b_1_2.png';" onmouseout="this.src='images/b_1_1.png';" alt="설명" title="타이틀" /></a></div>
-                <div class="bt_2"><a href="../sub3_s/sce_w.html"><img src="images/b_2_1.png" onmouseover="this.src='images/b_2_2.png';" onmouseout="this.src='images/b_2_1.png';" alt="설명" title="타이틀" /></a></div> 
-          </div>
+    body {
+      text-align: center;
+      overflow: hidden;
+    }
 
-          <div class="bt_3"><a href="./sce_ccc.html"><button>Design view</button></a></div> 
-    
-          <div class="mouse">
-            <p>
-              *Mouse over the monitor
-            </p>
-          </div>
-          <div class="imac">
-            <div class="screen">
-              <div class="viewport" style="background-image:url('images/b_1_1.png');"></div>
-            </div>
-            <div class="logo"></div>
-            <div class="leg"></div>
-            <div class="foot"></div>
-          </div>
-<!-- 
-          <div id="notice"> 
-            <div class="notice_1"><img src="images/notice.png"></div>
-          </div> -->
+    body:before {
+      content: '';
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    #blackbox {
+      width: 420px;
+      background-color: #1e1e1e;
+      top: 0;
+      height: 100%;
+      position: absolute;
+      /* z-index:1; */
+      /* top: 960px; */
+    }
+
+    .subTitle {
+      position: absolute;
+      z-index: 1;
+      text-align: right;
+      top: 580px;
+      right: 300px;
+      line-height: 28px;
+    }
+
+    .subTitle>div {
+      margin-bottom: 18px;
+    }
+
+    .subTitle>div>p {
+      font-size: 20px;
+    }
+
+    .subTitle span {
+      font-weight: 900;
+      font-size: 21px;
+    }
+
+    .titleComp {
+      /* position: absolute; */
+      z-index: 999;
+      text-align: left;
+      /* top: 190px;
+      right: 87px; */
+    }
+
+    .topTitle p {
+      margin-bottom: 17px;
+      font-weight: 600;
+    }
+
+    .mainTitle p {
+      font-family: 'MADE Coachella';
+      font-size: 4em;
+      font-weight: 500;
+    }
+
+    .mouse {
+      /* position: absolute;
+      z-index: 999;
+      text-align: left;
+      top: 652px;
+      right: 570px; */
+      /* display: inline; */
+      padding-top: 8%;
+    }
+
+    .mouse p {
+      font-size: 19px;
+      font-weight: 500;
+      /* display: inline; */
+      position: relative;
+      bottom: 170px;
+      left: 187px
+    }
+
+    #align {
+      position: absolute;
+      z-index: 1;
+      text-align: right;
+      top: 190px;
+      right: 300px;
+    }
+
+    .LR {
+      display: flex;
+      padding-top: 2rem;
+    }
+
+    .ImacBox {
+      /* text-align: left; */
+      justify-content: center;
+    }
+
+    /* .imac p {
+      justify-content: end;
+    } */
+
+
+    /* MENU */
+
+    .nav-toggler {
+      position: fixed;
+      z-index: 10;
+      top: 62px;
+      right: 85px;
+      width: 50px;
+      border-radius: 50%;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+    }
+
+    .line {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 5px;
+      background: black;
+      transition: transform 0.3s ease-out, opacity 0.1s ease-out;
+    }
+
+    .l1 {
+      transform: translateY(-10px);
+    }
+
+    .l3 {
+      transform: translateY(10px);
+    }
+
+    .nav-toggler.active .l1 {
+      transform: translateY(0px) rotate(135deg);
+    }
+
+    .nav-toggler.active .l2 {
+      opacity: 0;
+    }
+
+    .nav-toggler.active .l3 {
+      transform: translateY(0px) rotate(-135deg);
+    }
+
+    nav {
+      z-index: 2;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #054ea4;
+      transform: translateY(-100%);
+      transition: transform 0.3s cubic-bezier(0.73, 0.11, 0.67, 0.84);
+    }
+
+    nav.active {
+      transform: translate(0%);
+    }
+
+    nav a {
+      color: white;
+      font-size: 3rem;
+      text-decoration: none;
+    }
+
+    /* //MENU 끝 */
+
+
+    /* design view bt */
+
+    button {
+      background: 0 none;
+      border: 0 none;
+    }
+
+    .btns {
+      position: relative;
+      text-align: center;
+      /* margin-top: 100px; */
+    }
+
+    .btns button {
+      overflow: hidden;
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      width: 200px;
+      height: 60px;
+      /* line-height: 100px; */
+      border: 1px solid #1e1e1e;
+      transition: all 0.5s;
+      font-size: 16px;
+    }
+
+    .btns button:hover {
+      color: #fff;
+    }
+
+    .btns button:before {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      background: #1e1e1e;
+      transition: all 1s;
+    }
+
+    .btns .button1:before {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 0;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+    }
+
+    .btns .button1:hover:before {
+      height: 200%;
+    }
+    /* .up{
+      position: relative;
+      bottom:62px;
+    } */
+    /* design view bt끝 */
+  </style>
+</head>
+
+
+<body style="overflow-x: hidden">
+  <!-- 메뉴 -->
+  <nav class="">
+    <div class="menu-link-container menu-link-container-1">
+      <a href="/index.html">Home</a>
+    </div>
+    <div class="menu-link-container menu-link-container-2">
+      <a href="../sub1.html">Branding</a>
+    </div>
+    <div class="menu-link-container menu-link-container-3">
+      <a href="../sub3_s/sce_w.html">Portfolio</a>
+    </div>
+    <div class="menu-link-container menu-link-container-4">
+      <a href="../sub2.html">About</a>
+    </div>
+    <div class="menu-link-container menu-link-container-4">
+      <a href="../sub4.html">Expeirence</a>
+    </div>
+  </nav>
+  <button type="button" aria-label="toggle curtain navigation" class="nav-toggler">
+    <span class="line l1"></span>
+    <span class="line l2"></span>
+    <span class="line l3"></span>
+  </button>
+  <!-- //MENU 끝-->
+
+
+  <div id="blackbox"></div>
+
+  <div id="wrap">
+    <div class="logo_2"><a href="/index.html"><img src="images/logo_w.png" style="-webkit-user-drag: none;"></a></div>
+
+
+    <div class="up">
+        <div id="align">
           <div class="titleComp">
             <div class="topTitle">
-              <p>개인 포트폴리오 웹사이트 프로세스 페이지</p>
+              <p>WEB & UI/UX Design</p>
             </div>
-            <div class = "mainTitle">
+            <div class="mainTitle">
               <p>Promotion</p>
               <p>Website</p>
             </div>
           </div>
-
-          <div class = "subTitle">
-            <div>
-              <p><span>Project</span></p>
-              <p>다양한 기획전,배너 제작 <br></p>
+          <!-- <div id="button"> -->
+          <div class="LR">
+            <div class="bt_1"><a href="../sub3_s/sce_m.html"><img src="images/b_1_1.png"
+                  onmouseover="this.src='images/b_1_2.png';" onmouseout="this.src='images/b_1_1.png';" alt="설명"
+                  title="타이틀" /></a>
             </div>
-            <div> 
-              <p><span>Date</span></p>
-              <p>March 2021~May 2022<br></p>
-            </div>
-            <div>
-              <p><span>Participation in work</span></p>
-              <p>디자인 100%</p>
+            <div class="bt_2"><a href="../sub3_s/sce_w.html"><img src="images/b_2_1.png"
+                  onmouseover="this.src='images/b_2_2.png';" onmouseout="this.src='images/b_2_1.png';" alt="설명"
+                  title="타이틀" /></a>
             </div>
           </div>
+          <!-- </div> -->
 
-          <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-          <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-          <script>
-            AOS.init();
-          </script>
         </div>
-    </body>
+
+        <div class="subTitle">
+          <div>
+            <p><span>Project</span></p>
+            <p>다양한 기획전,배너 제작 <br></p>
+          </div>
+          <div>
+            <p><span>Date</span></p>
+            <p>March 2021~May 2022<br></p>
+          </div>
+          <div>
+            <p><span>Participation</span></p>
+            <p>디자인 100%</p>
+          </div>
+        </div>
+
+
+        <div class="ImacBox">
+
+          <div class="imac">
+            <div class="screen">
+              <div class="viewport" style="background-image:url('./images_cc/imac_1.png');"></div>
+            </div>
+            <div class="logo"></div>
+            <div class="leg"></div>
+            <div class="foot"></div>
+            <!-- <div class="bt_3"><a href="./sce_ccc.html"><button>Design view</button></a></div> -->
+            <!-- <h3 class="hover-3">Design View</h3> -->
+            <div class="btns">
+              <a href="./sce_ccc.html"><button type="button" class="button1">Design View</button></a>
+            </div>
+            <div class="mouse">
+              <p>*Mouse over the monitor</p>
+            </div>
+          </div>
+    </div>
+
+
+
+    </div>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
+    <!-- //MENU -->
+    <script>
+
+      const menuButton = document.querySelector(".nav-toggler");
+      const navigation = document.querySelector("nav");
+
+      menuButton.addEventListener("click", toggleNav);
+
+      function toggleNav() {
+        menuButton.classList.toggle("active");
+        navigation.classList.toggle("active");
+      }
+    </script>
+    <!-- //MENU 끝-->
+
+  </div>
+</body>
+
 </html>
