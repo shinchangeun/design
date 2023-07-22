@@ -2,9 +2,11 @@
 
 
   .imac {
-    padding: 4% 6%;
+    /* padding: 4% 6%;
     margin: 95px 258px;
+    max-width: 620px; */
     max-width: 620px;
+    width:620px;
   }
   
   .screen {

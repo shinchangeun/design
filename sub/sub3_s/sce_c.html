@@ -43,8 +43,8 @@
     }
 
     #wrap {
-      width: 1920px;
-      margin: auto;
+      /* width: 1920px;
+      margin: auto; */
     }
 
     .logo_2 {
@@ -99,11 +99,11 @@
     }
 
     .subTitle {
-      position: absolute;
+      /* position: absolute; */
       z-index: 1;
       text-align: right;
-      top: 580px;
-      right: 300px;
+      /* top: 580px;
+      right: 300px; */
       line-height: 28px;
     }
 
@@ -159,11 +159,11 @@
     }
 
     #align {
-      position: absolute;
+      /* position: absolute; */
       z-index: 1;
       text-align: right;
-      top: 190px;
-      right: 300px;
+      /* top: 190px;
+      right: 300px; */
     }
 
     .LR {
@@ -307,11 +307,21 @@
     .btns .button1:hover:before {
       height: 200%;
     }
-    /* .up{
-      position: relative;
-      bottom:62px;
-    } */
+    .up{
+      display: flex;
+      justify-content: center;
+      padding-top:7.5em;
+    }
+    .div_left,.div_right{
+      margin:0 5%;
+    }
     /* design view bt끝 */
+
+    .imac_css{
+      max-width: 620px;
+      width:620px;
+    }
+    
   </style>
 </head>
 
@@ -350,6 +360,30 @@
 
 
     <div class="up">
+
+      <div class="div_left">
+        <!-- <div class="ImacBox"> -->
+
+          <div class="imac">
+            <div class="screen">
+              <div class="viewport" style="background-image:url('./images_cc/imac_1.png');"></div>
+            </div>
+            <div class="logo"></div>
+            <div class="leg"></div>
+            <div class="foot"></div>
+            <!-- <div class="bt_3"><a href="./sce_ccc.html"><button>Design view</button></a></div> -->
+            <!-- <h3 class="hover-3">Design View</h3> -->
+            <div class="btns">
+              <a href="./sce_ccc.html"><button type="button" class="button1">Design View</button></a>
+            </div>
+            <div class="mouse">
+              <p>*Mouse over the monitor</p>
+            </div>
+          </div>
+          
+    <!-- </div> -->
+      </div>
+      <div class="div_right">
         <div id="align">
           <div class="titleComp">
             <div class="topTitle">
@@ -389,27 +423,11 @@
             <p>디자인 100%</p>
           </div>
         </div>
+      </div>
 
 
-        <div class="ImacBox">
 
-          <div class="imac">
-            <div class="screen">
-              <div class="viewport" style="background-image:url('./images_cc/imac_1.png');"></div>
-            </div>
-            <div class="logo"></div>
-            <div class="leg"></div>
-            <div class="foot"></div>
-            <!-- <div class="bt_3"><a href="./sce_ccc.html"><button>Design view</button></a></div> -->
-            <!-- <h3 class="hover-3">Design View</h3> -->
-            <div class="btns">
-              <a href="./sce_ccc.html"><button type="button" class="button1">Design View</button></a>
-            </div>
-            <div class="mouse">
-              <p>*Mouse over the monitor</p>
-            </div>
-          </div>
-    </div>
+
 
 
 
