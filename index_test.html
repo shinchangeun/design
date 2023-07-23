@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    .headFont{
+      font-size: 9vw;
+      font-weight: bold;
+      font-family: "Oswald", sans-serif;
+    }
+    .btmFont{
+      font-size: 2vw;
+      font-weight: 100;
+      font-family: "Oswald", sans-serif;
+    }
+    .header{
+      margin-top:35px;
+      margin-left:30px;
+    }
+    .heading-line-wrapper {
+      margin-bottom:-7px;
+      position: relative;
+      height: 9vw; /* Adjust height as needed */
+      overflow: hidden;
+    }
+
+    .heading-line {
+      position: absolute;
+      width: 100%;
+      height: 9vw;
+      display: none;
+      transition: bottom 1s ease-in; /* Ease-in 효과 추가 */
+    }
+
+    .slide-wrapper {
+      position: relative;
+      height: 50px; /* Adjust height as needed */
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      left: -100%;
+      display: none;
+      transition: left 1s ease-in; /* Ease-in 효과 추가 */
+    }
+
+    .slideLine {
+      border: none; /* 기본 테두리 제거 */
+      border-top: 1px solid white;
+      width: 0;
+      display: none;
+      transition: width 1s ease-in; /* Ease-in 효과 추가 */
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+  <div class="header">
+    <div class="headingParent">
+      <div class="heading-line-wrapper">
+        <div class="heading-line headFont">
+          SHIN CHANG-EUN
+        </div>
+      </div>
+      <div class="heading-line-wrapper">
+        <div class="heading-line headFont">
+          + PORTFOLIO
+        </div>
+      </div>
+    </div>
+    <div class="slide-wrapper">
+      <div class="slide btmFont">
+        Personal Site Design Made By 2023 / @ShinChangEun.All right reserved
+      </div>
+    </div>
+    <hr class="slideLine">
+  </div>
+  <script>
+    // jQuery를 사용하여 요소들을 순차적으로 보여주는 함수
+    function showElementsSequentially() {
+      var headingLines = $('.heading-line');
+      var slides = $('.slide');
+      var slideLine = $('.slideLine');
+
+      // heading-line 초기 위치 설정 (아래에서 위로 올라오는 효과를 위해)
+      headingLines.css('bottom', '-200px');
+      // heading-line 순차적으로 보여주기
+      headingLines.each(function (index) {
+        var delayTime = index * 400;
+        $(this).delay(delayTime).fadeIn({
+          duration: 500,
+          step: function (now, fx) {
+            // step 함수를 사용하여 fadeIn 중간 값에서 bottom 값을 조절하여 ease-in 효과 구현
+            $(this).css('bottom',0 + 'px');
+          },
+          complete: function () {
+            // heading-line이 모두 나타난 후에 slide 보여주기
+            index
+            if (index === headingLines.length - 1) {
+              showSlidesSequentially();
+            }
+          }
+        });
+      });
+
+      slides.css('left','-100px')
+      // slide 왼쪽에서 오른쪽으로 보여주기
+      function showSlidesSequentially() {
+        slides.each(function (index) {
+          var delayTime = index * 1000;
+          $(this).delay(delayTime).fadeIn({
+            duration: 2000,
+            step: function (now, fx) {
+              // step 함수를 사용하여 fadeIn 중간 값에서 left 값을 조절하여 ease-in 효과 구현
+              $(this).css('left', '0px');
+            },
+            complete: function () {
+              // slide가 모두 나타난 후에 slideLine 보여주기
+              if (index === slides.length - 1) {
+                showSlideLine();
+              }
+            }
+          });
+        });
+      }
+
+      // slideLine 왼쪽에서 오른쪽으로 보여주기
+      function showSlideLine() {
+        slideLine.fadeIn(100);
+      }
+    }
+
+    // 페이지 로드 시 함수 실행
+    $(document).ready(function () {
+      showElementsSequentially();
+    });
+  </script>
+</body>
+</html>
