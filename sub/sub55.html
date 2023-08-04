@@ -21,14 +21,13 @@
     }
 
     .btmFont {
-      font-size: 2vw;
+      font-size: 1vw;
       font-weight: 200;
       font-family: "Oswald", sans-serif;
     }
 
     .header {
-      margin-top: 35px;
-      margin-left: 30px;
+      margin: 35px 30px;
     }
 
     .heading-line-wrapper {
@@ -50,7 +49,7 @@
 
     .slide-wrapper {
       position: relative;
-      height: 50px;
+      height: 3vw;
       /* Adjust height as needed */
       overflow: hidden;
     }
@@ -83,17 +82,17 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 175px;
+      gap: 10%;
       margin: 20px auto;
       max-width: 1000px;
       justify-content: center;
-      padding-right: 100px;
       margin-top: 80px;
+      margin-bottom: 80px;
+      padding-bottom: 20%;
     }
 
     .photo {
-      width: 100%;
-      height: 100%;
+      margin-bottom: 20%;
     }
 
     .photo img {
@@ -104,6 +103,8 @@
       /* 초기에 사진을 투명하게 설정하여 나타나지 않게 합니다. */
       animation: fadeIn 1s ease-in-out forwards;
       /* fadeIn 애니메이션을 1초 동안 적용하고, 끝난 후 상태를 유지합니다. */
+      transform: translateY(0);
+      transition: all ease 2s 0s;
     }
 
     /* 각 셀에 사진 크기를 조정하는 스타일 */
@@ -114,19 +115,21 @@
     }
 
     .photo:nth-child(1)>div {
-      width: 26em;
-      height: 31em;
+      width: 33vw;
+      height: 36vw;
       overflow: hidden;
     }
 
     .photo:nth-child(2) {
       grid-column: 2;
       grid-row: 1;
+      display: flex;
+      justify-content: right;
     }
 
     .photo:nth-child(2)>div {
-      width: 31em;
-      height: 24em;
+      width: 39vw;
+      height: 26vw;
       overflow: hidden;
     }
 
@@ -136,20 +139,22 @@
     }
 
     .photo:nth-child(3)>div {
-      width: 31em;
-      height: 26em;
+      width: 39vw;
+      height: 26vw;
       overflow: hidden;
     }
 
     .photo:nth-child(4) {
       grid-column: 2;
       grid-row: 2;
+      display: flex;
+      justify-content: right;
+      margin-left: 6vw;
     }
 
     .photo:nth-child(4)>div {
-      padding-left: 65px;
-      width: 26em;
-      height: 31em;
+      width: 33vw;
+      height: 36vw;
       overflow: hidden;
     }
 
@@ -163,109 +168,57 @@
       border-radius: 45%;
     }
 
-    .photoinner:hover .ptitle {
+    .photo:hover .ptitle {
       opacity: 1;
+    }
+
+    .photo:hover .ptitle>span {
+      transform: scale(1);
     }
 
     .ptitle {
-      padding-left: 42%;
-      padding-top: 50%;
       position: absolute;
       opacity: 0;
-      scale: 120%;
+      display: flex;
       transition: opacity 1s;
-      font-size: 50px;
+      justify-content: center;
+      z-index: 999;
+      align-items: center;
+    }
+
+    .ptitle>span {
+      font-size: 4vw;
       font-weight: 700;
       font-family: "Oswald", sans-serif;
+      display: none;
+      transform: scale(1.3);
+      transition: transform 1s ease;
     }
 
-    /* 추가  */
-
-    #skrollr-body {}
-
-    #skrollr-body .container {}
-
-    #skrollr-body .container section {
-      width: 100%;
-      height: 100vh;
-      padding: 10px;
-      position: relative;
+    .in1 {
+      width: 33vw;
+      height: 36vw;
     }
 
-    #section01 {}
-
-    #section02 {}
-
-    .bg {
-      width: 100%;
-      height: 100vh;
-      position: absolute;
-      /* top: 0; */
-      /* left: 0; */
+    .in2 {
+      width: 39vw;
+      height: 26vw;
     }
 
-    .bg>div {
-      /* width: 100%;
-      height: 100vh; */
-      width: 40%;
-      height: 60vh;
-      background-attachment: fixed !important;
-      overflow: hidden;
-      position: relative;
-      margin-top: 10%;
-
+    .in3 {
+      width: 39vw;
+      height: 26vw;
     }
 
-    .bg>div p {
-      display: inline-block;
-      padding: 10px;
-      text-align: center;
-      background: #fff;
-      transform: translate(-50%, -50%);
+    .in4 {
+      width: 33vw;
+      height: 36vw;
     }
 
-    .bg>div.bg01 {
-      background: url(/images/blue1.png) no-repeat 50% 50%;
-      /* z-index: 10; */
+    .mainImg {
+      scale: 170%;
     }
-
-    .bg>div.bg02 {
-      background: url(/images/or5.jpg) no-repeat 50% 50%;
-      margin-left: 50%;
-      
-    }
-
-    .bg>div.bg03 {
-      background: url(/images/bg.jpg) no-repeat 50% 50%;
-      margin-left: 50%;
-    }
-
-    .bg>div.bg04 {
-      background: url(/images/birds1.png) no-repeat 50% 50%;
-      margin-left: 50%;
-    }
-
-    .bg>div.bg01:hover {
-
-      border-radius: 30%;
-      transition: all 2s;
-    }
-
-    .bg:hover {
-      border-radius: 45%;
-    }
-
-    .bg:hover .ptitle {
-      opacity: 1;
-    }
-
-    /* 끝 */
   </style>
-  <!-- 추가 script -->
-  <script>
-    window.console = window.console || function (t) { };
-  </script>
-  <!--  -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -289,64 +242,34 @@
     </div>
     <hr class="slideLine" />
 
-    <!-- <div class="photo-grid"> -->
-        <!-- <div class="photo">
-          <div class="photoinner">
-            <div class="ptitle">BRANDING</div>
-            <img src="./images/blue1.png" id="pic1" alt="Photo 1" />
-          </div>
-        </div> -->
-        <!-- <div class="photo">
-          <div class="photoinner">
-            <div class="ptitle">BRANDING</div>
-            <img src="./images/or5.jpg" id="pic2" alt="Photo 2" />
-          </div>
-        </div> 
-          <div class="photo">
-          <div class="photoinner">
-            <div class="ptitle">BRANDING</div>
-            <img src="./images/bg.jpg" id="pic3" alt="Photo 3" />
-          </div>
-        </div>
-        <div class="photo">
-          <div class="photoinner">
-            <div class="ptitle">BRANDING</div>
-
-            <img src="/images/birds1.png" id="pic4" alt="Photo 4" />
-          </div>
-        </div>
-      -->
-      <div class="bg">
-        <div class="bg01 skrollable skrollable-between" id="bg01" data-top-top="background-position: 50% 50%"
-          data-center-bottom="background-position:70% 50%;" data-anchor-target="#section01"
-          style="background-position: 50% 50%;">
-          <p class="ptitle">BRANDING</p>
+    <div class="photo-grid">
+      <div class="photo in1">
+        <div class="photoinner">
+          <div class="ptitle in1"><span>BRANDING</span></div>
+          <img src="/images/blue1.png" id="pic1" class="mainImg" alt="Photo 1" />
         </div>
       </div>
-      <div class="bg02 skrollable skrollable-before" data-top-top="background-position: 50% 50%"
-        data-center-top="background-position:70% 50%;" data-anchor-target="#section02"
-        style="background-position: 70% 50%;">
-        <p class="ptitle">Portfolio</p>
-      </div>
-      <div class="bg03 skrollable skrollable-before" data-top-top="background-position: 50% 50%"
-        data-center-top="background-position:70% 50%;" data-anchor-target="#section03"
-        style="background-position: 70% 50%;">
-        <p class="ptitle">About</p>
-      </div>
-      <div class="bg04 skrollable skrollable-before" data-top-top="background-position: 50% 50%"
-        data-center-bottom="background-position:70% 50%;" data-anchor-target="#section04"
-        style="background-position: 50% 50%;"></div> 
-        <p>Experience</p>
-      </div>
-  <!-- </div> -->
+      <div class="photo in2">
+        <div class="photoinner">
+          <div class="ptitle in2"><span>PORTFOLIO</span></div>
 
+          <img src="/images/or5.jpg" class="mainImg" id="pic2" alt="Photo 2" />
+        </div>
+      </div>
+      <div class="photo in3">
+        <div class="photoinner">
+          <div class="ptitle in3"><span>ABOUT</span></div>
 
-  <div id="skrollr-body">
-    <div class="container">
-      <section id="section01"></section>
-      <section id="section02"></section>
-      <section id="section03"></section>
-      <section id="section04"></section>
+          <img src="/images/bg.jpg" class="mainImg" id="pic3" alt="Photo 3" />
+        </div>
+      </div>
+      <div class="photo in4">
+        <div class="photoinner">
+          <div class="ptitle in4"><span>EXPERIENCE</span></div>
+
+          <img src="/images/birds1.png" class="mainImg" id="pic4" alt="Photo 4" />
+        </div>
+      </div>
     </div>
   </div>
 
@@ -413,6 +336,9 @@
                   showSlideLine();
                   setTimeout(function () {
                     showpic();
+                    setTimeout(function () {
+                      $(".ptitle > span").css("display", "block");
+                    }, 500);
                   }, 500);
                 }
               },
@@ -431,9 +357,9 @@
     $(document).ready(function () {
       showElementsSequentially();
     });
+
     function showpic() {
       const photos = document.querySelectorAll(".photo img");
-
       // 순차적으로 사진을 보여주기 위해 반복문 사용
       photos.forEach((photo, index) => {
         photo.style.transition = "opacity 1s"; // 투명도 변경에 1초의 트랜지션 효과 적용
@@ -442,31 +368,111 @@
         }, (index + 1) * 500); // 500ms (0.5초) 간격으로 순차적으로 보여줌
       });
     }
+
+    // 스크롤 위치를 알려주는 함수
+    function getScrollPosition() {
+      return window.pageYOffset || document.documentElement.scrollTop;
+    }
+
+    function getPageHeight() {
+      return Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0
+      );
+    }
+
+    // 스크롤 이벤트 핸들러 함수
+    function onScroll() {
+      // 스크롤 위치 출력
+      console.log("스크롤 위치: ", getScrollPosition());
+      // 페이지 높이 출력
+      console.log("페이지 높이: ", getPageHeight());
+      let x = getScrollPosition() * 0.0100000000000000000000001;
+      console.log("x", x);
+      // 최댓값 출력
+      let n = getMaxScrollPosition() * 0.0100000000000000000000001;
+      console.log("n", n);
+
+      let percent = (15.0100000000000000000000001 / n) * x + "%";
+      console.log(percent);
+      setTimeout(function () {
+        $(".photo img").css("transform", "translateY(" + percent + ")");
+      }, 250); // 100ms 딜레이 적용 (원하는 딜레이 시간으로 조절 가능)
+    }
+    // 스크롤 위치의 최댓값을 구하는 함수
+    function getMaxScrollPosition() {
+      const pageHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.clientHeight,
+        document.documentElement.clientHeight
+      );
+
+      const viewportHeight =
+        window.innerHeight ||
+        document.documentElement.clientHeight ||
+        document.body.clientHeight;
+
+      return pageHeight - viewportHeight;
+    }
+    // 스크롤 이벤트에 onScroll 함수 등록
+    window.addEventListener("scroll", onScroll);
   </script>
-  <!-- 추가 script -->
-  <script
-    src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/skrollr/0.6.30/skrollr.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script id="rendered-js">
-    $(function () {
+  <script>
+    //ease in scroll
 
-    });
+    if (window.addEventListener)
+      window.addEventListener("DOMMouseScroll", wheel, false);
+    window.onmousewheel = document.onmousewheel = wheel;
 
-    skrollr.init({
-      forceHeight: false,
-      mobileCheck: function () {
-        if (/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent || navigator.vendor || window.opera)) {
-          // mobile device
-        }
+    function wheel(event) {
+      var delta = 0;
+      if (event.wheelDelta)
+        delta = event.wheelDelta / 40; //controls the scroll wheel range/speed
+      else if (event.detail) delta = -event.detail / 40;
+
+      handle(delta);
+      if (event.preventDefault) event.preventDefault();
+      event.returnValue = false;
+    }
+
+    var goUp = true;
+    var end = null;
+    var interval = null;
+
+    function handle(delta) {
+      var animationInterval = 20; //controls the scroll animation after scroll is done
+      var scrollSpeed = 20; //controls the scroll animation after scroll is done
+
+      if (end == null) {
+        end = $(window).scrollTop();
       }
-    });
-    //# sourceURL=pen.js
+      end -= 20 * delta;
+      goUp = delta > 0;
+
+      if (interval == null) {
+        interval = setInterval(function () {
+          var scrollTop = $(window).scrollTop();
+          var step = Math.round((end - scrollTop) / scrollSpeed);
+          if (
+            scrollTop <= 0 ||
+            scrollTop >=
+            $(window).prop("scrollHeight") - $(window).height() ||
+            (goUp && step > -1) ||
+            (!goUp && step < 1)
+          ) {
+            clearInterval(interval);
+            interval = null;
+            end = null;
+          }
+          $(window).scrollTop(scrollTop + step);
+        }, animationInterval);
+      }
+    }
   </script>
-
-
-
 </body>
 
 </html>
