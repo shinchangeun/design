@@ -1,359 +1,483 @@
-<html lang="en" class="has-scroll-init has-scroll-smooth" data-scroll-direction="vertical">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-
-  <link rel="apple-touch-icon" type="image/png"
-    href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>해상도 1920에 최적화 되어있습니다.</title>
-  <link rel="canonical" href="https://codepen.io/shinchangeun/pen/abQLGaM">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;600&amp;display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
-
-  <!-- 파비콘 왜 안되누 -->
-  <link rel="favicon" href="/symbols.ico">
-
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
   <style>
-    * {
+    body {
+      background-color: black;
+      color: white;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
-    body {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      background-color: #000;
+    .headFont {
+      font-size: 9vw;
+      font-weight: 700;
       font-family: "Oswald", sans-serif;
-      /* font-family: "MADE Coachella", sans-serif; */
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      text-transform: uppercase;
-      line-height: 0.9;
+    .btmFont {
+      font-size: 1vw;
+      font-weight: 200;
+      font-family: "Oswald", sans-serif;
     }
 
     .header {
-      padding: 2rem;
+      margin: 35px 30px;
     }
 
-    .header h1 {
-      margin-bottom: 3rem;
-      font-size: 9vw;
-      color: #FFF;
-    }
-
-    .header p {
-      padding-bottom: 2rem;
-      font-weight: 200;
-      font-size: 1.5rem;
-      color: #FFF;
-    }
-
-    .header hr {
-      transform-origin: top left;
-    }
-
-    .header .heading-line-wrapper {
-      overflow: hidden;
-    }
-
-    .image-grid {
-      display: flex;
-      flex-wrap: wrap;
-      padding: 4rem 0;
-      width: 100%;
-      min-height: 100vh;
-    }
-
-    .image-card {
+    .heading-line-wrapper {
+      margin-bottom: -7px;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20vh;
-      border-radius: 0;
-      transition: border-radius 0.75s cubic-bezier(0.65, 0, 0.35, 1);
+      height: 9vw;
+      /* Adjust height as needed */
       overflow: hidden;
-      cursor: pointer;
     }
 
-    .image-card.image-portrait {
-      margin-left: 10vw;
-      width: 30vw;
-      height: 40vw;
-    }
-
-    .image-card.image-landscape {
-      margin-left: 10vw;
-      width: 40vw;
-      height: 30vw;
-    }
-
-    .image-card:hover {
-      border-radius: 15rem;
-    }
-
-    .image-card:hover .image-header {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-
-    .image-card .image-header,
-    .image-card .image-caption {
-      color: #FFF;
-    }
-
-    .image-card .image-header {
-      z-index: 1;
+    .heading-line {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(1.2);
-      font-size: 8vw;
-      color: #FFF;
-      text-transform: uppercase;
-      line-height: 1;
-      opacity: 0;
-      transition: all 0.85s cubic-bezier(0.65, 0, 0.35, 1);
-      pointer-events: none;
-    
+      width: 100%;
+      height: 12vw;
+      display: none;
+      transition: bottom 1s ease-in;
+      /* Ease-in 효과 추가 */
     }
 
-    a {
-      text-decoration: none;
-      color: #FFF;
-      text-shadow: 0px 0px 5px rgb(101, 101, 101);
+    .slide-wrapper {
+      position: relative;
+      height: 3vw;
+      /* Adjust height as needed */
+      overflow: hidden;
     }
 
+    .slide {
+      position: absolute;
+      left: -100%;
+      display: none;
+      transition: left 1s ease-in;
+      /* Ease-in 효과 추가 */
+    }
 
-    .image-card img {
-      display: block;
-      width: 150%;
+    .slideLine {
+      border: none;
+      /* 기본 테두리 제거 */
+      border-top: 1px solid white;
+      float: left;
+      width: 0%;
+      display: none;
+      transition: width 1s ease-in;
+      /* Ease-in 효과 추가 */
+    }
+
+    .headingParent {
+      margin-bottom: 20px;
+    }
+
+    /* 그리드 */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10%;
+      margin: 20px auto;
+      max-width: 1000px;
+      justify-content: center;
+      margin-top: 80px;
+      margin-bottom: 80px;
+      padding-bottom: 20%;
+    }
+
+    .photo {
+      margin-bottom: 20%;
+    }
+
+    .photo img {
+      width: 120%;
+      height: 120%;
       object-fit: cover;
-    }
-    /* Menu */
-    /* nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: blue;
-    transform: translateY(-100%);
-    transition: transform 0.3s cubic-bezier(0.73, 0.11, 0.67, 0.84);
+      opacity: 0;
+      /* 초기에 사진을 투명하게 설정하여 나타나지 않게 합니다. */
+      animation: fadeIn 1s ease-in-out forwards;
+      /* fadeIn 애니메이션을 1초 동안 적용하고, 끝난 후 상태를 유지합니다. */
+      transform: translateY(0);
+      transition: all ease 2s 0s;
     }
 
-    .nav-toggler {
-    position: fixed;
-    z-index: 10;
-    top: 30px;
-    right: 30px;
-    width: 50px;
-    border-radius: 50%;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
+    /* 각 셀에 사진 크기를 조정하는 스타일 */
+
+    .photo:nth-child(1) {
+      grid-column: 1;
+      grid-row: 1;
     }
 
-    .line {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 5px;
-    background: rgb(255, 255, 255);
-    transition: transform 0.3s ease-out, opacity 0.1s ease-out;
+    .photo:nth-child(1)>div {
+      width: 33vw;
+      height: 36vw;
+      overflow: hidden;
     }
 
-    .div1, .div2, .div3 {
-    position: absolute;
+    .photo:nth-child(2) {
+      grid-column: 2;
+      grid-row: 1;
+      display: flex;
+      justify-content: right;
     }
 
-    .l1 {
-        transform: translateY(-10px);
+    .photo:nth-child(2)>div {
+      width: 39vw;
+      height: 26vw;
+      overflow: hidden;
     }
 
-    .l3 {
-    transform: translateY(10px);
-    } */
-    
-  
+    .photo:nth-child(3) {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .photo:nth-child(3)>div {
+      width: 39vw;
+      height: 26vw;
+      overflow: hidden;
+    }
+
+    .photo:nth-child(4) {
+      grid-column: 2;
+      grid-row: 2;
+      display: flex;
+      justify-content: right;
+      margin-left: 6vw;
+    }
+
+    .photo:nth-child(4)>div {
+      width: 33vw;
+      height: 36vw;
+      overflow: hidden;
+    }
+
+    .photoinner {
+      transition: border-radius 0.5s;
+      /* 모서리 변화에 애니메이션 효과를 추가 */
+      position: relative;
+    }
+
+    .photoinner:hover {
+      border-radius: 45%;
+    }
+
+    .photo:hover .ptitle {
+      opacity: 1;
+    }
+
+    .photo:hover .ptitle>span {
+      transform: scale(1);
+    }
+
+    .ptitle {
+      position: absolute;
+      opacity: 0;
+      display: flex;
+      transition: opacity 1s;
+      justify-content: center;
+      z-index: 999;
+      align-items: center;
+    }
+
+    .ptitle>span {
+      font-size: 4vw;
+      font-weight: 700;
+      font-family: "Oswald", sans-serif;
+      display: none;
+      transform: scale(1.3);
+      transition: transform 1s ease;
+    }
+
+    .in1 {
+      width: 33vw;
+      height: 36vw;
+    }
+
+    .in2 {
+      width: 39vw;
+      height: 26vw;
+    }
+
+    .in3 {
+      width: 39vw;
+      height: 26vw;
+    }
+
+    .in4 {
+      width: 33vw;
+      height: 36vw;
+    }
+
+    .mainImg {
+      scale: 170%;
+    }
+
+    /* 태그 */
+    a{
+      text-decoration: none;
+      color: aliceblue;
+    }
   </style>
-
-  <script>
-    window.console = window.console || function (t) { };
-  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;700&display=swap" rel="stylesheet" />
 </head>
 
-<body translate="no" style="opacity: 1; visibility: inherit;">
-  <div data-scroll-container="">
-    <div class="header" data-scroll-section="" data-scroll-section-id="section0" data-scroll-section-inview=""
-      style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 1; pointer-events: all;">
-      <h1 style="">
-        <div class="heading-line-wrapper" style="display: block; text-align: start; position: relative;">
-          <div class="heading-line"
-            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
-            Shin Chang-Eun</div>
-        </div>
-        <!-- <div class="heading-line-wrapper" style="display: block; text-align: start; position: relative;">
-          <div class="heading-line"
-            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
-            Chang-Eun</div>
-        </div> -->
-        <div class="heading-line-wrapper" style="display: block; text-align: start; position: relative;">
-          <div class="heading-line"
-            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
-            + Portfolio</div>
-        </div>
-      </h1>
-      <p style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">Personal Site Design Made By 2023 / @ShinChangEun.All right reserved</p>
-      <!-- Scroll down and hover over the lovely images below. It's a good time. -->
-      <hr style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+<body>
+  <div class="header">
+    <div class="headingParent">
+      <div class="heading-line-wrapper">
+        <div class="heading-line headFont">SHIN CHANG-EUN</div>
+      </div>
+      <div class="heading-line-wrapper">
+        <div class="heading-line headFont">+ PORTFOLIO</div>
+      </div>
     </div>
-    <!-- 1 -->
-    <div class="image-grid" data-scroll-section="" data-scroll-section-id="section1" data-scroll-section-inview=""
-      style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); opacity: 1; pointer-events: all;">
-      <div class="image-card image-portrait"
-        style="opacity: 1; visibility: inherit; translate: none; rotate: none; scale: none; transform: translate(0px, -50px);">
-        <h1 class="image-header" style="font-size: 5em;" ><a href="sub/sub1.html"> Branding</h1>
-      
-        <!-- <img src="./images/Tool.png"> -->
-        <!-- <p class="image-header" style="font-size: 1em;"><img src="./images/Tool.png">포토샵,일러스트 등 툴을 잘 다루는</p> -->
-        <img src="./images/blue1.png" data-scroll="" data-scroll-speed="-3"
-          style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, -150.699, 0, 1);" class="is-inview">
+    <div class="slide-wrapper">
+      <div class="slide btmFont">
+        Personal Site Design Made By 2023 / @ShinChangEun.All right reserved
       </div>
+    </div>
+    <hr class="slideLine" />
 
-
-      <!-- 2 -->
-      <div class="image-card image-landscape"
-        style="opacity: 1; visibility: inherit; translate: none; rotate: none; scale: none; transform: translate(0px, -50px);">
-        <h1 class="image-header" style="font-size: 5em;" ><a href="sub/sub3_s/sce_w.html"> Portfolio</h1>
-        <!-- <p class="image-header" style="font-size: 1em;"><img src="./images/Mood.png">자연스레 스며드는 디자이너</p> -->
-        <img src="./images/or5.jpg"
-        
-          data-scroll="" data-scroll-speed="-3"
-          style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);" class="is-inview">
+    <div class="photo-grid">
+      <div class="photo in1">
+        <div class="photoinner">
+          <div class="ptitle in1"><span><a href="/sub/sub1.html">BRANDING</a></span></div>
+          <img src="/images/blue1.png" id="pic1" class="mainImg" alt="Photo 1" />
+        </div>
       </div>
-   
-
-      <!-- 3 -->
-      <div class="image-card image-landscape"
-        style="opacity: 1; visibility: inherit; translate: none; rotate: none; scale: none; transform: translate(0px, -50px);">
-        <h1 class="image-header" style="font-size: 5em;" ><a href="sub/sub2.html"> About</h1>
-        <!-- <p class="image-header" style="font-size: 1em;"><img src="./images/Door.png">디자인과 나</p> -->
-        <img src="./images/bg.jpg"
-          data-scroll="" data-scroll-speed="-3"
-          style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);">
+      <div class="photo in2">
+        <div class="photoinner">
+          <div class="ptitle in2"><span><a href="/sub/sub3_s/sce_w.html">PORTFOLIO</a></span></div>
+          <img src="/images/or5.jpg" class="mainImg" id="pic2" alt="Photo 2" />
+        </div>
       </div>
+      <div class="photo in3">
+        <div class="photoinner">
+          <div class="ptitle in3"><span><a href="./sub/sub2.html">ABOUT</a></span></div>
 
-
-      <!-- 4 -->
-      <div class="image-card image-portrait"
-        style="opacity: 1; visibility: inherit; translate: none; rotate: none; scale: none; transform: translate(0px, -50px);">
-        <h1 class="image-header" style="font-size: 5em;" ><a href="sub/sub4.html"> Experience</h1>
-        <!-- <p class="image-header" style="font-size: 1em;"><img src="./images/Zoom.png">ZOOM IN 해도 선명한 디자이너</p> -->
-        <div class="imgg"><img src="./images/birds1.png"
-          data-scroll="" data-scroll-speed="-3"
-          style="transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);"></div>
+          <img src="/images/bg.jpg" class="mainImg" id="pic3" alt="Photo 3" />
+        </div>
       </div>
-    
+      <div class="photo in4">
+        <div class="photoinner">
+          <div class="ptitle in4"><span><a href="./sub/sub4.html">EXPERIENCE</a></span></div>
+
+          <img src="/images/birds1.png" class="mainImg" id="pic4" alt="Photo 4" />
+        </div>
+      </div>
     </div>
   </div>
-  <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
-  <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
-  <script id="rendered-js">
-    let body = document.querySelector('body');
+  <script>
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   const photos = document.querySelectorAll(".photo img");
 
-    gsap.set(body, { autoAlpha: 0 });
-
-    gsap.registerPlugin(SplitText);
-
-    window.addEventListener('load', event => {
-      var tl = gsap.timeline();
-
-      gsap.set(body, { autoAlpha: 1 });
-
-      var pageHeading = document.querySelector(".header h1");
-      var pageBody = document.querySelector(".header p");
-      var seperator = document.querySelector(".header hr");
-      var imageCards = gsap.utils.toArray(".image-card");
-
-      gsap.set(imageCards, { autoAlpha: 0 });
-
-      var childLines = new SplitText(pageHeading, { type: "lines", linesClass: "heading-line" });
-
-      var parentLines = new SplitText(pageHeading, { type: "lines", linesClass: "heading-line-wrapper" });
-
-      tl.from(childLines.lines, {
-        duration: 1,
-        y: 200,
-        stagger: 0.25,
-        delay: 1,
-        ease: 'power4.out'
-      });
-
-
-      tl.from(pageBody, {
-        duration: 0.5,
-        opacity: 0,
-        x: -20
-      },
-        '-=0.5');
-
-      tl.from(seperator, {
-        duration: 2,
-        scale: 0,
-        ease: 'expo.inOut'
-      },
-        '-=1.1');
-
-      tl.to(imageCards, {
-        duration: 0.75,
-        autoAlpha: 1,
-        y: -50,
-        stagger: 0.5,
-        ease: 'power4.out'
-      },
-        '-=0.75');
-
-      const scroll = new LocomotiveScroll({
-        el: document.querySelector('[data-scroll-container]'),
-        smooth: true
-      });
-
-
-      setTimeout(() => { scroll.update(); }, 1000);
-    });
-//# sourceURL=pen.js
+      //   // 순차적으로 사진을 보여주기 위해 반복문 사용
+      //   photos.forEach((photo, index) => {
+      //     photo.style.transition = "opacity 1s"; // 투명도 변경에 1초의 트랜지션 효과 적용
+      //     setTimeout(() => {
+      //       photo.style.opacity = "1";
+      //     }, (index + 1) * 500); // 500ms (0.5초) 간격으로 순차적으로 보여줌
+      //   });
+      // });
   </script>
 
+  <script>
+    // jQuery를 사용하여 요소들을 순차적으로 보여주는 함수
+    function showElementsSequentially() {
+      var headingLines = $(".heading-line");
+      var slides = $(".slide");
+      var slideLine = $(".slideLine");
 
+      // heading-line 초기 위치 설정 (아래에서 위로 올라오는 효과를 위해)
+      headingLines.css("bottom", "-200px");
+      // heading-line 순차적으로 보여주기
+      headingLines.each(function (index) {
+        var delayTime = index * 400;
+        $(this)
+          .delay(delayTime)
+          .fadeIn({
+            duration: 500,
+            step: function (now, fx) {
+              // step 함수를 사용하여 fadeIn 중간 값에서 bottom 값을 조절하여 ease-in 효과 구현
+              $(this).css("bottom", 0 + "px");
+            },
+            complete: function () {
+              // heading-line이 모두 나타난 후에 slide 보여주기
+              index;
+              if (index === headingLines.length - 1) {
+                showSlidesSequentially();
+              }
+            },
+          });
+      });
 
-  <span class="c-scrollbar"><span class="c-scrollbar_thumb"
-      style="height: 937.9px; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);"></span></span>
+      slides.css("left", "-100px");
+      // slide 왼쪽에서 오른쪽으로 보여주기
+      function showSlidesSequentially() {
+        slides.each(function (index) {
+          var delayTime = index * 1000;
+          $(this)
+            .delay(delayTime)
+            .fadeIn({
+              duration: 500,
+              step: function (now, fx) {
+                // step 함수를 사용하여 fadeIn 중간 값에서 left 값을 조절하여 ease-in 효과 구현
+                $(this).css("left", "0px");
+              },
+              complete: function () {
+                // slide가 모두 나타난 후에 slideLine 보여주기
+                if (index === slides.length - 1) {
+                  showSlideLine();
+                  setTimeout(function () {
+                    showpic();
+                    setTimeout(function () {
+                      $(".ptitle > span").css("display", "block");
+                    }, 500);
+                  }, 500);
+                }
+              },
+            });
+        });
+      }
+
+      // slideLine 왼쪽에서 오른쪽으로 보여주기
+      function showSlideLine() {
+        slideLine.fadeIn();
+        slideLine.css("width", "100%");
+      }
+    }
+
+    // 페이지 로드 시 함수 실행
+    $(document).ready(function () {
+      showElementsSequentially();
+    });
+
+    function showpic() {
+      const photos = document.querySelectorAll(".photo img");
+      // 순차적으로 사진을 보여주기 위해 반복문 사용
+      photos.forEach((photo, index) => {
+        photo.style.transition = "opacity 1s"; // 투명도 변경에 1초의 트랜지션 효과 적용
+        setTimeout(() => {
+          photo.style.opacity = "1";
+        }, (index + 1) * 500); // 500ms (0.5초) 간격으로 순차적으로 보여줌
+      });
+    }
+
+    // 스크롤 위치를 알려주는 함수
+    function getScrollPosition() {
+      return window.pageYOffset || document.documentElement.scrollTop;
+    }
+
+    function getPageHeight() {
+      return Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0
+      );
+    }
+
+    // 스크롤 이벤트 핸들러 함수
+    function onScroll() {
+      // 스크롤 위치 출력
+      console.log("스크롤 위치: ", getScrollPosition());
+      // 페이지 높이 출력
+      console.log("페이지 높이: ", getPageHeight());
+      let x = getScrollPosition() * 0.0100000000000000000000001;
+      console.log("x", x);
+      // 최댓값 출력
+      let n = getMaxScrollPosition() * 0.0100000000000000000000001;
+      console.log("n", n);
+
+      let percent = (15.0100000000000000000000001 / n) * x + "%";
+      console.log(percent);
+      setTimeout(function () {
+        $(".photo img").css("transform", "translateY(" + percent + ")");
+      }, 250); // 100ms 딜레이 적용 (원하는 딜레이 시간으로 조절 가능)
+    }
+    // 스크롤 위치의 최댓값을 구하는 함수
+    function getMaxScrollPosition() {
+      const pageHeight = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.clientHeight,
+        document.documentElement.clientHeight
+      );
+
+      const viewportHeight =
+        window.innerHeight ||
+        document.documentElement.clientHeight ||
+        document.body.clientHeight;
+
+      return pageHeight - viewportHeight;
+    }
+    // 스크롤 이벤트에 onScroll 함수 등록
+    window.addEventListener("scroll", onScroll);
+  </script>
+
+  <script>
+    //ease in scroll
+
+    if (window.addEventListener)
+      window.addEventListener("DOMMouseScroll", wheel, false);
+    window.onmousewheel = document.onmousewheel = wheel;
+
+    function wheel(event) {
+      var delta = 0;
+      if (event.wheelDelta)
+        delta = event.wheelDelta / 40; //controls the scroll wheel range/speed
+      else if (event.detail) delta = -event.detail / 40;
+
+      handle(delta);
+      if (event.preventDefault) event.preventDefault();
+      event.returnValue = false;
+    }
+
+    var goUp = true;
+    var end = null;
+    var interval = null;
+
+    function handle(delta) {
+      var animationInterval = 20; //controls the scroll animation after scroll is done
+      var scrollSpeed = 20; //controls the scroll animation after scroll is done
+
+      if (end == null) {
+        end = $(window).scrollTop();
+      }
+      end -= 20 * delta;
+      goUp = delta > 0;
+
+      if (interval == null) {
+        interval = setInterval(function () {
+          var scrollTop = $(window).scrollTop();
+          var step = Math.round((end - scrollTop) / scrollSpeed);
+          if (
+            scrollTop <= 0 ||
+            scrollTop >=
+            $(window).prop("scrollHeight") - $(window).height() ||
+            (goUp && step > -1) ||
+            (!goUp && step < 1)
+          ) {
+            clearInterval(interval);
+            interval = null;
+            end = null;
+          }
+          $(window).scrollTop(scrollTop + step);
+        }, animationInterval);
+      }
+    }
+  </script>
 </body>
 
 </html>

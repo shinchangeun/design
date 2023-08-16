@@ -1,117 +1,77 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-
-
-  <link rel="apple-touch-icon" type="image/png"
-    href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>해상도 1920에 최적화 되어있습니다.</title>
-  <link rel="canonical" href="https://codepen.io/GreenSock/pen/ExerGrG">
-
-
-
-
+  <title>Document</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    ::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* HEADER */
-
-    body {
-      overflow-x: visible;
-      /* font-family: 'Impact', Arial, Helvetica, sans-serif; */
-      /* font-family: Arial, Helvetica, sans-serif; */
-      font-family: "Oswald", sans-serif ;
-      font-weight: 700;
-      text-transform: uppercase;
+    .body {
       background-color: white;
-      color: black;
+    }
+
+    .main {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      height: 1692px;
     }
 
     .upper-container {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* 세로 가운데 정렬을 위해 추가 */
+      height: 100vh;
+    }
+
+    .upper-container>div {
       position: fixed;
-      width: 100%;
-      height: 100vh;
       display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
-    }
-
-    /* 로고 시작 */
-    .upper-container h1 {
-      padding: 10px 50px;
-      font-size: 10rem;
-      line-height: 1;
-    }
-
-    .transition {
-      position: relative;
-      display: flex;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      width: 100%;
-      overflow: hidden;
     }
 
-    .transition .lower-container {
-      opacity: 0;
-      height: 50vh;
+    .follow-div {
+      height: 5000px;
     }
 
     .lower-container {
-      height: 100vh;
       position: absolute;
-      width: 100vw;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: rgb(255, 255, 255);
-      /* font-size: 2rem; */
-      font-size: 3rem;
-      padding: 5rem;
-      overflow: hidden;
-      flex-wrap: wrap;
+      /* 세로 가운데 정렬을 위해 추가 */
+      height: 100vh;
     }
 
-    .prut {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .lower-container>div {
+      position: fixed;
     }
 
     .div1,
     .div2,
     .div3 {
-      position: absolute;
-      font-size: 22px;
+      text-align: center;
+      color: white;
+      font-family: "Oswald", sans-serif;
+      font-size: 2vw;
+      font-weight: 700;
+      text-transform: uppercase;
+      opacity: 0;
+      height: 2vw;
     }
 
-    .div2 {
-      margin: 3rem 0 0 0;
-    }
-
-    .div3 {
-      margin: 6rem 0 0 0;
-    }
-
-    /* MENU */
+  
+   /* MENU */
 
     .nav-toggler {
       position: fixed;
       z-index: 10;
-      top: 30px;
-      right: 30px;
+      top: 75px;
+      right: 70px;
       width: 50px;
       border-radius: 50%;
       border: none;
@@ -169,47 +129,22 @@
 
     nav.active {
       transform: translate(0%);
+      z-index: 10;
     }
 
     nav a {
       color: white;
       font-size: 3rem;
       text-decoration: none;
+      font-family: "Oswald", sans-serif ;
     }
-
-    .following-content img {
-      width: 100%;
-      /* background-color: rgb(113, 100, 102); */
-      /* height: 100vh; */
-    }
+    /* menu끝 */
+  
   </style>
-
-  <script>
-    window.console = window.console || function (t) { };
-  </script>
-
-
 
 </head>
 
-<body translate="no" style="background-color: rgb(255, 255, 255);">
-  <header id="hero">
-    <div class="upper-container">
-      <h1 style="translate: none; rotate: none; scale: none; transform: translate3d(0px, 0px, 0px); opacity: 1;"><img
-          src="./images/sub1/smallLogo.png" alt=""></h1>
-    </div>
-    <div class="pin-spacer" 6style="order: 0; place-self: auto; grid-area: auto / auto / auto / auto; z-index: auto; float: none; flex-shrink: 1; display: flex; margin: 0px; inset: 0px; position: relative; flex-basis: auto; overflow: visible; box-sizing: border-box; width: 1091px; height: 1692px; padding: 0px 0px 1269px;">
-      <div class="transition"
-        style="translate: none; rotate: none; scale: none; left: 0px; top: 0.001px; margin: 0px;  max-height: 600px; height: 600px; padding: 0px; box-sizing: border-box; position: fixed; transform: translate(0px, 0px);">
-        <div class="lower-container"
-          style="opacity: 0; translate: none; rotate: none; scale: none; transform: translate(0px, 0px); margin-top:18%">
-          <div class="div1">ShinChangEun </div>
-          <div class="div2">+</div>
-          <div class="div3">Branding</div>
-        </div>
-      </div>
-    </div>
-  </header>
+<body>
   <!-- 메뉴 -->
   <nav class="">
     <div class="menu-link-container menu-link-container-1">
@@ -228,230 +163,139 @@
       <a href="./sub4.html">Expeirence</a>
     </div>
   </nav>
-  <button type="button" aria-label="toggle curtain navigation" class="nav-toggler">
-    <span class="line l1"></span>
-    <span class="line l2"></span>
-    <span class="line l3"></span>
-  </button>
+  <div>
+    <button type="button" aria-label="toggle curtain navigation" class="nav-toggler">
+      <span class="line l1"></span>
+      <span class="line l2"></span>
+      <span class="line l3"></span>
+    </button>
+  </div>
 
-  <div class="following-content">
-    <img src="./images/sub1/2023.png" alt="">
+  <div class="main">
+    <div class="upper-container">
+      <div>
+        <img src="/images/BigLogo.png" alt="">
+      </div>
+    </div>
+    <div class="lower-container">
+      <div>
+        <div class="div1">ShinChangEun </div>
+        <div class="div2">+</div>
+        <div class="div3">Branding</div>
+      </div>
+    </div>
+  </div>
 
-
-    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/CSSRulePlugin.min.js"></script>
-    <script src="https://assets.codepen.io/16327/CustomBounce3.min.js"></script>
-    <script>
-      /*!
-       * CustomEase 3.8.0
-       * https://greensock.com
-       * 
-       * @license Copyright 2021, GreenSock. All rights reserved.
-       * Subject to the terms at https://greensock.com/standard-license or for Club GreenSock members, the agreement issued with that membership.
-       * @author: Jack Doyle, jack@greensock.com
-       */
-
-      !function (e, t) {
-        "object" == typeof exports && "undefined" != typeof module
-          ? t(exports)
-          : "function" == typeof define && define.amd
-            ? define(["exports"], t)
-            : t(((e = e || self).window = e.window || {}));
-      }(this, function (e) {
-        "use strict";
-
-        // Helper functions
-        function m(e) {
-          return Math.round(1e5 * e) / 1e5 || 0;
-        }
-
-        function arcToSegment(e, t, n, s, i, o, r, a, u) {
-          // Implementation omitted for brevity
-        }
-
-        function stringToRawPath(e) {
-          // Implementation omitted for brevity
-        }
-
-        // CustomEase class
-        function CustomEase(e, t, n) {
-          i || q();
-          this.id = e;
-          a && this.setData(t, n);
-        }
-
-        // Set data for the CustomEase instance
-        CustomEase.prototype.setData = function setData(e, t) {
-          t = t || {};
-          // Implementation omitted for brevity
-          return this;
-        };
-
-        // Get SVG data for the CustomEase instance
-        CustomEase.getSVGData = function getSVGData(e, t) {
-          // Implementation omitted for brevity
-        };
-
-        // Register the CustomEase class as a plugin
-        CustomEase.register = function register(e) {
-          y = e;
-          q();
-        };
-
-        // Create a new CustomEase instance
-        CustomEase.create = function create(e, t, n) {
-          return new CustomEase(e, t, n).ease;
-        };
-
-        // Get a registered CustomEase instance by its ID
-        CustomEase.get = function get(e) {
-          return y.parseEase(e);
-        };
-
-        // Version number
-        CustomEase.version = "3.8.0";
-
-        // Export the CustomEase class
-        e.CustomEase = CustomEase;
-        e.default = CustomEase;
-
-        if (typeof window !== "undefined" && window === e) {
-          Object.defineProperty(e, "__esModule", { value: true });
-        } else {
-          delete e.default;
-        }
-      });
-
-      // Check if GSAP is available and register CustomEase plugin
-      function p() {
-        return (
-          y ||
-          ("undefined" != typeof window &&
-            window.gsap &&
-            window.gsap.registerPlugin &&
-            window.gsap)
-        );
-      }
-
-      // Register CustomEase plugin if GSAP is available
-      function q() {
-        y = p();
-        y.registerEase("_CE", n.create);
-        i = 1;
-
-      }
-
-      // Initialize CustomEase plugin
-      var y, i, t, o = "CustomEase";
-
-
-    </script>
-    <script src="https://assets.codepen.io/16327/CustomWiggle3.min.js"></script>
-    <script src="https://assets.codepen.io/16327/DrawSVGPlugin3.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/Draggable.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/EaselPlugin.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/EasePack.min.js"></script>
-    <script src="https://assets.codepen.io/16327/Flip.min.js"></script>
-    <script src="https://assets.codepen.io/16327/GSDevTools3.min.js"></script>
-    <script src="https://assets.codepen.io/16327/InertiaPlugin.min.js"></script>
-    <script src="https://assets.codepen.io/16327/MorphSVGPlugin3.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/MotionPathPlugin.min.js"></script>
-    <script src="https://assets.codepen.io/16327/MotionPathHelper.min.js"></script>
-    <script src="https://assets.codepen.io/16327/PhysicsPropsPlugin3.min.js"></script>
-    <script src="https://assets.codepen.io/16327/Physics2DPlugin3.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/PixiPlugin.min.js"></script>
-    <script src="https://assets.codepen.io/16327/ScrambleTextPlugin3.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/ScrollToPlugin.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
-    <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
-    <script src="https://unpkg.com/gsap@3/dist/TextPlugin.min.js"></script>
-    <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js"></script>
-    <script src="https://unpkg.com/gsap/dist/Observer.min.js"></script>
-    <script id="rendered-js">
-      // gsap.to()... infinity and beyond!
-      // For more check out greensock.com
-
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.
-        timeline({
-          scrollTrigger: {
-            trigger: ".transition",
-            pin: true,
-            start: "top top",
-            end: "+=300%",
-            scrub: 1
-          },
-
-          defaults: {
-            ease: "none"
-          }
-        }).
-
-
-        to(
-          document.body,
-          {
-            delay: 0.3,
-            backgroundColor: "#ffffff"
-          },
-
-          "start").
-
-        to(
-          ".upper-container h1",
-          {
-            scale: 5
-          },
-
-          "start").
-
-        to(
-          ".upper-container h1",
-          {
-            opacity: 0
-          },
-
-          "start").
-
-        to(
-          ".lower-container",
-          {
-            delay: 0.1,
-            scale: 2
-          },
-
-          "start").
-
-        to(
-          ".lower-container",
-          {
-            delay: 0,
-            opacity: 1
-          },
-
-          "start");
-
-
-      //MENU
-
-      const menuButton = document.querySelector(".nav-toggler");
-      const navigation = document.querySelector("nav");
-
-      menuButton.addEventListener("click", toggleNav);
-
-      function toggleNav() {
-        menuButton.classList.toggle("active");
-        navigation.classList.toggle("active");
-      }
-//# sourceURL=pen.js
-    </script>
-    
-
-
-
-
-
+  <div class="follow-div">
+    <img src="/sub/images/sub1/2023.png" alt="">
   </div>
 </body>
+<script>
+  let tmp;
+  let ck = 0;
+  window.addEventListener('scroll', () => {
+    const windowHeight = window.innerHeight; // 현재 화면 높이 가져오기
+    const scrollY = window.scrollY; // 현재 스크롤 위치 가져오기
+
+    // 스크롤을 할 때마다 로그로 현재 스크롤의 위치가 찍혀나온다.
+    console.log(scrollY);
+
+    // 스크롤 위치에 따라 이미지의 확대/축소 비율 조정
+    let scale = 1 + (scrollY * 0.005); // 스크롤 위치에 따라 조정할 비율 계산
+    $('.upper-container > div > img').css('transform', `scale(${scale})`);
+
+    // 스크롤 위치에 따라 이미지 투명도 설정
+    let opacity = 1 - (scrollY / windowHeight); // 스크롤 위치에 따라 조정할 투명도 계산
+    $('.upper-container > div > img').css('opacity', opacity);
+
+    let ropacity = 0 + (scrollY / windowHeight) * 2;
+    let lscale = 1 + (scrollY * 0.002); // 스크롤 위치에 따라 조정할 비율 계산
+    console.log(ropacity)
+
+    if (opacity < 0) {
+      if (ck == 0) {
+        tmp = ropacity;
+        console.log('op is zero!!!!!!!!!!!!!!!!!!')
+        console.log(tmp)
+        ck = 1
+      }
+      console.log(tmp)
+      ropacity = tmp - (ropacity - tmp) * 2// ropacity 값을 감소시켜 0으로 만듭니다.
+      console.log(ropacity)
+      $('.div1, .div2, .div3').css('opacity', ropacity);
+    } else {
+      ck = 0
+      $('.lower-container > div').css('transform', `scale(${lscale})`);
+      $('.div1, .div2, .div3').css('opacity', ropacity);
+    }
+  });
+
+
+
+  const menuButton = document.querySelector(".nav-toggler");
+  const navigation = document.querySelector("nav");
+
+  menuButton.addEventListener("click", toggleNav);
+
+  function toggleNav() {
+    menuButton.classList.toggle("active");
+    navigation.classList.toggle("active");
+  }
+
+
+
+</script>
+<script>
+  //ease in scroll
+
+  if (window.addEventListener)
+    window.addEventListener("DOMMouseScroll", wheel, false);
+  window.onmousewheel = document.onmousewheel = wheel;
+
+  function wheel(event) {
+    var delta = 0;
+    if (event.wheelDelta)
+      delta = event.wheelDelta / 200; //controls the scroll wheel range/speed
+    else if (event.detail) delta = -event.detail / 200;
+
+    handle(delta);
+    if (event.preventDefault) event.preventDefault();
+    event.returnValue = false;
+  }
+
+  var goUp = true;
+  var end = null;
+  var interval = null;
+
+  function handle(delta) {
+    var animationInterval = 20; //controls the scroll animation after scroll is done
+    var scrollSpeed = 20; //controls the scroll animation after scroll is done
+
+    if (end == null) {
+      end = $(window).scrollTop();
+    }
+    end -= 20 * delta;
+    goUp = delta > 0;
+
+    if (interval == null) {
+      interval = setInterval(function () {
+        var scrollTop = $(window).scrollTop();
+        var step = Math.round((end - scrollTop) / scrollSpeed);
+        if (
+          scrollTop <= 0 ||
+          scrollTop >=
+          $(window).prop("scrollHeight") - $(window).height() ||
+          (goUp && step > -1) ||
+          (!goUp && step < 1)
+        ) {
+          clearInterval(interval);
+          interval = null;
+          end = null;
+        }
+        $(window).scrollTop(scrollTop + step);
+      }, animationInterval);
+    }
+  }
+</script>
 
 </html>
