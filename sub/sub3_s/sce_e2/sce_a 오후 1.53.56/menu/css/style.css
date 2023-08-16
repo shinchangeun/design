@@ -1,0 +1,336 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: content-box;   
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    /* background-color: #504954; */
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.logo {
+    color: rgb(226, 226, 226);
+    text-transform: uppercase;
+    letter-spacing:  2px;
+    font-size: 18px;
+    padding: 20px;
+}
+
+.nav-links {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-links li {
+    list-style: none;
+    padding: 20px;
+}
+
+.nav-links a {
+    color: rgb(226, 226, 226);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: medium;
+    font-size: 14px;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(226, 226, 226);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 1024px) {
+    .nav-links {
+        width: 60%
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+    .nav-links{
+        position: absolute;
+        top: 8vh;
+        right: 0;
+        height: 92vh;
+        background-color: #504954;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        transform: translateX(100%)
+    }
+    .nav-links li {
+        opacity: 0;
+    }
+    .burger{
+        display: block;
+    }
+    .nav-active {
+        transform: translateX(5px);
+    }
+    @keyframes navLinkFade {
+        from {
+            opacity: 0;
+            transform: translateX(5px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .toggle .line2 {
+        opacity 0;
+    }
+
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+
+
+
+
+
+/* a {
+  padding-top: 60px;
+}
+a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 30px;
+  height: 50px;
+  margin-left: -15px;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  box-sizing: border-box;
+}
+a span::before {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  content: '';
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background-color: #fff;
+  border-radius: 100%;
+  -webkit-animation: sdb 2s infinite;
+  animation: sdb 2s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb {
+  0% {
+    -webkit-transform: translate(0, 0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: translate(0, 20px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sdb {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    transform: translate(0, 20px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+} */
+
+
+/* 레이아웃 */
+/* #header {background: url(../img/header_bg.jpg) repeat-x center top;} */
+/* #nav {background-color: #f6fdff;} */
+
+
+
+/* 전체 메뉴 */
+.nav {overflow: hidden; padding: 25px 0;}
+.nav > div {float: left; width: 40%;}
+.nav > div:last-child {width: 20%;}
+.nav > div ol {overflow: hidden;}
+.nav > div li {float: left; width: 50%; position: relative; padding-left: 8px; box-sizing: border-box;}
+.nav > div:last-child li {width: 100%;}
+.nav > div li:before {
+    content: '';
+    width: 3px; height: 3px;
+    /* background-color: #25a2d0; */
+    border-radius: 50%;
+    position: absolute; left: 0; top: 6px;
+}
+.nav > div h3 {font-size: 18px; color: #25a2d0; font-weight: bold; margin-bottom: 4px;}
+
+
+/* media query*/
+@media (max-width: 1920px){
+    .container {width: 100%;}
+    .row {padding: 0 20px;}
+}    
+
+
+/*parallax*/
+/* @font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459Wlhzg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Montserrat Black'), local('Montserrat-Black'), url(https://fonts.gstatic.com/s/montserrat/v14/JTURjIg1_i6t8kCHKm45_epG3gnD-w.ttf) format('truetype');
+} */
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+ 
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  position: relative;
+}
+.slider {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.slider .status {
+  position: absolute;
+  bottom: 210px;
+  right: 790px;
+  display: flex;
+}
+.slider .status .point {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  top: -2px;
+  background-color: #ebebeb;
+  border-radius: 50%;
+  z-index: 15;
+  transition: left 500ms ease-in-out;
+}
+.slider .status .point[data-current='0'] {
+  left: 4px;
+}
+.slider .status .point[data-current='1'] {
+  left: 24px;
+}
+.slider .status .point[data-current='2'] {
+  left: 44px;
+}
+/* .slider .status .point[data-current='3'] {
+  left: 64px;
+}
+.slider .status .point[data-current='4'] {
+  left: 84px;
+}
+.slider .status .point[data-current='5'] {
+  left: 104px;
+} */
+.slider .status .stat {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border-radius: 50%;
+  z-index: 20;
+  margin: 0px 5px;
+  border: 1px solid #fff;
+}
+.slider .status .stat.current {
+  background-color: #fff;
+}
+/* .slider .text {
+  position: absolute;
+  color: #ff0;
+  text-shadow: 0 0 5px #0003;
+  z-index: 20;
+  transform-origin: right top;
+  transform: rotate(-90deg) translateY(calc(-90vh + 2vw));
+  display: grid;
+  grid-template-columns: 90vh;
+  grid-template-rows: 1fr;
+  font-size: 15vw;
+  text-transform: uppercase;
+}
+@media (min-width: 70em) {
+  .slider .text {
+    font-size: 10em;
+  }
+}
+.slider .text div {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  opacity: 0;
+}
+.slider .text div.current {
+  opacity: 0.7;
+} */
+.slider img {
+  object-fit: cover;
+  object-position: center center;
+  width: 100%;
+  height: 100%;
+  
+  display: block;
+}
+.slider .image {
+  width: 100%;
+  margin-right: -100%;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(0) scale(1.2);
+  z-index: 1;
+}
+.slider .image.current {
+  z-index: 10;
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
