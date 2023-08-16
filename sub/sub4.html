@@ -285,17 +285,8 @@
       all: unset;
     }
 
-    .pageBtn_L {
-      position: absolute;
-      left: 720px;
-      top: 2346px;
-    }
 
-    .pageBtn_R {
-      position: absolute;
-      left: 920px;
-      top: 2346px;
-    }
+
 
     /* 푸터 */
 
@@ -315,24 +306,27 @@
       font-size: 1.5em;
     }
 
-    .p_b {
-      color: #e7e7e7;
-      position: absolute;
-      top: 222px;
-      left: 803px;
-      font-size: 20px;
-    }
-
     .p_p {
       color: #e7e7e7;
-      position: absolute;
-      top: 222px;
-      left: 1000px;
       font-size: 20px;
+      display: flex;
+      margin: 0 10px;
+      align-items: center;
+    }
+
+    .pageBtnDiv {
+      justify-content: center;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .b_top {
+      margin-bottom: 50px;
     }
 
     .pageBtn {
-      justify-content: center;
+
+      margin: 0 10px;
     }
   </style>
 </head>
@@ -397,30 +391,37 @@
 
     <!-- footer -->
     <div class="footer">
-      <p class="footer_p">어쩌구 저쩌구 디자이너 신창은입니다</p>
-      <p class="p_b">Branding</p>
-      <p class="p_p">Portfolio</p>
-    </div>
-
-    <!-- 페이지 이동 버튼 -->
-    <div class="pageBtn">
-      <div class="pageBtn_L">
-        <a href="./sub1.html">
-          <button class="circle-btn" aria-label="Button back">
-            <div class="circle-arrow" aria-hidden="true">
+      <div class="center">
+        <div class="b_top">
+          <p class="footer_p">어쩌구 저쩌구 디자이너 신창은입니다</p>
+        </div>
+        <div class="b_bottom">
+          <!-- 페이지 이동 버튼 -->
+          <div class="pageBtnDiv">
+            <div class="pageBtn">
+              <a href="./sub1.html">
+                <button class="circle-btn" aria-label="Button back">
+                  <div class="circle-arrow" aria-hidden="true">
+                  </div>
+                </button>
+              </a>
             </div>
-          </button>
-        </a>
-      </div>
+            <p class="p_p">Branding</p>
 
-      <div class="pageBtn_R">
-        <a href="./sub3_s/sce_w.html">
-        <button class="circle-btn" aria-label="Button back">
-          <div class="circle-arrow" aria-hidden="true"></div>
-        </button>
-      </a>
+            <div class="pageBtn">
+              <a href="./sub3_s/sce_w.html">
+                <button class="circle-btn" aria-label="Button back">
+                  <div class="circle-arrow" aria-hidden="true"></div>
+                </button>
+              </a>
+            </div>
+            <p class="p_p">Portfolio</p>
+          </div>
+        </div>
       </div>
     </div>
+
+
 
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

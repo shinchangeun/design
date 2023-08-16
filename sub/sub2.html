@@ -13,21 +13,22 @@
   <link rel="stylesheet" href="css/DB_etc10.css" type="text/css" />
 
 
-
-
-
-
-
   <!--폰트 : Noto Sans KR-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
     rel="stylesheet">
 
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 
 
   <style type="text/css">
+    @keyframes grow-width {
+      from {
+        width: 0;
+      }
+    }
+
     a {
       text-decoration: none !important
     }
@@ -54,56 +55,10 @@
       top: 55px;
     } */
 
-    /* .menu1 {
-      position: absolute;
-      left: 272px;
-      top: 70px;
-      letter-spacing: 1.5px;
-      font: 400 18px 'Noto Sans KR';
-    }
-
-    .menu2 {
-      position: absolute;
-      left: 392px;
-      top: 70px;
-      letter-spacing: 1.5px;
-      font: 400 18px 'Noto Sans KR';
-    }
-
-    .menu3 {
-      position: absolute;
-      left: 480px;
-      top: 70px;
-      letter-spacing: 1.5px;
-      font: 400 18px 'Noto Sans KR';
-    }
-
-    .menu4 {
-      position: absolute;
-      left: 595px;
-      top: 70px;
-      letter-spacing: 1.5px;
-      font: 400 18px 'Noto Sans KR';
-    }
-
-    .menu5 {
-      position: absolute;
-      left: 725px;
-      top: 70px;
-      letter-spacing: 1.5px;
-      font: 400 18px 'Noto Sans KR';
-    } */
-
     .navi_1 {
       position: absolute;
       left: 0px;
       top: 0px;
-    }
-
-    .navi_bg {
-      position: absolute;
-      left: 0px;
-      top: 149px;
     }
 
     .bg2 {
@@ -118,83 +73,13 @@
       top: 7280px;
     }
 
-    #video {
-      position: absolute;
-      left: 340px;
-      top: 80px;
-    }
-
     .ty_1 {
       position: absolute;
       left: 341px;
       top: 416px;
     }
 
-    /*탑 버튼 css 부분*/
-    #topBtn {
-      position: fixed;
-      right: 25px;
-      bottom: 25px;
-      display: none;
-      z-index: 9;
-    }
-
-
-    .bg3 {
-      position: absolute;
-      left: 0px;
-      top: 4611px;
-    }
-
-    .move_1 {
-      position: absolute;
-      left: 720px;
-      top: 4831px;
-    }
-
-    .move_2 {
-      position: absolute;
-      left: 970px;
-      top: 4831px;
-    }
-
-
-
-    .p_1 {
-      position: absolute;
-      left: 1322px;
-      top: 3712px;
-    }
-
-    .p_2 {
-      position: absolute;
-      left: 1320px;
-      top: 3921px;
-    }
-
-    .p_3 {
-      position: absolute;
-      left: 1321px;
-      top: 4100px;
-    }
-
-    .p_4 {
-      position: absolute;
-      left: 1320px;
-      top: 4289px;
-    }
-
-
-
-    .t_201 {
-      position: absolute;
-      left: 400px;
-      /* top: 1107px; */
-      z-index: 90;
-    }
-
-    /* .t_202{position:absolute; left:357px; top:1207px; z-index: 90;}  */
-    /* .t_203{position:absolute; left:357px; top:1307px; z-index: 90;}  */
+  
 
     /* Basic styles */
     *,
@@ -203,22 +88,17 @@
       box-sizing: border-box;
     }
 
-    /* :root {
-      --bg-color: #1e1e1e;
-    } */
 
     body {
       display: flex;
       align-items: center;
       justify-content: center;
       /* overflow: hidden; */
-      width: 400px;
+      /* width: 400px; */
       height: 600px;
       color: #000;
       /* background-color: #1e1e1e; */
       font-family: 'Noto Sans KR';
-
-
     }
 
     h1 {
@@ -292,7 +172,312 @@
         transform: translateX(200%)
       }
     }
+
+    /* MENU */
+
+    .nav-toggler {
+      position: fixed;
+      z-index: 10;
+      top: 75px;
+      right: 70px;
+      width: 50px;
+      border-radius: 50%;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: transparent;
+    }
+
+    .line {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 5px;
+      background: #5a5a5a;
+      transition: transform 0.3s ease-out, opacity 0.1s ease-out;
+    }
+
+    .l1 {
+      transform: translateY(-10px);
+    }
+
+    .l3 {
+      transform: translateY(10px);
+    }
+
+    .nav-toggler.active .l1 {
+      transform: translateY(0px) rotate(135deg);
+    }
+
+    .nav-toggler.active .l2 {
+      opacity: 0;
+    }
+
+    .nav-toggler.active .l3 {
+      transform: translateY(0px) rotate(-135deg);
+    }
+
+    nav {
+      z-index: 9;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      /* background: #054ea4; */
+      background: #121212;
+      transform: translateY(-100%);
+      transition: transform 0.3s cubic-bezier(0.73, 0.11, 0.67, 0.84);
+    }
+
+    nav.active {
+      transform: translate(0%);
+    }
+
+    nav a {
+      color: white;
+      font-size: 3rem;
+      text-decoration: none;
+      font-family: "Oswald", sans-serif;
+    }
+
+
+
+    /* 페이지 이동 */
+    .circle-btn {
+      --button-border-color: #e7e7e7;
+      --button-arrow-color: #e7e7e7;
+      --button-triangle-size: 6px;
+      --transition-speed: 1s;
+
+      cursor: pointer;
+      mix-blend-mode: multiple;
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--button-border-color);
+      border-radius: 50%;
+      position: relative;
+      transition:
+        transform var(--transition-speed) cubic-bezier(1, 0, .25, 1),
+        opacity var(--transition-speed) cubic-bezier(.5, 0, 0, 1),
+        -webkit-transform var(--transition-speed) cubic-bezier(.5, 0, 0, 1);
+
+      &:hover {
+        transform: translateX(-8px) translateZ(0);
+
+        .circle-arrow {
+          transform: translateX(-8px);
+        }
+
+        .circle-arrow::before {
+          transform: scaleX(.55);
+        }
+      }
+
+      &:focus-visible {
+        outline: 3px solid var(--button-border-color);
+        outline-offset: 4px;
+      }
+    }
+
+    .circle-arrow {
+      position: absolute;
+      top: calc(50% - 4px);
+      left: calc(50% - 4px);
+      width: 75%;
+      height: 8px;
+      transform: translateX(0) translateZ(0);
+      transition: transform var(--transition-speed) cubic-bezier(1, 0, .25, 1);
+      will-change: transform;
+
+      /* // line */
+      &::before {
+        content: "";
+        display: block;
+        width: 200px;
+        height: 3px;
+        width: 100%;
+        background-color: var(--button-arrow-color);
+        position: absolute;
+        top: 3px;
+        transform: translateZ(0);
+        transform-origin: 0 0;
+        transition:
+          transform var(--transition-speed) cubic-bezier(1, 0, .25, 1),
+          opacity var(--transition-speed) cubic-bezier(1, 0, .25, 1);
+        will-change: transform opacity;
+      }
+
+      /* // arrow */
+      &::after {
+        content: "";
+        display: block;
+        border-bottom: solid var(--button-triangle-size) transparent;
+        border-right: solid var(--button-triangle-size) transparent;
+        border-left: solid var(--button-triangle-size) var(--button-arrow-color);
+        border-top: solid var(--button-triangle-size) var(--button-arrow-color);
+        transform: rotate(-45deg) translateX(var(--button-triangle-size));
+        transform-origin: 50% 16px;
+        transition: .3s ease;
+        width: 0;
+        height: 0;
+      }
+    }
+
+    button {
+      all: unset;
+    }
+
+    /* 푸터 */
+    .footer {
+      position: absolute;
+      left: 0px;
+      top: 2144px;
+      background-color: #262626;
+      height: 350px;
+      width: 100%;
+    }
+
+    .footer_p {
+      text-align: center;
+      color: #e7e7e7;
+      margin-top: 5%;
+      font-size: 1.5em;
+    }
+
+    .p_p {
+      color: #e7e7e7;
+      font-size: 20px;
+      display: flex;
+      margin: 0 10px;
+      align-items: center;
+    }
+
+    .pageBtnDiv {
+      justify-content: center;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .b_top {
+      margin-bottom: 50px;
+    }
+
+    .pageBtn {
+      margin: 0 10px;
+    }
+
+
+    /* 바 그래프 */
+    @-webkit-keyframes grow-width {
+      from {
+        width: 0;
+      }
+    }
+
+    @keyframes grow-width {
+      from {
+        width: 0;
+      }
+    }
+
+    section {
+      vertical-align: top;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    section:nth-of-type(odd) {
+      margin: 15% 0 0 15%;
+    }
+
+    .style-2 {
+      list-style-type: none;
+      padding: 0;
+      /* width: 80%; */
+    }
+
+    .style-2 li {
+      height: 50px;
+    }
+
+    .style-2 li em,
+    .style-2 li span {
+      padding: 5px 10px;
+      text-align: right;
+    }
+
+    .style-2 li em {
+      text-align: right;
+      font-style: normal;
+      float: left;
+      width: 85px;
+    }
+
+    .style-2 li span {
+      display: inline-block;
+      background: #e7e7e7;
+      overflow: visible;
+      -webkit-animation: grow-width 2s;
+      animation: grow-width 2s;
+    }
+
+    /* img */
+    .img_main_1 {
+      width: 500px;
+      height: 550px;
+      background-image: url(./images/sub2/front.png);
+      background-size: cover;
+      /* background-position: center; */
+    }
+
+    .img_main_2 {
+      width: 500px;
+      height: 550px;
+      background-image: url(./images/sub2/up.png);
+      background-size: cover;
+    }
+
+    .t_201 {
+      /* width: 400px; */
+      /* margin: 5% 0 0 20%; */
+      /* float: left; */
+      text-align:center;
+      margin-bottom:70px;
+      margin-top: 50px;
+    }
+
+    .content{
+      margin-top: 160px;
+    }
+
+    .center{
+      display: flex;
+      flex-direction: row;
+      justify-content:center;
+    }
+
+    .box{
+      box-sizing:border-box;
+      margin: 0 40px;
+    }
   </style>
+
+  <script
+    src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+  <script
+    src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-6bce046e7128ddf9391ccf7acbecbf7ce0cbd7b6defbeb2e217a867f51485d25.js"></script>
+  <script
+    src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
+  <script
+    src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
 
 
 </head>
@@ -300,82 +485,135 @@
 
 <body style="overflow-x: hidden">
   <div id="wrap">
-    <div class="t_201">
-      <h1 class="home-title">
-        <span>B(birth)와 D(design)의 </span>
+
+    <!-- 메뉴 -->
+    <nav class="">
+      <div class="menu-link-container menu-link-container-1">
+        <a href="/index.html">Home</a>
+      </div>
+      <div class="menu-link-container menu-link-container-2">
+        <a href="./sub1.html">Branding</a>
+      </div>
+      <div class="menu-link-container menu-link-container-3">
+        <a href="./sub3_s/sce_w.html">Portfolio</a>
+      </div>
+      <div class="menu-link-container menu-link-container-4">
+        <a href="./sub2.html">About</a>
+      </div>
+      <div class="menu-link-container menu-link-container-4">
+        <a href="./sub4.html">Expeirence</a>
+      </div>
+    </nav>
+    <button type="button" aria-label="toggle curtain navigation" class="nav-toggler">
+      <span class="line l1"></span>
+      <span class="line l2"></span>
+      <span class="line l3"></span>
+    </button>
+
+<div class="content">
+  <div class="center">
+    <div class="box">
+      <div class="t_201">
+        <h1 class="home-title">
+          <span>B(birth)와 D(design)의 </span>
+          <br>
+          <span>사이를 &nbsp;&nbsp;잇는&nbsp;&nbsp; 디자이너 C </span>
+          <br>
+          <span>신창은&nbsp;&nbsp;&nbsp;&nbsp;———&nbsp;&nbsp;&nbsp;입니다. </span>
+        </h1>
+      </div>
+      <div class="img_main_2"></div>
+    </div>
+
+    <div class="box">
+      <div class="img_main_1"></div>
+      <div class="t_201" style="line-height: 25px;">
+        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+        <p> 이재원은 기침을 하다가 갈비뼈가 골절되었다 흑흗흗흑흑</p>
         <br>
-        <span>사이를 &nbsp;&nbsp;잇는&nbsp;&nbsp; 디자이너 C </span>
-        <br>
-        <span>신창은&nbsp;&nbsp;&nbsp;&nbsp;———&nbsp;&nbsp;&nbsp;&nbsp; 입니다. </span>
-      </h1>
+        <h2>저는 이재원의 조폭마누라 신창은 입니다.</h2>
+      </div>
     </div>
 
-
-    <!-- <div class="t_202">
-              <h1 class="home-title" >
-              <span>사이를 잇는 디자이너 C</span>  
-              </h1>
-          </div> -->
-
-    <!-- <div class="t_203">
-            <h1 class="home-title" >
-              <span>신창은&nbsp;&nbsp;-&nbsp; 입니다.  </span>  
-            </h1>
-        </div> -->
-
-
-    <div id="navi">
-      <div class="navi_1"><img src="images/sub2/1_01.jpg"></div>
-
-      <div class="navi_bg"><img src="images/sub2/bg2.jpg"></div>
-    </div> 
-
-
-    <!-- 기존비디오
-      <div id="video">
-      <video height="1000" width="1250" loop="loop" muted="muted" autoplay>
-        <source src="images/sub2/video.mp4" type="video/mp4">
-        <source src="images/sub2/video.mp4" type="video/ogg; codecs='theora, vorbis'">
-      </video>
-    </div> -->
-
-
-    <!--탑 버튼(이미지)&스크립트 html 부분-->
-    <!--탑 버튼(이미지)-->
-    <a href="/sub/sub2.html"><img id="topBtn" src="images/sub1/top.png" width=73 height=66 href="#"></a>
+  </div>
+</div>
 
 
 
-    <div id="bg">
-      <div class="bg3"><img src="images/sub1/footer.jpg"></div>
+
+    <!-- 바 그래프 -->
+    <section>
+      <ul class="style-2">
+        <li>
+          <em>01</em>
+          <span>1000</span>
+        </li>
+        <li>
+          <em>02</em>
+          <span>1000</span>
+        </li>
+        <li>
+          <em>03</em>
+          <span>131</span>
+        </li>
+        <li>
+          <em>04</em>
+          <span>457</span>
+        </li>
+        <li>
+          <em>05</em>
+          <span>1000</span>
+        </li>
+      </ul>
+    </section>
+
+
+
+
+
+    <!-- footer -->
+    <div class="footer">
+      <div class="center">
+        <div class="b_top">
+          <p class="footer_p">어쩌구 저쩌구 디자이너 신창은입니다</p>
+        </div>
+        <div class="b_bottom">
+          <!-- 페이지 이동 버튼 -->
+          <div class="pageBtnDiv">
+            <div class="pageBtn">
+              <a href="./sub1.html">
+                <button class="circle-btn" aria-label="Button back">
+                  <div class="circle-arrow" aria-hidden="true">
+                  </div>
+                </button>
+              </a>
+            </div>
+            <p class="p_p">Branding</p>
+
+            <div class="pageBtn">
+              <a href="./sub3_s/sce_w.html">
+                <button class="circle-btn" aria-label="Button back">
+                  <div class="circle-arrow" aria-hidden="true"></div>
+                </button>
+              </a>
+            </div>
+            <p class="p_p">Portfolio</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div id="move">
-      <div class="move_1"><a href="sub5.html"><img src="images/sub1/m1.png"></a></div>
-      <div class="move_2"><a href="sub3.html"><img src="images/sub1/m2.png"></a></div>
-    </div>
-
-
-    <div id="typo">
-      <div class="p_1" data-aos="fade-up" data-aos-delay="500"><img src="images/sub2/1.png"></div>
-      <div class="p_2" data-aos="fade-up" data-aos-delay="500"><img src="images/sub2/2.png"></div>
-      <div class="p_3" data-aos="fade-up" data-aos-delay="500"><img src="images/sub2/3.png"></div>
-      <div class="p_4" data-aos="fade-up" data-aos-delay="500"><img src="images/sub2/4.png"></div>
-    </div>
-
-
-
-
-
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
     <script>
       AOS.init();
     </script>
-
-
-
 
     <!--버튼 숨김/나타남 스크립트-->
     <script>
@@ -392,6 +630,52 @@
         });
       });
     </script>
+
+    <script>
+      //MENU
+      const menuButton = document.querySelector(".nav-toggler");
+      const navigation = document.querySelector("nav");
+
+      menuButton.addEventListener("click", toggleNav);
+
+      function toggleNav() {
+        menuButton.classList.toggle("active");
+        navigation.classList.toggle("active");
+      }
+    </script>
+
+    <!-- 페이지 이동 -->
+    <script>
+      const btn = document.querySelector('.circle-btn');
+
+
+      btn.addEventListener('click', function () {
+        document.body.classList.toggle('invert');
+      })
+    </script>
+
+    <!-- 바 그래프  -->
+    <script>
+      function setBarWidth(dataElement, barElement, cssProperty, barPercent) {
+        var listData = [];
+        $(dataElement).each(function () {
+          listData.push($(this).html());
+        });
+        var listMax = Math.max.apply(Math, listData);
+        $(barElement).each(function (index) {
+          $(this).css(cssProperty, (listData[index] / listMax) * barPercent + "%");
+        });
+      }
+      setBarWidth(".style-2 span", ".style-2 span", "width", 55);
+    </script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-16f86670-417f-30aa-47c2-c57938a5dc13"
+      crossorigin=""></script>
+
+
+
+
+
 
   </div>
 </body>
