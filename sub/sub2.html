@@ -79,7 +79,7 @@
       top: 416px;
     }
 
-  
+
 
     /* Basic styles */
     *,
@@ -376,57 +376,80 @@
 
 
     /* 바 그래프 */
-    @-webkit-keyframes grow-width {
-      from {
-        width: 0;
-      }
-    }
-
-    @keyframes grow-width {
-      from {
-        width: 0;
-      }
-    }
-
-    section {
-      vertical-align: top;
-      margin-top: 20px;
-      font-size: 18px;
-    }
-
-    section:nth-of-type(odd) {
-      margin: 15% 0 0 15%;
-    }
-
-    .style-2 {
-      list-style-type: none;
+    p {
+      margin: 0;
       padding: 0;
-      /* width: 80%; */
     }
 
-    .style-2 li {
-      height: 50px;
+    .progress-container {
+      width: 100%;
+      height: 30px;
+      position: relative;
+      display: flex;
     }
 
-    .style-2 li em,
-    .style-2 li span {
-      padding: 5px 10px;
-      text-align: right;
+    .progress-bar {
+      height: 100%;
+      background-color: #121212;
+      width: 0;
+      animation: progressBarAnimation 2s ease-in-out forwards;
     }
 
-    .style-2 li em {
-      text-align: right;
-      font-style: normal;
-      float: left;
-      width: 85px;
+    .percent-text {
+      top: 50%;
+      left: calc(var(--progress-percent) * 100% + 10px);
+      font-size: 18px;
+      font-weight: 500;
+      color: #000;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      margin-left: 18px;
+      margin-bottom: 3px;
     }
 
-    .style-2 li span {
-      display: inline-block;
-      background: #e7e7e7;
-      overflow: visible;
-      -webkit-animation: grow-width 2s;
-      animation: grow-width 2s;
+    .ddiv {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .ddiv p {
+      margin: 10px 0;
+    }
+
+    .ddivTitle {
+      margin: 0 0;
+      font-weight: 600;
+    }
+
+    .progress-container {
+      margin: 5px 0;
+    }
+
+    .barDiv {
+      margin: 20px 0;
+    }
+
+    .btmTitle {
+      margin: 10px 0;
+    }
+
+    .bold {
+      font-weight: 900;
+    }
+
+    .gray {
+      color: rgb(184, 184, 184)
+    }
+
+    @keyframes progressBarAnimation {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: calc(var(--progress-percent) * 100%);
+      }
     }
 
     /* img */
@@ -449,23 +472,23 @@
       /* width: 400px; */
       /* margin: 5% 0 0 20%; */
       /* float: left; */
-      text-align:center;
-      margin-bottom:70px;
+      text-align: center;
+      margin-bottom: 70px;
       margin-top: 50px;
     }
 
-    .content{
+    .content {
       margin-top: 160px;
     }
 
-    .center_c{
+    .center_c {
       display: flex;
       flex-direction: row;
-      justify-content:center;
+      justify-content: center;
     }
 
-    .box{
-      box-sizing:border-box;
+    .box {
+      box-sizing: border-box;
       margin: 0 40px;
     }
   </style>
@@ -510,71 +533,96 @@
       <span class="line l3"></span>
     </button>
 
-<div class="content">
-  <div class="center_c">
-    <div class="box">
-      <div class="t_201">
-        <h1 class="home-title">
-          <span>B(birth)와 D(design)의 </span>
-          <br>
-          <span>사이를 &nbsp;&nbsp;잇는&nbsp;&nbsp; 디자이너 C </span>
-          <br>
-          <span>신창은&nbsp;&nbsp;&nbsp;&nbsp;———&nbsp;&nbsp;&nbsp;입니다. </span>
-        </h1>
+    <div class="content">
+      <div class="center_c">
+        <div class="box">
+          <div class="t_201">
+            <h1 class="home-title">
+              <span>B(birth)와 D(design)의 </span>
+              <br>
+              <span>사이를 &nbsp;&nbsp;잇는&nbsp;&nbsp; 디자이너 C </span>
+              <br>
+              <span>신창은&nbsp;&nbsp;&nbsp;&nbsp;———&nbsp;&nbsp;&nbsp;입니다. </span>
+            </h1>
+          </div>
+          <div class="img_main_2"></div>
+        </div>
+
+        <div class="box">
+          <div class="img_main_1"></div>
+          <div class="t_201" style="line-height: 25px;">
+            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+            <p> 이재원은 기침을 하다가 갈비뼈가 골절되었다 흑흗흗흑흑</p>
+            <br>
+            <h2>저는 이재원의 조폭마누라 신창은 입니다.</h2>
+          </div>
+        </div>
+
+        <div></div>
       </div>
-      <div class="img_main_2"></div>
     </div>
-
-    <div class="box">
-      <div class="img_main_1"></div>
-      <div class="t_201" style="line-height: 25px;">
-        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-        <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-        <p> 이재원은 기침을 하다가 갈비뼈가 골절되었다 흑흗흗흑흑</p>
-        <br>
-        <h2>저는 이재원의 조폭마누라 신창은 입니다.</h2>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 
 
 
     <!-- 바 그래프 -->
-    <section>
-      <ul class="style-2">
-        <li>
-          <em>01</em>
-          <span>1000</span>
-        </li>
-        <li>
-          <em>02</em>
-          <span>1000</span>
-        </li>
-        <li>
-          <em>03</em>
-          <span>131</span>
-        </li>
-        <li>
-          <em>04</em>
-          <span>457</span>
-        </li>
-        <li>
-          <em>05</em>
-          <span>1000</span>
-        </li>
-      </ul>
-    </section>
+    <div>
+      <div class="barDiv">
+        <div>
+          <p class="ddivTitle">01.</p>
+        </div>
+        <div class="ddiv">
+          <p class="bold">성실감과 책임감</p>
+          <p class="gray">(Responsibility and intregrity)</p>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar" id="bar1"></div>
+          <div class="percent-text" id="value1">0%</div>
+        </div>
+        <div>
+          <p class="btmTitle gray">맡은 일에 최선을 다하는 꾸준한 사람</p>
+        </div>
+      </div>
 
+      <div class="barDiv">
+        <div>
+          <p class="ddivTitle">02.</p>
+        </div>
+        <div class="ddiv">
+          <p class="bold">성실감과 책임감</p>
+          <p class="gray">(Responsibility and intregrity)</p>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar" id="bar2"></div>
+          <div class="percent-text" id="value2">0%</div>
+        </div>
+        <div>
+          <p class="btmTitle gray">맡은 일에 최선을 다하는 꾸준한 사람</p>
+        </div>
+      </div>
 
-
+      <div class="barDiv">
+        <div>
+          <p class="ddivTitle">03.</p>
+        </div>
+        <div class="ddiv">
+          <p class="bold">성실감과 책임감</p>
+          <p class="gray">(Responsibility and intregrity)</p>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar" id="bar3"></div>
+          <div class="percent-text" id="value3">0%</div>
+        </div>
+        <div>
+          <p class="btmTitle gray">맡은 일에 최선을 다하는 꾸준한 사람</p>
+        </div>
+      </div>
+    </div>
 
 
     <!-- footer -->
@@ -656,23 +704,37 @@
 
     <!-- 바 그래프  -->
     <script>
-      function setBarWidth(dataElement, barElement, cssProperty, barPercent) {
-        var listData = [];
-        $(dataElement).each(function () {
-          listData.push($(this).html());
-        });
-        var listMax = Math.max.apply(Math, listData);
-        $(barElement).each(function (index) {
-          $(this).css(cssProperty, (listData[index] / listMax) * barPercent + "%");
-        });
+      const animationDuration = 3; // Animation duration in seconds
+
+      function updateProgressBar(bar, text, percent) {
+        bar.style.setProperty('--progress-percent', percent);
+
+        let currentValue = 0;
+        const increment = (percent / (animationDuration * 40)); // Assuming 60 frames per second
+
+        const interval = setInterval(() => {
+          currentValue += increment;
+          text.textContent = (currentValue * 100).toFixed(0) + '%';
+          if (currentValue >= percent) {
+            clearInterval(interval);
+          }
+        }, 1000 / 60);
       }
-      setBarWidth(".style-2 span", ".style-2 span", "width", 55);
+
+      let progressBar = document.getElementById('bar1');
+      let percentText = document.getElementById('value1');
+      let targetPercent = 0.5; // 퍼센트 값 변경
+      updateProgressBar(progressBar, percentText, targetPercent);
+      progressBar = document.getElementById('bar2');
+      percentText = document.getElementById('value2');
+      targetPercent = 0.7; // 퍼센트 값 변경
+      updateProgressBar(progressBar, percentText, targetPercent);
+      progressBar = document.getElementById('bar3');
+      percentText = document.getElementById('value3');
+      targetPercent = 0.4; // 퍼센트 값 변경
+      updateProgressBar(progressBar, percentText, targetPercent);
+
     </script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-16f86670-417f-30aa-47c2-c57938a5dc13"
-      crossorigin=""></script>
-
-
 
 
 
