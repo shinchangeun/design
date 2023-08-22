@@ -339,7 +339,6 @@
     .footer {
       position: absolute;
       left: 0px;
-      top: 2144px;
       background-color: #262626;
       height: 350px;
       width: 100%;
@@ -435,7 +434,7 @@
     }
 
     .bold {
-      font-weight: 900;
+      font-weight: 500;
     }
 
     .gray {
@@ -454,16 +453,16 @@
 
     /* img */
     .img_main_1 {
-      width: 500px;
-      height: 550px;
+      width: 100%;
+      height: 600px;
       background-image: url(./images/sub2/front.png);
       background-size: cover;
       /* background-position: center; */
     }
 
     .img_main_2 {
-      width: 500px;
-      height: 550px;
+      width: 100%;
+      height: 600px;
       background-image: url(./images/sub2/up.png);
       background-size: cover;
     }
@@ -479,19 +478,153 @@
 
     .content {
       margin-top: 160px;
+      display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
     }
 
     .center_c {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: center;
+      width:1200px;
     }
 
     .box {
       box-sizing: border-box;
       margin: 0 40px;
+      width:100%;
     }
+    .dwn{
+      margin-top: 90px;
+      display: flex;
+      justify-content: center;
+    }
+    .centerBarDiv{
+      width: 100%;
+      padding: 0 40px;
+    }
+    .upp{
+      display: flex;
+    flex-direction: row;
+    justify-content: center;
+    }
+
+    /* adobe */
+
+      /*Section used for centering process*/
+  section {
+    width: 100%;
+    height: 80vh;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container{
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  
+  .accordion-item{
+    background-color: #000000;
+    border-radius: .4rem;
+  }
+  
+  .accordion-item hr{
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .accordion-link{
+    font-size: 1.6rem;
+    color: rgba(255,255,255,.8);
+    text-decoration: none;
+    background-color: #000000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+  
+  .accordion-link h3{
+    font-weight:500;
+    font-size: 20px;
+  }
+  
+  .accordion-link i{
+    color: #e7d5ff;
+    padding: .5rem;
+    
+  }
+  
+  .accordion-link ul{
+    display:flex;
+    align-items: flex-end;
+    list-style-type: none;
+    margin-left: 25px;
+  }
+  
+  .accordion-link li{
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 0 0 1px 5px;
+  }
+  
+  .accordion-link div{
+    display: flex;
+  }
+  
+  .accordion-link .ion-md-arrow-down{
+    display: none;
+  }
+  
+  .answer{
+    max-height: 0;
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+    transition: max-height 650ms;
+  }
+  
+  
+  
+  .answer p{
+    color: #fff;
+    font-size: 15px;
+    padding: 2rem 0rem;
+    
+  }
+  
+  .accordion-item:target .answer{
+    max-height: 20rem;
+  }
+  
+  .accordion-item:target .accordion-link .ion-md-arrow-forward{
+    display: none
+  }
+  
+  .accordion-item:target .accordion-link .ion-md-arrow-down{
+    display: block;
+  }
+
+  .adobe{
+    max-width: 100px;
+  }
+
   </style>
+  <!-- adobe -->
+  <script>
+    window.console = window.console || function(t) {};
+  </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js" data-stencil-namespace="ionicons"></script><script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js" data-stencil-namespace="ionicons"></script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    
+    <!--  -->
 
   <script
     src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
@@ -535,94 +668,218 @@
 
     <div class="content">
       <div class="center_c">
-        <div class="box">
-          <div class="t_201">
-            <h1 class="home-title">
-              <span>B(birth)와 D(design)의 </span>
-              <br>
-              <span>사이를 &nbsp;&nbsp;잇는&nbsp;&nbsp; 디자이너 C </span>
-              <br>
-              <span>신창은&nbsp;&nbsp;&nbsp;&nbsp;———&nbsp;&nbsp;&nbsp;입니다. </span>
-            </h1>
+        <div class="upp">
+          <div class="box">
+            <div class="t_201">
+              <h1 class="home-title">
+                <span>B(birth)와 D(design)의 </span>
+                <br>
+                <span>사이를 &nbsp;&nbsp;잇는&nbsp;&nbsp; 디자이너 C </span>
+                <br>
+                <span>신창은&nbsp;&nbsp;&nbsp;&nbsp;———&nbsp;&nbsp;&nbsp;입니다. </span>
+              </h1>
+            </div>
+            <div class="img_main_2"></div>
           </div>
-          <div class="img_main_2"></div>
-        </div>
-
-        <div class="box">
-          <div class="img_main_1"></div>
-          <div class="t_201" style="line-height: 25px;">
-            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-            <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
-            <p> 이재원은 기침을 하다가 갈비뼈가 골절되었다 흑흗흗흑흑</p>
-            <br>
-            <h2>저는 이재원의 조폭마누라 신창은 입니다.</h2>
+  
+          <div class="box">
+            <div class="img_main_1"></div>
+            <div class="t_201" style="line-height: 25px;">
+              <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+              <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+              <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+              <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+              <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+              <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+              <p> ‘인생은 B(Birth)와 D(Death) 사이의 C(Choice)이다’를 </p>
+              <p> 이재원은 기침을 하다가 갈비뼈가 골절되었다 흑흗흗흑흑</p>
+              <br>
+              <h2>저는 이재원의 조폭마누라 신창은 입니다.</h2>
+            </div>
           </div>
         </div>
+        <div class = "dwn">
+          <div class="centerBarDiv">
+            <div class="barDiv">
+              <div>
+                <p class="ddivTitle">01.</p>
+              </div>
+              <div class="ddiv">
+                <p class="bold">성실감과 책임감</p>
+                <p class="gray">(Responsibility and intregrity)</p>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" id="bar1"></div>
+                <div class="percent-text" id="value1">90%</div>
+              </div>
+              <div>
+                <p class="btmTitle gray">맡은 일에 최선을 다하는 꾸준한 사람</p>
+              </div>
+            </div>
+      
+            <div class="barDiv">
+              <div>
+                <p class="ddivTitle">02.</p>
+              </div>
+              <div class="ddiv">
+                <p class="bold">도전정신</p>
+                <p class="gray">(Stepping up to challenges)</p>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" id="bar2"></div>
+                <div class="percent-text" id="value2">85%</div>
+              </div>
+              <div>
+                <p class="btmTitle gray">포기하지 않고 끊임없이 배우고자 하는 사람</p>
+              </div>
+            </div>
 
-        <div></div>
+            <div class="barDiv">
+              <div>
+                <p class="ddivTitle">03.</p>
+              </div>
+              <div class="ddiv">
+                <p class="bold">도덕성</p>
+                <p class="gray">(Morality)</p>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" id="bar3"></div>
+                <div class="percent-text" id="value3">95%</div>
+              </div>
+              <div>
+                <p class="btmTitle gray">인간의 기본적인 덕목을 지키는 사람</p>
+              </div>
+            </div>
+
+            <div class="barDiv">
+              <div>
+                <p class="ddivTitle">04.</p>
+              </div>
+              <div class="ddiv">
+                <p class="bold">커뮤니케이션과 팀워크</p>
+                <p class="gray">(Communicatiom & teamwork)</p>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" id="bar4"></div>
+                <div class="percent-text" id="value4">90%</div>
+              </div>
+              <div>
+                <p class="btmTitle gray">귀담아 듣고 니즈를 정확하게 이해할 수 있는 사람</p>
+              </div>
+            </div>
+
+            <div class="barDiv">
+              <div>
+                <p class="ddivTitle">05.</p>
+              </div>
+              <div class="ddiv">
+                <p class="bold">전문성</p>
+                <p class="gray">(Professionalism)</p>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar" id="bar5"></div>
+                <div class="percent-text" id="value5">90%</div>
+              </div>
+              <div>
+                <p class="btmTitle gray">다양한 분야에서 다양한 경험을 해본 사람</p>
+              </div>
+            </div>
+          
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- adobe -->
 
-
-    <!-- 바 그래프 -->
-    <div>
-      <div class="barDiv">
-        <div>
-          <p class="ddivTitle">01.</p>
+    <section>
+      <div class="container">
+        <div class="accordion">
+          <div class="accordion-item" id="question1">
+            <a class="accordion-link" href="#question1">
+              <div class="flex">
+                <h3>Confirmed </h3>
+                <ul>
+                  <li>#Adobe</li>
+                  <li>#Illustrator</li>
+                  <li>#Protopie</li>
+                </ul>
+              </div>
+              <i class="icon ion-md-arrow-forward"></i>
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <img class="adobe" src="./images/sub2/ai.png">
+              <p>필요한 아이콘과  출력물을 벡터화하여 작업물을 만들 수 있습니다.</p>
+            </div>
+            <hr>
         </div>
-        <div class="ddiv">
-          <p class="bold">성실감과 책임감</p>
-          <p class="gray">(Responsibility and intregrity)</p>
+          <div class="accordion-item" id="question2">
+            <a class="accordion-link" href="#question2">
+              <div class="flex">
+                <h3>Advanced</h3>
+                <ul>
+                  <li>#Adobe</li>
+                  <li>#Photoshop</li>
+                  <li>#Protopie</li>
+                </ul>
+              </div>
+              <i class="icon ion-md-arrow-forward"></i>
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <img class="adobe" src="./images/sub2/ps.png">
+              <p>HTML의 기본구조를 이해하고 있으며 CSS, JS 를 사용하여 퍼블리싱이 가능합니다</p>
+            </div>
+            <hr>
         </div>
-        <div class="progress-container">
-          <div class="progress-bar" id="bar1"></div>
-          <div class="percent-text" id="value1">0%</div>
+          <div class="accordion-item" id="question3">
+            <a class="accordion-link" href="#question3">
+              <div class="flex">
+                <h3>Intermediate</h3>
+                <ul>
+                  <li>#Visual Studio Code</li>
+                  <li>#Protopie</li>
+                </ul>
+              </div>
+              <i class="icon ion-md-arrow-forward"></i>
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <img class="adobe" src="./images/sub2/vscode.png">
+              <p>필요한 이미지의 합성과 리터칭,레이아웃 등 툴을 자유롭게 사용할수있습니다.  </p>
+            </div>
+            <hr>
         </div>
-        <div>
-          <p class="btmTitle gray">맡은 일에 최선을 다하는 꾸준한 사람</p>
+          <div class="accordion-item" id="question4">
+            <a class="accordion-link" href="#question4">
+              <div>
+                <h3>Beginner</h3>
+                <ul>
+                  <li>#Adobe</li>
+                  <li>#After Effect</li>
+                  <li>#Protopie</li>
+                </ul>
+              </div>
+              <i class="icon ion-md-arrow-forward"></i>
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <img class="adobe" src="./images/sub2/ae.png">
+              <p>영상물을 편집하여 간단한 컨텐츠를 만들 수 있습니다.</p>
+            </div>
+            <hr>
         </div>
+       </div>
       </div>
+    </section>
+  
+  
 
-      <div class="barDiv">
-        <div>
-          <p class="ddivTitle">02.</p>
-        </div>
-        <div class="ddiv">
-          <p class="bold">성실감과 책임감</p>
-          <p class="gray">(Responsibility and intregrity)</p>
-        </div>
-        <div class="progress-container">
-          <div class="progress-bar" id="bar2"></div>
-          <div class="percent-text" id="value2">0%</div>
-        </div>
-        <div>
-          <p class="btmTitle gray">맡은 일에 최선을 다하는 꾸준한 사람</p>
-        </div>
-      </div>
 
-      <div class="barDiv">
-        <div>
-          <p class="ddivTitle">03.</p>
-        </div>
-        <div class="ddiv">
-          <p class="bold">성실감과 책임감</p>
-          <p class="gray">(Responsibility and intregrity)</p>
-        </div>
-        <div class="progress-container">
-          <div class="progress-bar" id="bar3"></div>
-          <div class="percent-text" id="value3">0%</div>
-        </div>
-        <div>
-          <p class="btmTitle gray">맡은 일에 최선을 다하는 꾸준한 사람</p>
-        </div>
-      </div>
-    </div>
+
+
+    
 
 
     <!-- footer -->
@@ -723,16 +980,26 @@
 
       let progressBar = document.getElementById('bar1');
       let percentText = document.getElementById('value1');
-      let targetPercent = 0.5; // 퍼센트 값 변경
+      let targetPercent = 0.9; // 퍼센트 값 변경
       updateProgressBar(progressBar, percentText, targetPercent);
       progressBar = document.getElementById('bar2');
       percentText = document.getElementById('value2');
-      targetPercent = 0.7; // 퍼센트 값 변경
+      targetPercent = 0.85; // 퍼센트 값 변경
       updateProgressBar(progressBar, percentText, targetPercent);
       progressBar = document.getElementById('bar3');
       percentText = document.getElementById('value3');
-      targetPercent = 0.4; // 퍼센트 값 변경
+      targetPercent = 0.9; // 퍼센트 값 변경
       updateProgressBar(progressBar, percentText, targetPercent);
+      progressBar = document.getElementById('bar4');
+      percentText = document.getElementById('value4');
+      targetPercent = 0.86; // 퍼센트 값 변경
+      updateProgressBar(progressBar, percentText, targetPercent);
+      progressBar = document.getElementById('bar5');
+      percentText = document.getElementById('value5');
+      targetPercent = 0.94; // 퍼센트 값 변경
+      updateProgressBar(progressBar, percentText, targetPercent);
+      
+
 
     </script>
 

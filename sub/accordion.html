@@ -1,0 +1,255 @@
+<html lang="en" class="hydrated"><head>
+    <meta charset="UTF-8">
+    <style data-styles="">ion-icon{visibility:hidden}.hydrated{visibility:inherit}</style>
+    
+<!--   
+      <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+   -->
+      <meta name="apple-mobile-web-app-title" content="CodePen">
+  
+      <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+  
+      <!-- <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+   -->
+  
+  
+    
+    
+  
+    <title>CodePen - Accordion</title>
+  
+      <link rel="canonical" href="https://codepen.io/Tuna_/pen/KKzXEVO">
+    
+    
+    
+    
+  <style>
+  *,
+  *::before,
+  *::after{
+    margin:0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+  
+  html {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    box-sizing: border-box;
+  }
+  
+  /*Section used for centering process*/
+  section {
+    width: 100%;
+    height: 100vh;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .container{
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .accordion-item{
+    background-color: #000000;
+    border-radius: .4rem;
+  }
+  
+  .accordion-item hr{
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .accordion-link{
+    font-size: 1.6rem;
+    color: rgba(255,255,255,.8);
+    text-decoration: none;
+    background-color: #000000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+  
+  .accordion-link h3{
+    font-weight:500;
+    font-size: 20px;
+  }
+  
+  .accordion-link i{
+    color: #e7d5ff;
+    padding: .5rem;
+    
+  }
+  
+  .accordion-link ul{
+    display:flex;
+    align-items: flex-end;
+    list-style-type: none;
+    margin-left: 25px;
+  }
+  
+  .accordion-link li{
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 0 0 1px 5px;
+  }
+  
+  .accordion-link div{
+    display: flex;
+  }
+  
+  .accordion-link .ion-md-arrow-down{
+    display: none;
+  }
+  
+  .answer{
+    max-height: 0;
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+    transition: max-height 650ms;
+  }
+  
+  
+  
+  .answer p{
+    color: #fff;
+    font-size: 15px;
+    padding: 2rem;
+    
+  }
+  
+  .accordion-item:target .answer{
+    max-height: 20rem;
+  }
+  
+  .accordion-item:target .accordion-link .ion-md-arrow-forward{
+    display: none
+  }
+  
+  .accordion-item:target .accordion-link .ion-md-arrow-down{
+    display: block;
+  }
+  </style>
+  
+    <script>
+    window.console = window.console || function(t) {};
+  </script>
+  
+    
+    
+  <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js" data-stencil-namespace="ionicons"></script><script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js" data-stencil-namespace="ionicons"></script></head>
+  
+  <body translate="no">
+    
+  
+  
+  <title>Page Title</title>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet"> 
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+  
+  
+  
+    <section>
+      <div class="container">
+        <div class="accordion">
+          <div class="accordion-item" id="question1">
+            <a class="accordion-link" href="#question1">
+              <div class="flex">
+                <h3>BRANDING</h3>
+                <ul>
+                  <li>#Figma</li>
+                  <li>#Sketch</li>
+                  <li>#Adobe</li>
+                  <li>#Invision</li>
+                  <li>#Protopie</li>
+                </ul>
+              </div>
+              <i class="icon ion-md-arrow-forward"></i>
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p> We believe in the greater good, we strive to do something for people, we aim to make their lives easier and more enjoyable, we love businesses that keep this</p>
+            </div>
+            <hr>
+        </div>
+          <div class="accordion-item" id="question2">
+            <a class="accordion-link" href="#question2">
+              <div class="flex">
+                <h3>UX/UI DESIGN</h3>
+                <ul>
+                  <li>#Figma</li>
+                  <li>#Sketch</li>
+                  <li>#Adobe</li>
+                  <li>#Invision</li>
+                  <li>#Protopie</li>
+                </ul>
+              </div>
+              <i class="icon ion-md-arrow-forward"></i>
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+            </div>
+            <hr>
+        </div>
+          <div class="accordion-item" id="question3">
+            <a class="accordion-link" href="#question3">
+              <div class="flex">
+                <h3>FRONTEND DEVELOPMENT</h3>
+                <ul>
+                  <li>#Figma</li>
+                  <li>#Sketch</li>
+                  <li>#Adobe</li>
+                  <li>#Invision</li>
+                  <li>#Protopie</li>
+                </ul>
+              </div>
+              <i class="icon ion-md-arrow-forward"></i>
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+            </div>
+            <hr>
+        </div>
+          <div class="accordion-item" id="question4">
+            <a class="accordion-link" href="#question4">
+              <div>
+                <h3>BACKEND DEVELOPMENT</h3>
+                <ul>
+                  <li>#Figma</li>
+                  <li>#Sketch</li>
+                  <li>#Adobe</li>
+                  <li>#Invision</li>
+                  <li>#Protopie</li>
+                </ul>
+              </div>
+              <i class="icon ion-md-arrow-forward"></i>
+              <i class="icon ion-md-arrow-down"></i>
+            </a>
+            <div class="answer">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+            </div>
+            <hr>
+        </div>
+       </div>
+      </div>
+    </section>
+  
+  
+  
+    
+    
+    
+  
+  
+  
+  </body></html>
