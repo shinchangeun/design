@@ -7,15 +7,21 @@
   <title>Document</title>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <style>
+    :root {
+      --myblue: rgb(35, 68, 160);
+      --grayback: #F1F0F0;
+      --grayImg: #a9b1ba;
+    }
+
     body {
-      margin:0;
+      margin: 0;
     }
 
     .main {
       position: relative;
       display: flex;
       justify-content: center;
-      height: 1692px;
+      height: 3400px;
     }
 
     .upper-container {
@@ -36,6 +42,12 @@
 
     .follow-div {
       height: 5000px;
+      opacity: 1;
+      transition: opacity 0.1s ease-out;
+    }
+
+    .opzero {
+      opacity: 0;
     }
 
     .lower-container {
@@ -64,8 +76,8 @@
       height: 2vw;
     }
 
-  
-   /* MENU */
+
+    /* MENU */
 
     .nav-toggler {
       position: fixed;
@@ -136,45 +148,229 @@
       color: white;
       font-size: 3rem;
       text-decoration: none;
-      font-family: "Oswald", sans-serif ;
+      font-family: "Oswald", sans-serif;
     }
-    /* menu끝 */
-  
 
-    .pjov_div{
+    /* menu끝 */
+
+
+    .pjov_div {
       display: flex;
       justify-content: center;
       padding: 40px 0px;
     }
-    .center{
+
+    .center {
       display: flex;
       width: 1280px;
     }
-    body > div.follow-div > div.pjov_div > div{
+
+    body>div.follow-div>div.pjov_div>div {
       flex-direction: row;
       justify-content: space-between;
     }
-   
-    body > div.follow-div > div:nth-child(1) > img{
+
+    body>div.follow-div>div:nth-child(1)>img {
       width: 100%;
     }
-    .pbold{
+
+    .pbold {
       font-weight: 800;
       font-size: 27px;
     }
-    body > div.follow-div > div.pjov_div > div > div:nth-child(2){
+
+    body>div.follow-div>div.pjov_div>div>div:nth-child(2) {
       width: 1000px;
     }
-    body > div.follow-div > div.pjov_div > div > div:nth-child(2) > p{
-      font-size:20px;
+
+    body>div.follow-div>div.pjov_div>div>div:nth-child(2)>p {
+      font-size: 20px;
     }
-    .selfanaly_div{
+
+    body>div.follow-div>div.selfanaly_div>div>div>div:nth-child(2)>table>tbody>tr:nth-child(1)>td:nth-child(2) {
+      display: flex;
+      justify-content: center;
+      margin: 0 4vw;
+    }
+
+    .selfanaly_div {
       display: flex;
       justify-content: center;
       padding: 40px 0px;
-      background-color: #F1F0F0;
+      background-color: var(--grayback);
     }
 
+    .center>div {
+      width: 100%;
+    }
+
+    body>div.follow-div>div.pjov_div>div>div:nth-child(1) {
+      width: 50%;
+    }
+
+    body>div.follow-div>div.selfanaly_div>div>div>div:nth-child(2)>table {
+      width: 100%;
+    }
+
+    body>div.follow-div>div.selfanaly_div>div>div>div:nth-child(2)>table>tbody>tr:nth-child(2)>td>div {
+      display: flex;
+      justify-content: center;
+    }
+
+    .cttdiv {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 3vw;
+      width: 35vw;
+    }
+
+    .bmargin {
+      margin-bottom: 3vw;
+    }
+
+    .parentCircle {
+      position: relative;
+      width: 30vw;
+      /* 원의 지름에 따라 조절 */
+      height: 30vw;
+      /* 원의 지름에 따라 조절 */
+      border: solid 1px var(--myblue);
+      border-radius: 50%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      /* 미니 동그라미와의 간격을 조절 */
+      transform: rotate(0deg);
+      opacity: 1;
+      transition: transform 1s ease, opacity 1s ease;
+    }
+
+    .beforerot {
+      opacity: 0;
+      transform: rotate(-10deg);
+    }
+
+    .miniCircleDiv {
+      width: 5.5vw;
+      /* 미니 동그라미의 지름에 따라 조절 */
+      height: 5.5vw;
+      /* 미니 동그라미의 지름에 따라 조절 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1vw;
+      position: relative;
+    }
+
+    .miniCircle {
+      width: 5.5vw;
+      /* 미니 동그라미의 지름에 따라 조절 */
+      height: 5.5vw;
+      /* 미니 동그라미의 지름에 따라 조절 */
+      border-radius: 50%;
+      border: solid 1px var(--myblue);
+      display: flex;
+      background-color: var(--grayback);
+      align-items: center;
+      justify-content: center;
+      color: var(--myblue);
+      font-size: 1vw;
+      position: relative;
+    }
+
+    .left {
+      position: absolute;
+      left: -2.7vw;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .right {
+      position: absolute;
+      right: -2.7vw;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .bottom {
+      position: absolute;
+      bottom: -2.7vw;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .middleCircle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 15vw;
+      /* 가운데 동그라미의 지름에 따라 조절 */
+      height: 15vw;
+      /* 가운데 동그라미의 지름에 따라 조절 */
+      border-radius: 50%;
+      background-color: var(--myblue);
+      /* 가운데 동그라미의 배경색 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+    }
+
+    .middleCircle>p {
+      color: white;
+      font-size: 1.2vw;
+    }
+
+    .bluebar {
+      z-index: -1;
+      position: absolute;
+      border-top: solid 1px var(--myblue);
+      width: 8vw;
+      rotate: -45deg;
+    }
+
+    ul {
+      padding: 0
+    }
+
+    li {
+      list-style: none;
+    }
+
+    body>div.follow-div>div.selfanaly_div>div>div>div:nth-child(2)>table>tbody>tr:nth-child(1)>td:nth-child(1) {
+      text-align: right;
+    }
+
+    .ctt {
+      color: var(--myblue);
+      transform: translateY(-20%);
+      opacity: 0;
+      transition: transform 1s ease, opacity 1s ease;
+    }
+
+    .cttup {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+
+    .analyptitle {
+      font-weight: 900;
+    }
+
+    .selfanaly_div li {
+      margin-bottom: 4px;
+    }
+
+    .imgFour{
+      display: flex;
+      justify-content: center;
+      padding-bottom: 40px;
+      background-color: var(--grayImg);
+    }
   </style>
 
 </head>
@@ -232,30 +428,162 @@
           <p class="pbold">Project<br>Overview</p>
         </div>
         <div>
-          <p>디자인이란 무한한 예술의 영역에서 특정 대상을 상징할 수 있게 구체적으로 표현하는 수단입니다. 이러한 맥락에서, 추상적인 개념을 시각적으로 가장 잘 나타내는 것이 바로 '무한대(∞)기호'라고 생각합니다. 무한대 기호(∞)는 무한이라는 끝이 없는 상태를 하나의 단순한 기호를 통해 나타내고있으며 이러한 점에서 디자인과 상당히 닮아있습니다. 두 개념을 조화롭게 연결시켜 무한한 아이디어와 영감을 끊임없이 진화하고 성장한다는 메시지를 전달하고자 시작된 셀프 브랜딩 프로젝트입니다.</p>
-        </div>  
+          <p>디자인이란 무한한 예술의 영역에서 특정 대상을 상징할 수 있게 구체적으로 표현하는 수단입니다. 이러한 맥락에서, 추상적인 개념을 시각적으로 가장 잘 나타내는 것이 바로 '무한대(∞)기호'라고
+            생각합니다. 무한대 기호(∞)는 무한이라는 끝이 없는 상태를 하나의 단순한 기호를 통해 나타내고있으며 이러한 점에서 디자인과 상당히 닮아있습니다. 두 개념을 조화롭게 연결시켜 무한한 아이디어와
+            영감을 끊임없이 진화하고 성장한다는 메시지를 전달하고자 시작된 셀프 브랜딩 프로젝트입니다.</p>
+        </div>
       </div>
     </div>
     <div class="selfanaly_div">
       <div class="center">
         <div>
-          <p class="pbold">Self-Analysis</p>
+          <div>
+            <p class="pbold">Self-Analysis</p>
+          </div>
+          <div>
+            <table>
+              <tr>
+                <td>
+                  <div class="ctt bmargin">
+                    <p class="analyptitle">Major in</p>
+                    <ul>
+                      <li>작업치료학 전공</li>
+                      <li>성적 우수 장학금</li>
+                      <li>전공 연계 봉사</li>
+                      <li>해커톤(스타톤) 대상</li>
+                    </ul>
+                  </div>
+                  <div class="ctt">
+                    <p class="analyptitle">Development</p>
+                    <ul>
+                      <li>디자인뿐 아니라</li>
+                      <li>개발환경도</li>
+                      <li>이해하는 UI/UX</li>
+                      <li>디자이너로서의</li>
+                      <li>역량과 능력을 키움</li>
+                    </ul>
+                  </div>
+                </td>
+                <td>
+                  <div class="parentCircle beforerot">
+                    <div class="miniCircleDiv left">
+                      <div class="miniCircle">
+                        <p>Study</p>
+                      </div>
+                      <p class="bluebar"></p>
+                    </div>
+                    <div class="miniCircleDiv right">
+                      <div class="miniCircle">
+                        <p>Character</p>
+                      </div>
+                      <p class="bluebar"></p>
+                    </div>
+                    <div class="miniCircleDiv bottom">
+                      <div class="miniCircle">
+                        <p>Concern</p>
+                      </div>
+                      <p class="bluebar"></p>
+                    </div>
+                    <div class="middleCircle">
+                      <p>SHIN CHANG-EUN</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="ctt bmargin">
+                    <p class="analyptitle">Inside : 나의 성격</p>
+                    <ul>
+                      <li>차분하며 조용한</li>
+                      <li>경청하는</li>
+                      <li>배려심과 예의바른</li>
+                      <li>도덕정신이 있는</li>
+                      <li>끈기있는</li>
+                    </ul>
+                  </div>
+                  <div class="ctt">
+                    <p class="analyptitle">Outsid : 나의 이미지</p>
+                    <ul>
+                      <li>잘웃는</li>
+                      <li>잘스며드는</li>
+                      <li>열심히 하는</li>
+                      <li>첫인상과 다른</li>
+                    </ul>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div>
+                    <div class="cttdiv">
+                      <div class="ctt">
+                        <p class="analyptitle">Favorite : 디자인</p>
+                        <ul>
+                          <li>Color:</li>
+                          <li>Blue</li>
+                          <li>Typo</li>
+                          <li>Made Cochella</li>
+                        </ul>
+                      </div>
+                      <div class="ctt">
+                        <p class="analyptitle">Favorite : ETC</p>
+                        <ul>
+                          <li>영화 감상</li>
+                          <li>전시 관람</li>
+                          <li>음악 감상</li>
+                          <li>요리하기</li>
+                        </ul>
+                      </div>
+                      <div class="ctt">
+                        <p class="analyptitle">Better : 잘하는 것</p>
+                        <ul>
+                          <li>커뮤니케이션</li>
+                          <li>한가지 파고들기</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-
-    <div>
-
+    <div class="pjov_div">
+      <div class="center">
+        <div>
+          <p class="pbold">Keyword</p>
+        </div>
+        <div>
+          <p>자기분석을 통해 나에 대해 고찰해보고, 대표적인 키워드를 몇가지 추출하여 셀프 브랜딩의 아이덴티티를 정의했습니다. 
+            디자이너로서 목표로 하고자 하는 삶의 방식과 나를 분석한 키워드 사이의 연결고리를 찾고, ‘나’라는 사람이 가진 스토리
+            를 브랜드에 담았습니다. 
+            </p>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div>
-    <p></p>
-  </div>
-
+    <div class="imgFour">
+        <div>
+            <img src="./images/sub1/circle.png">  
+        </div>
+        <div>
+            <img src="./images/sub1/img_a.png">  
+        </div>
+    </div>
+</div>
 
 </body>
 <script>
+  window.onload = function () {
+    const scrollY = window.scrollY; // 현재 스크롤 위치 가져오기
+    if (scrollY > 1666) {
+      $('.lower-container').addClass('opzero')
+      $('.upper-container').addClass('opzero')
+    } else {
+      $('.lower-container').removeClass('opzero')
+      $('.upper-container').removeClass('opzero')
+    }
+  };
   let tmp;
   let ck = 0;
   window.addEventListener('scroll', () => {
@@ -293,6 +621,26 @@
       $('.lower-container > div').css('transform', `scale(${lscale})`);
       $('.div1, .div2, .div3').css('opacity', ropacity);
     }
+
+    if (scrollY > 3500) {
+      $('.parentCircle').removeClass('beforerot')
+    }
+    if (scrollY < 3750) {
+      $('.parentCircle').addClass('beforerot')
+    }
+    if (scrollY > 4300) {
+      $('.ctt').addClass('cttup')
+    }
+    if (scrollY < 3500) {
+      $('.ctt').removeClass('cttup')
+    }
+    if (scrollY > 1666) {
+      $('.lower-container').addClass('opzero')
+      $('.upper-container').addClass('opzero')
+    } else {
+      $('.lower-container').removeClass('opzero')
+      $('.upper-container').removeClass('opzero')
+    }
   });
 
 
@@ -307,60 +655,7 @@
     navigation.classList.toggle("active");
   }
 
-
-
 </script>
-<script>
-  //ease in scroll
 
-  if (window.addEventListener)
-    window.addEventListener("DOMMouseScroll", wheel, false);
-  window.onmousewheel = document.onmousewheel = wheel;
-
-  function wheel(event) {
-    var delta = 0;
-    if (event.wheelDelta)
-      delta = event.wheelDelta / 200; //controls the scroll wheel range/speed
-    else if (event.detail) delta = -event.detail / 200;
-
-    handle(delta);
-    if (event.preventDefault) event.preventDefault();
-    event.returnValue = false;
-  }
-
-  var goUp = true;
-  var end = null;
-  var interval = null;
-
-  function handle(delta) {
-    var animationInterval = 20; //controls the scroll animation after scroll is done
-    var scrollSpeed = 20; //controls the scroll animation after scroll is done
-
-    if (end == null) {
-      end = $(window).scrollTop();
-    }
-    end -= 20 * delta;
-    goUp = delta > 0;
-
-    if (interval == null) {
-      interval = setInterval(function () {
-        var scrollTop = $(window).scrollTop();
-        var step = Math.round((end - scrollTop) / scrollSpeed);
-        if (
-          scrollTop <= 0 ||
-          scrollTop >=
-          $(window).prop("scrollHeight") - $(window).height() ||
-          (goUp && step > -1) ||
-          (!goUp && step < 1)
-        ) {
-          clearInterval(interval);
-          interval = null;
-          end = null;
-        }
-        $(window).scrollTop(scrollTop + step);
-      }, animationInterval);
-    }
-  }
-</script>
 
 </html>
