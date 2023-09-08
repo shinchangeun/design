@@ -6,11 +6,430 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+  <script>
+    window.console = window.console || function (t) { };
+  </script>
+
+  <!--폰트 : Noto Sans KR-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- #225ee1", "#28d7bf", "#676669", "#f2c6c2 -->
+  <!-- #225ee1", "#ffffad", "#676669", "#f2c6c2 -->
+  <!-- gradient -->
+  <script id="vertShader" type="text">
+
+  // attributes, in
+  attribute vec3 aPosition;
+  
+  // matrices
+  uniform mat4 uModelViewMatrix;
+  uniform mat4 uProjectionMatrix;
+  
+  void main() {
+    gl_Position = uProjectionMatrix * uModelViewMatrix * vec4(aPosition, 1.0);
+  }
+  </script>
+
+  <script id="fragShader" type="text">
+  #ifdef GL_ES
+  precision highp float;
+  #endif
+  
+  uniform float uTime;
+  uniform float uSpeedColor;
+  uniform vec2 uResolution;
+    
+  uniform vec3 uColor1;
+  uniform vec3 uColor2;
+  uniform vec3 uColor3;
+  uniform vec3 uColor4;
+  uniform vec3 uColor5;
+  
+  const int AMOUNT = 2;
+  const float scale = 2.0;
+  
+    
+  vec3 blendExclusion(vec3 base, vec3 blend) {
+      return base+blend-2.0*base*blend;
+  }
+  
+  vec3 blendExclusion(vec3 base, vec3 blend, float opacity) {
+      return (blendExclusion(base, blend) * opacity + base * (1.0 - opacity));
+  }
+    
+  float blendLighten(float base, float blend) {
+      return max(blend,base);
+  }
+  
+  vec3 blendLighten(vec3 base, vec3 blend) {
+      return vec3(blendLighten(base.r,blend.r),blendLighten(base.g,blend.g),blendLighten(base.b,blend.b));
+  }
+  
+  vec3 blendLighten(vec3 base, vec3 blend, float opacity) {
+      return (blendLighten(base, blend) * opacity + base * (1.0 - opacity));
+  }
+    
+  float blendDarken(float base, float blend) {
+      return min(blend,base);
+  }
+  
+  vec3 blendDarken(vec3 base, vec3 blend) {
+      return vec3(blendDarken(base.r,blend.r),blendDarken(base.g,blend.g),blendDarken(base.b,blend.b));
+  }
+  
+  vec3 blendDarken(vec3 base, vec3 blend, float opacity) {
+      return (blendDarken(base, blend) * opacity + base * (1.0 - opacity));
+  }
+  
+  float blendPinLight(float base, float blend) {
+      return (blend<0.5)?blendDarken(base,(2.0*blend)):blendLighten(base,(2.0*(blend-0.5)));
+  }
+  
+  vec3 blendPinLight(vec3 base, vec3 blend) {
+      return vec3(blendPinLight(base.r,blend.r),blendPinLight(base.g,blend.g),blendPinLight(base.b,blend.b));
+  }
+  
+  vec3 blendPinLight(vec3 base, vec3 blend, float opacity) {
+      return (blendPinLight(base, blend) * opacity + base * (1.0 - opacity));
+  }
+    
+    
+  float blendOverlay(float base, float blend) {
+      return base<0.5?(2.0*base*blend):(1.0-2.0*(1.0-base)*(1.0-blend));
+  }
+  
+  vec3 blendOverlay(vec3 base, vec3 blend) {
+      return vec3(blendOverlay(base.r,blend.r),blendOverlay(base.g,blend.g),blendOverlay(base.b,blend.b));
+  }
+  
+  vec3 blendOverlay(vec3 base, vec3 blend, float opacity) {
+      return (blendOverlay(base, blend) * opacity + base * (1.0 - opacity));
+  }
+  
+  float blendLinearDodge(float base, float blend) {
+      // Note : Same implementation as BlendAddf
+      return min(base+blend,1.0);
+  }
+  
+  vec3 blendLinearDodge(vec3 base, vec3 blend) {
+      // Note : Same implementation as BlendAdd
+      return min(base+blend,vec3(1.0));
+  }
+  
+  vec3 blendLinearDodge(vec3 base, vec3 blend, float opacity) {
+      return (blendLinearDodge(base, blend) * opacity + base * (1.0 - opacity));
+  }
+  
+    
+  float blendLinearBurn(float base, float blend) {
+      // Note : Same implementation as BlendSubtractf
+      return max(base+blend-1.0,0.0);
+  }
+  
+  vec3 blendLinearBurn(vec3 base, vec3 blend) {
+      // Note : Same implementation as BlendSubtract
+      return max(base+blend-vec3(1.0),vec3(0.0));
+  }
+  
+  vec3 blendLinearBurn(vec3 base, vec3 blend, float opacity) {
+      return (blendLinearBurn(base, blend) * opacity + base * (1.0 - opacity));
+  }
+    
+  float blendLinearLight(float base, float blend) {
+      return blend<0.5?blendLinearBurn(base,(2.0*blend)):blendLinearDodge(base,(2.0*(blend-0.5)));
+  }
+  
+  vec3 blendLinearLight(vec3 base, vec3 blend) {
+      return vec3(blendLinearLight(base.r,blend.r),blendLinearLight(base.g,blend.g),blendLinearLight(base.b,blend.b));
+  }
+  
+  vec3 blendLinearLight(vec3 base, vec3 blend, float opacity) {
+      return (blendLinearLight(base, blend) * opacity + base * (1.0 - opacity));
+  }
+    
+    
+  float blendScreen(float base, float blend) {
+      return 1.0-((1.0-base)*(1.0-blend));
+  }
+  
+  vec3 blendScreen(vec3 base, vec3 blend) {
+      return vec3(blendScreen(base.r,blend.r),blendScreen(base.g,blend.g),blendScreen(base.b,blend.b));
+  }
+  
+  vec3 blendScreen(vec3 base, vec3 blend, float opacity) {
+      return (blendScreen(base, blend) * opacity + base * (1.0 - opacity));
+  }
+  
+  float rand(vec2 co){
+      return fract(sin(dot(co, vec2(12.9898, 78.233))) * 43758.5453);
+  }
+    
+  //lengths
+  
+  float createLen() {
+    float time = 10.0 + uTime / 1.0; 
+    
+    vec2 coord = scale * (gl_FragCoord.xy - uResolution.xy) / min(uResolution.y, uResolution.x);
+  
+    float len;
+    for(int i = 0; i < AMOUNT; i++) {
+      len = length(vec2(coord.x, coord.y));
+  
+      coord.x = coord.x + cos(coord.y - sin(len)) - cos(time / 9.1);
+      coord.y = coord.y + sin(coord.y + cos(len)) + sin(time / 12.0);
+    }
+    
+    return len;
+  }
+    
+  float createLen2(float x,  float y, float speed, float offset) {
+    float time = offset + uTime / speed; 
+    
+    vec2 coord =  scale * (gl_FragCoord.xy - uResolution.xy) / min(uResolution.y, uResolution.x);
+    
+    float len;
+    
+    for(int i = 0; i < AMOUNT; i++) {
+      len = length(vec2(coord.x, coord.y));
+      coord.x = coord.x + sin(coord.y + cos(len) * cos(len)) + sin(time / x);
+      coord.y = coord.y - cos(coord.y + sin(len) * sin(len)) + cos(time / y);
+    }
+    
+    return len;
+  }
+  
+  float createLen3(float x,  float y, float speed, float offset) {
+    float time = offset + uTime / speed; 
+    
+    vec2 coord = scale * (gl_FragCoord.xy - uResolution.xy) / min(uResolution.y, uResolution.x);
+  
+    float len;
+    
+    for(int i = 0; i < AMOUNT; i++) {
+      len = length(vec2(coord.x, coord.y));
+      
+      //coord.x = coord.x - cos(coord.y + sin(len)) + cos(time / x);
+      coord.y = coord.y + sin(coord.y + cos(len)) + sin(time / y);
+    }
+    
+    return len;
+  }
+  
+  float createLen4(float x,  float y, float speed, float offset) {
+    float time = offset + uTime / speed; 
+    
+    vec2 coord = scale * (gl_FragCoord.xy - uResolution.xy) / min(uResolution.y, uResolution.x);
+  
+    float len;
+    
+    for(int i = 0; i < AMOUNT; i++) {
+      len = length(vec2(coord.x, coord.y));
+      
+      coord.x = coord.x - cos(coord.y + sin(len)) + cos(time / x);
+      //coord.y = coord.y + sin(coord.y + cos(len)) + sin(time / y);
+    }
+    
+    return len;
+  }
+    
+  vec3 createCircle(vec2 position, vec3 color, float size, float blur) {
+    vec2 pos = (gl_FragCoord.xy - uResolution.xy) / min(uResolution.y, uResolution.x) - position;
+    float circle = sqrt(pow(pos.x, 3.0) + pow(pos.y, 2.0));
+    circle = smoothstep(size, size + blur, 1.0 - circle);
+    return color * circle;
+  }
+    
+  vec3 rgb2hsv(vec3 c)
+  {
+      vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
+      vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));
+      vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));
+  
+      float d = q.x - min(q.w, q.y);
+      float e = 1.0e-10;
+      return vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+  }
+  
+  vec3 hsv2rgb(vec3 c)
+  {
+      vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+      vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+      return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+  }
+    
+  void main() {
+      vec2 coord = scale * (gl_FragCoord.xy - uResolution.xy) / min(uResolution.y, uResolution.x);
+  
+    float len = createLen();
+    float len2 = createLen2(10.0, 10.0, 8.0, 20.0);
+    float len3 = createLen3(2.0, 2.0, 10.0, 30.0);
+    float len4 = createLen4(5.0, 20.0, 5.0, 40.0);
+  
+    vec3 blue = uColor1 + cos(len) * 0.25 + 0.25;
+    
+    vec3 turquoise = uColor2 + cos(len2) * 0.5 + 0.75;
+  
+    /*
+    vec2 pos = vec2(sin(uTime * 0.01 * sin(uTime * 0.001)), cos(uTime * 0.002));
+    float radius = 0.5 + cos(uTime * 0.01) * 0.1;
+    vec3 turquoise = createCircle(pos, uColor2, radius, 0.5);
+  
+    vec2 pos2 = vec2(cos(-uTime * 0.01), sin(-uTime * 0.03 * sin(-uTime * 0.001)));
+    float radius2 = 0.3 + cos(uTime * 0.01) * 0.01;
+    turquoise += createCircle(pos2, uColor2, radius2, 0.75);
+    */
+    
+    vec3 pink = uColor3 + cos(len3) * 0.5 + 0.75;
+    vec3 peach = uColor4 + cos(len4) * 0.75 + 0.95;
+    
+    float pinkValue = min(1.0, max(0.0, 1.2 - (pink[0] / 1.2)));
+    
+    float peachValue = min(1.0, max(0.0, 1.5 - (peach[0] / 1.2)));
+  
+    float turquoiseValue = min(1.0, max(0.0, 1.5 - (turquoise[2] / 1.1)));
+  
+    vec3 blend = blue;
+    blend = mix(blend, turquoise, turquoiseValue);
+    blend = mix(blend, peach, peachValue);
+    blend = mix(blend, pink, pinkValue);
+  
+    //blend += turquoise;
+    //blend += torquoise;
+    //blend = blendDarken(blend, pink);
+    //blend = blendLinearBurn(blend, peach);
+  
+    vec3 lightercolor = blendLinearBurn(blend, peach);
+    blend = mix(blend, lightercolor, max(1.0 - lightercolor[0], 0.0));
+    
+    blend = blendOverlay(blend, vec3(0.0, 0.0, 0.0));
+  
+    vec3 color = blend;
+    
+    float r = color[0];
+    float g = color[1];
+    float b = color[2];
+  
+    vec3 hsb = rgb2hsv(vec3(r, g, b));
+    hsb[1] -= rand(coord) * 0.15;
+    vec3 rgb = hsv2rgb(hsb);
+    
+    gl_FragColor = vec4(rgb, 1.0);
+  }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.3.1/p5.min.js"></script>
+  <script id="rendered-js">
+    const colors = ["#225ee1", "#28d7bf", "#676669", "#f2c6c2"];
+    const backgroundColor = "#48badb";
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const totalFrames = 1000;
+    let frameCount = 0;
+    let recording = false;
+    let recordingStarted = false;
+    let frameDelta = 0;
+
+    let s;
+
+    function setup() {
+      canvas = createCanvas(width, height, WEBGL);
+      noiseSeed(20);
+      rectMode(CENTER);
+      noStroke();
+
+      let vert = document.getElementById('vertShader').innerText;
+      let frag = document.getElementById('fragShader').innerText;
+      s = createShader(vert, frag);
+    }
+
+    function draw() {
+      frameCount += 1;
+      frameDelta = 2 * Math.PI * (frameCount % totalFrames) / totalFrames;
+
+      background(backgroundColor);
+      shader(s);
+
+      s.setUniform('uResolution', [width, height]);
+      s.setUniform('uTime', millis() / 100);
+      s.setUniform('uLowGpu', false);
+      s.setUniform('uVeryLowGpu', false);
+
+      s.setUniform('uSpeedColor', 20.0);
+
+      s.setUniform('uColor1', hex2rgb(colors[0]));
+      s.setUniform('uColor2', hex2rgb(colors[1]));
+      s.setUniform('uColor3', hex2rgb(colors[2]));
+      s.setUniform('uColor4', hex2rgb(colors[3]));
+
+      rect(0, 0, width, height);
+    }
+
+    const hex2rgb = hex => {
+      const r = parseInt(hex.slice(1, 3), 16);
+      const g = parseInt(hex.slice(3, 5), 16);
+      const b = parseInt(hex.slice(5, 7), 16);
+
+      return [r / 255, g / 255, b / 255];
+    };
+  //# sourceURL=pen.js
+  </script>
+
+  <!-- gradient 끝 -->
+
+  <!-- scroll -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script id="rendered-js">
+    $(function () {
+      $('a[href*=#]').on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 500, 'linear');
+      });
+    });
+  //# sourceURL=pen.js
+  </script>
+
+
   <style>
+    @font-face {
+      font-family: 'MADE Coachella';
+      font-weight: 700;
+      src: url('../made_coachella/MADE\ Coachella\ Black\ PERSONAL\ USE.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'MADE Coachella';
+      font-weight: 500;
+      src: url('../made_coachella/MADE\ Coachella\ Medium\ PERSONAL\ USE.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'MADE Coachella';
+      font-weight: 400;
+      src: url('../made_coachella/MADE\ Coachella\ Regular\ PERSONAL\ USE.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'MADE Coachella';
+      font-weight: 300;
+      src: url('../made_coachella/MADE\ Coachella\ Light\ PERSONAL\ USE.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'MADE Coachella';
+      font-weight: 100;
+      src: url('../made_coachella/MADE\ Coachella\ Thin\ PERSONAL\ USE.otf') format('opentype');
+    }
+
+
     :root {
       --myblue: rgb(35, 68, 160);
       --grayback: #F1F0F0;
       --grayImg: #a9b1ba;
+      --yourblue: rgb(223, 231, 255);
     }
 
     body {
@@ -157,7 +576,7 @@
     .pjov_div {
       display: flex;
       justify-content: center;
-      padding: 40px 0px;
+      padding: 80px 0px;
     }
 
     .center {
@@ -177,6 +596,7 @@
     .pbold {
       font-weight: 800;
       font-size: 27px;
+      font-family: 'Noto Sans KR', sans-serif;
     }
 
     body>div.follow-div>div.pjov_div>div>div:nth-child(2) {
@@ -185,6 +605,7 @@
 
     body>div.follow-div>div.pjov_div>div>div:nth-child(2)>p {
       font-size: 20px;
+      font-family: 'Noto Sans KR', sans-serif;
     }
 
     body>div.follow-div>div.selfanaly_div>div>div>div:nth-child(2)>table>tbody>tr:nth-child(1)>td:nth-child(2) {
@@ -198,6 +619,7 @@
       justify-content: center;
       padding: 40px 0px;
       background-color: var(--grayback);
+      font-family: 'Noto Sans KR', sans-serif;
     }
 
     .center>div {
@@ -365,13 +787,622 @@
       margin-bottom: 4px;
     }
 
-    .imgFour{
-      display: flex;
-      justify-content: center;
-      padding-bottom: 40px;
+
+    .fdiv {
       background-color: var(--grayImg);
     }
+
+    .vfour {
+      text-align: center;
+      width: 100%;
+      margin: 0 -30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .imgFour {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      overflow: hidden;
+    }
+
+    .wcir {
+      position: relative;
+      border-radius: 100%;
+      border: solid 1px white;
+      width: 30vw;
+      height: 30vw;
+      top: -13vw;
+    }
+
+    .wcirimg {
+      width: 30vw;
+      height: 30vw;
+    }
+
+    .fimgdiv {
+      position: relative;
+      top: -20vw;
+    }
+
+    .fpdiv {
+      width: 20vw;
+      position: relative;
+      top: -15vw;
+      color: white;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .iftitlediv {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    .fpdiv b {
+      line-height: 1;
+      font-size: 30px;
+      font-weight: 100;
+    }
+
+    .fpdiv p {
+      line-height: 2;
+    }
+
+
+
+
+
+    .seven_div {
+      display: flex;
+      justify-content: center;
+      padding: 100px 0px;
+    }
+
+    .seven_div>.center>div>div:nth-child(1) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .seven_div>.center>div>div:nth-child(2) {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin: 150px 0;
+    }
+
+    .ctitle {
+      width: 50%;
+    }
+
+    .cparagraph {
+      width: 1000px;
+    }
+
+    .cparagraph>p {
+      font-size: 20px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .logoboxdiv {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin: 190px 0;
+    }
+
+    .logoboxvideo {
+      width: 25vw;
+      height: 25vw;
+      margin: 0 50px;
+    }
+
+    .logoboximg {
+      width: 25vw;
+      height: 25vw;
+      margin: 0 50px;
+    }
+
+    .eight_div {
+      background-color: black;
+    }
+
+    .eight_div>div {
+      display: flex;
+      justify-content: center;
+    }
+
+    .e_img {
+      width: 80%;
+    }
+
+    .nine_div {
+      display: flex;
+      justify-content: center;
+      padding: 150px 0px;
+    }
+
+    .nine_div>.center>div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nine_div>.center>div>div:nth-child(1) {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10vw;
+    }
+
+    .nine_div>.center>div>div:nth-child(2) {
+      margin-top: 7vw;
+      animation: ani 2s infinite alternate;
+    }
+
+    .nine_div>.center>div>div:nth-child(3) {
+      margin-top: 3vw;
+    }
+
+    .pdiv {
+      display: flex;
+      flex-direction: row;
+      padding-top: 100px
+    }
+
+    .top_border {
+      border-top: solid 3px black;
+    }
+
+    .bt_border {
+      border-bottom: solid 3px black;
+
+    }
+
+    .lft_border {
+      border-left: solid 3px black;
+
+    }
+
+    .rt_border {
+      border-right: solid 3px black;
+    }
+
+
+    td {
+      padding-left: 30px;
+    }
+
+    .custom-table {
+      border-collapse: separate;
+      /* 경계를 분리하는 속성 */
+      border-spacing: 0;
+      /* 경계 사이의 간격을 없애기 위한 속성 */
+    }
+
+    .colrbar {
+      width: 300px;
+      height: 500px;
+      padding: 30px;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .colorsdiv {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .colrbar:nth-child(1) {
+      background-color: rgb(5, 78, 164);
+    }
+
+    .colrbar:nth-child(2) {
+      background-color: rgb(18, 18, 18);
+    }
+
+    .colrbar:nth-child(3) {
+      background-color: rgb(26, 26, 26);
+    }
+
+    .colrbar:nth-child(4) {
+      background-color: rgb(230, 230, 230);
+    }
+
+    .colrbar>div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .colrbar p {
+      margin: 0;
+      color: white;
+    }
+
+    .apdiv {
+      position: absolute;
+    }
+
+    body>div.follow-div>div.nine_div>div>div>div:nth-child(1)>table>tbody>tr:nth-child(1)>td.fontnineA {
+      width: 40vw;
+    }
+
+    body>div.follow-div>div.nine_div>div>div>div:nth-child(1)>table>tbody>tr:nth-child(1)>td.fontnineB {
+      width: 40vw;
+    }
+
+    .fontnineA {
+      font-size: 4vw;
+      /* font-family: 'MADE Coachella';
+      src: local('MADE Coachella Bold'),
+      url('../../made_coachella/MADE\ Coachella\ Black\ PERSONAL\ USE.otf') format('opentype'); */
+
+    }
+
+    .fontnineB {
+      font-size: 4vw;
+    }
+
+    /* 페이지 이동 */
+    .circle-btn {
+      --button-border-color: #e7e7e7;
+      --button-arrow-color: #e7e7e7;
+      --button-triangle-size: 6px;
+      --transition-speed: 1s;
+
+      cursor: pointer;
+      mix-blend-mode: multiple;
+      width: 50px;
+      height: 50px;
+      border: 3px solid var(--button-border-color);
+      border-radius: 50%;
+      position: relative;
+      transition:
+        transform var(--transition-speed) cubic-bezier(1, 0, .25, 1),
+        opacity var(--transition-speed) cubic-bezier(.5, 0, 0, 1),
+        -webkit-transform var(--transition-speed) cubic-bezier(.5, 0, 0, 1);
+
+      &:hover {
+        transform: translateX(-8px) translateZ(0);
+
+        .circle-arrow {
+          transform: translateX(-8px);
+        }
+
+        .circle-arrow::before {
+          transform: scaleX(.55);
+        }
+      }
+
+      &:focus-visible {
+        outline: 3px solid var(--button-border-color);
+        outline-offset: 4px;
+      }
+    }
+
+    .circle-arrow {
+      position: absolute;
+      top: calc(50% - 4px);
+      left: calc(50% - 4px);
+      width: 75%;
+      height: 8px;
+      transform: translateX(0) translateZ(0);
+      transition: transform var(--transition-speed) cubic-bezier(1, 0, .25, 1);
+      will-change: transform;
+
+      /* // line */
+      &::before {
+        content: "";
+        display: block;
+        width: 200px;
+        height: 3px;
+        width: 100%;
+        background-color: var(--button-arrow-color);
+        position: absolute;
+        top: 3px;
+        transform: translateZ(0);
+        transform-origin: 0 0;
+        transition:
+          transform var(--transition-speed) cubic-bezier(1, 0, .25, 1),
+          opacity var(--transition-speed) cubic-bezier(1, 0, .25, 1);
+        will-change: transform opacity;
+      }
+
+
+      /* // arrow */
+      &::after {
+        content: "";
+        display: block;
+        border-bottom: solid var(--button-triangle-size) transparent;
+        border-right: solid var(--button-triangle-size) transparent;
+        border-left: solid var(--button-triangle-size) var(--button-arrow-color);
+        border-top: solid var(--button-triangle-size) var(--button-arrow-color);
+        transform: rotate(-45deg) translateX(var(--button-triangle-size));
+        transform-origin: 50% 16px;
+        transition: .3s ease;
+        width: 0;
+        height: 0;
+      }
+    }
+
+
+    button {
+      all: unset;
+    }
+
+
+
+    /* 푸터 */
+
+    .footer {
+      background-color: #262626;
+      height: 350px;
+      display: flex;
+      justify-content: center;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .footer>.center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer_p {
+      text-align: center;
+      color: #e7e7e7;
+      margin-top: 5%;
+      font-size: 1.5em;
+    }
+
+    .p_p {
+      color: #e7e7e7;
+      font-size: 20px;
+      display: flex;
+      margin: 0 10px;
+      align-items: center;
+    }
+
+    .pageBtnDiv {
+      justify-content: center;
+      display: flex;
+      flex-direction: row;
+    }
+
+    .b_top {
+      margin-bottom: 10px;
+    }
+
+    .pageBtn {
+
+      margin: 0 10px;
+    }
+
+
+
+
+    /* slider */
+    .slider-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: auto;
+      max-width: 1280px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .prev-container,
+    .next-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      font-size: 45px;
+      color: var(--yourblue);
+      font-weight: 100;
+
+    }
+
+    .slide-container {
+      width: 80%;
+      height: 30vw;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slider {
+      max-width: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100%;
+      color: #ffff;
+      font-size: 20px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    /* 이미지 스타일 */
+    .slide img {
+      max-width: 100%;
+      max-height: 100%;
+      margin: 40px 0;
+      width: 80vw;
+    }
+
+    .next-container,
+    .prev-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .dots {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      margin: 0 5px;
+      transition: background-color 0.5s ease;
+    }
+
+    .dot.active {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .six_div {
+      padding-bottom: 100px;
+      overflow: hidden;
+    }
+
+
+    /* slider bg */
+    .gra {
+      height: 200px;
+      /* overflow: hidden; */
+    }
+
+    #gradient {
+      height: 200px;
+    }
+
+    /* scroll */
+    .scroll-button-wrapper {
+      width: 100%;
+      position: relative;
+      /* margin: 20px auto; */
+      margin: 1000px auto;
+    }
+
+    .scroll-button {
+      height: 50px;
+      width: 28px;
+      border: 1px solid #797979;
+      border-radius: 14px;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .scroll-button::after {
+      content: '';
+      height: 8px;
+      width: 8px;
+      top: 14px;
+      left: 9px;
+      border-radius: 100%;
+      background-color: #797979;
+      position: absolute;
+
+      -webkit-animation: animate-it 1.5s ease infinite;
+      animation: animate-it 1.5s ease infinite;
+    }
+
+    .navbar {
+      /* position: fixed;
+      top: 0;
+      width: 20%;
+      height: 50px; */
+      color: #797979;
+      text-align: center;
+      width: 100px;
+      margin: 6px auto;
+      position: relative;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+
+
+    /* vertical animation */
+    @-webkit-keyframes animate-it {
+
+      0%,
+      {
+      -webkit-transform: translateY(0);
+      opacity: 0;
+    }
+
+    20% {
+      -webkit-transform: translateY(-4px);
+      opacity: 1;
+    }
+
+    60% {
+      -webkit-transform: translateY(10px);
+      opacity: 1;
+    }
+
+    100% {
+      -webkit-transform: translateY(10px);
+      opacity: 0;
+    }
+    }
+
+    @keyframes animate-it {
+
+      0%,
+      {
+      -webkit-transform: translateY(0);
+      opacity: 0;
+    }
+
+    20% {
+      -webkit-transform: translateY(-4px);
+      opacity: 1;
+    }
+
+    60% {
+      -webkit-transform: translateY(10px);
+      opacity: 1;
+    }
+
+    100% {
+      -webkit-transform: translateY(10px);
+      opacity: 0;
+    }
+    }
+
+    /* scroll 끝 */
+
+    /* 비행기 둥둥 */
+    @keyframes ani {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(0, 50px);
+      }
+    }
+
+  
   </style>
+
+
+
+
 
 </head>
 
@@ -408,6 +1439,16 @@
         <img src="/images/BigLogo.png" alt="">
       </div>
     </div>
+    <!-- scroll -->
+    <div class="scroll-button-wrapper">
+      <div class="scroll-button"></div>
+      <!-- <div class="scroll-txt">scroll<br>down</div> -->
+      <div class="navbar">
+        <p class="scrollTxt">scroll down</p>
+      </div>
+    </div>
+
+
     <div class="lower-container">
       <div>
         <div class="div1">ShinChangEun </div>
@@ -417,6 +1458,10 @@
     </div>
   </div>
 
+
+
+
+
   <!-- top bg -->
   <div class="follow-div">
     <div>
@@ -424,10 +1469,10 @@
     </div>
     <div class="pjov_div">
       <div class="center">
-        <div>
+        <div class="ctitle">
           <p class="pbold">Project<br>Overview</p>
         </div>
-        <div>
+        <div class="cparagraph">
           <p>디자인이란 무한한 예술의 영역에서 특정 대상을 상징할 수 있게 구체적으로 표현하는 수단입니다. 이러한 맥락에서, 추상적인 개념을 시각적으로 가장 잘 나타내는 것이 바로 '무한대(∞)기호'라고
             생각합니다. 무한대 기호(∞)는 무한이라는 끝이 없는 상태를 하나의 단순한 기호를 통해 나타내고있으며 이러한 점에서 디자인과 상당히 닮아있습니다. 두 개념을 조화롭게 연결시켜 무한한 아이디어와
             영감을 끊임없이 진화하고 성장한다는 메시지를 전달하고자 시작된 셀프 브랜딩 프로젝트입니다.</p>
@@ -501,7 +1546,7 @@
                     </ul>
                   </div>
                   <div class="ctt">
-                    <p class="analyptitle">Outsid : 나의 이미지</p>
+                    <p class="analyptitle">Outside : 나의 이미지</p>
                     <ul>
                       <li>잘웃는</li>
                       <li>잘스며드는</li>
@@ -520,7 +1565,7 @@
                         <ul>
                           <li>Color:</li>
                           <li>Blue</li>
-                          <li>Typo</li>
+                          <li>Typo:</li>
                           <li>Made Cochella</li>
                         </ul>
                       </div>
@@ -551,26 +1596,299 @@
     </div>
     <div class="pjov_div">
       <div class="center">
+        <div class="ctitle">
+          <p class="pbold">Keyword</p>
+        </div>
+        <div class="cparagraph">
+          <p>
+            자기분석을 통해 나에 대해 고찰해보고, 대표적인 키워드를 몇가지 추출하여 셀프 브랜딩의 아이덴티티를 정의했습니다.
+            디자이너로서 목표로 하고자 하는 삶의 방식과 나를 분석한 키워드 사이의 연결고리를 찾고, ‘나’라는 사람이 가진 스토리
+            를 브랜드에 담았습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="fdiv">
+      <div class="imgFour">
+        <div class="vfour">
+          <div class="wcir"></div>
+          <div class="fimgdiv item" data-aos="fade-down" data-aos-duration="1000"><img class="wcirimg" src="./images/sub1/img_a.png" alt="">
+          </div>
+        </div>
+        <div class="vfour">
+          <div class="wcir"></div>
+          <div class="fimgdiv item" data-aos="fade-down" data-aos-duration="1500"><img class="wcirimg" src="./images/sub1/img_b.png" alt=""></div>
+        </div>
+        <div class="vfour">
+          <div class="wcir"></div>
+          <div class="fimgdiv item" data-aos="fade-down" data-aos-duration="2000"><img class="wcirimg" src="./images/sub1/img_c.png" alt=""></div>
+        </div>
+        <div class="vfour">
+          <div class="wcir"></div>
+          <div class="fimgdiv item" data-aos="fade-down" data-aos-duration="2500"><img class="wcirimg" src="./images/sub1/img_d.png" alt=""></div>
+        </div>
+      </div>
+      <div class="iftitlediv">
+        <div class="fpdiv">
+          <p>
+            <b>LOOK</b> 어떻게 보이냐에 따라 자신의 내면과 외면, 디자인 작품에서도 섬세한 미적 감각
+            과 센스를 보여줍니다. 저의 디자인은 사용자들의 시선을 사로잡을 수 있는 독특하고 매력적인 LOOK
+            을 지향합니다.
+          </p>
+        </div>
+        <div class="fpdiv">
+          <p>
+            <b>SOON</b> 디자인은 항상 발전하고 변화하는 분야이며, 더 나은 결과물을 만들기 위해 지속적인 노력과 연구가 필요합니다.새로운 기술과 디자인 트렌드를 빠르게 흡수하여 저만의 독창적이고
+            차별화된 디자인으로 승화시킵니다.
+          </p>
+        </div>
+        <div class="fpdiv">
+          <p>
+            <b>TOOL</b> 디자이너에게 툴은 창작 과정을 보다 효과적으로 관리하고 구현하는 데 필수적입니다. 포토샵,일러스트,VSC,이클립스 등 다양한 툴을 활용할 수 있으며, 상황에 따라 적절한
+            툴을 사용하여 효율적으로 작업을 수행합니다.
+          </p>
+        </div>
+        <div class="fpdiv">
+          <p>
+            <b>SMOOTH</b> 편안한 느낌을 주며 타인과 원활하게 소통하며, 갈등을 조화롭게 해소할 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="pjov_div">
+      <div class="center">
         <div>
           <p class="pbold">Keyword</p>
         </div>
         <div>
-          <p>자기분석을 통해 나에 대해 고찰해보고, 대표적인 키워드를 몇가지 추출하여 셀프 브랜딩의 아이덴티티를 정의했습니다. 
+          <p>
+            자기분석을 통해 나에 대해 고찰해보고, 대표적인 키워드를 몇가지 추출하여 셀프 브랜딩의 아이덴티티를 정의했습니다.
             디자이너로서 목표로 하고자 하는 삶의 방식과 나를 분석한 키워드 사이의 연결고리를 찾고, ‘나’라는 사람이 가진 스토리
-            를 브랜드에 담았습니다. 
-            </p>
+            를 브랜드에 담았습니다.
+          </p>
         </div>
       </div>
     </div>
-    <div class="imgFour">
+    <!-- <div class="six_div">
+      <div class="center">
         <div>
-            <img src="./images/sub1/circle.png">  
+          <img src="./images/sub1/ini_smooth.png" alt="">
+          <p>로 표현하였습니다. 로 현현현현현혆녛녛녛녀현혀녛ㄴ현현혀신창은으은ㅇㄴ으</p>
         </div>
-        <div>
-            <img src="./images/sub1/img_a.png">  
+      </div>
+    </div> -->
+    <div class="six_div ">
+      <div class="uk-sect3dion uk-section-default" style="background-color: var(--yourblue)" ;="">
+        <!-- gra -->
+        <div id="gradient">
+          <div class="gra">
+            <main>
+
+            </main>
+          </div>
         </div>
+      </div>
+      <div class="slider-container">
+        <div class="prev-container">
+          <div class="prev">&#10094;</div>
+        </div>
+        <div class="slide-container">
+          <div class="slider">
+            <div class="slide active">
+              <div>
+                <img src="./images/sub1/ini_look.png" alt="Image 1">
+                <p>asdfasdfasdfsadsf</p>
+              </div>
+            </div>
+            <div class="slide">
+              <div>
+                <img src="./images/sub1/ini_soon.png" alt="Image 2">
+                <p>asdfsadfasdfasfds</p>
+              </div>
+            </div>
+            <div class="slide">
+              <div>
+                <img src="./images/sub1/ini_tool.png" alt="Image 3">
+                <p>sdfasdfasdfasdfasdfa</p>
+              </div>
+            </div>
+            <div class="slide">
+              <div>
+                <img src="./images/sub1/ini_smooth.png" alt="Image 4">
+                <p>dsfasdfadsfasdfasdfsfdsad</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="next-container">
+          <div class="next">&#10095;</div>
+        </div>
+      </div>
+      <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
     </div>
-</div>
+
+
+
+
+
+    <div class="seven_div">
+      <div class="center">
+        <div>
+          <div>
+            <div class="ctitle">
+              <p class="pbold">Brand Logo</p>
+            </div>
+            <div class="cparagraph">
+              <p>
+                브랜드 로고는 이니셜과 Infinite를 조화롭게 결합해 무한한 가능성과 창의성, 성장을 시각적으로 전달합니다.
+                영원한 연속성, 끝없는 지속성을 상징하기도 합니다. 유려한 곡선으로 동적이고 활력넘치는 조형성을 가지고 있습니다.
+                흐름과 운동을 표현하여 동적인 에너지를 담았으며 무한한 역동성을 표현했습니다.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <img src="./images/sub1/initial.png" alt="">
+          </div>
+          <div class="logoboxdiv">
+            <video class="logoboxvideo" src="./images/sub1/celogo.mp4" type="video/mp4" loop muted autoplay></video>
+            <img class="logoboximg" src="./images/sub1/logo_box.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="eight_div">
+      <div>
+        <img class="e_img" src="./images/sub1/12217.png" alt="">
+      </div>
+    </div>
+    <div class="nine_div">
+      <div class="center">
+        <div>
+          <div>
+            <table class="custom-table">
+              <tr>
+                <td class="fontnineA" colspan="3" style="font-family: 'MADE Coachella'; font-weight:400; ">
+                  MADE Coachella
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="top_border"></td>
+                <td class="top_border" rowspan="2"></td>
+                <td class="top_border rt_border" rowspan="3">
+                </td>
+                <td rowspan="3">
+                  <p style="font-family: 'MADE Coachella'; font-weight:100; font-size: 18px;">Made Coachella Thin</p>
+                  <p style="font-family: 'MADE Coachella'; font-weight:300; font-size: 18px;">Made Coachella Light</p>
+                  <p style="font-family: 'MADE Coachella'; font-weight:400; font-size: 18px;">Made Coachella Medium</p>
+                  <p style="font-family: 'MADE Coachella'; font-weight:500; font-size: 18px;">Made Coachella Regular</p>
+                  <p style="font-family: 'MADE Coachella'; font-weight:700; font-size: 18px;">Made Coachella Bold</p>
+                </td>
+              </tr>
+              <tr>
+                <td class="fontnineB" style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;">Noto Sans</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="top_border rt_border" rowspan="2"></td>
+                <td rowspan="2">
+                  <p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 100; font-size: 18px; ">Noto sans CJR
+                    KR Thin</p>
+                  <p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 300; font-size: 18px;  ">Noto sans CJK
+                    KR Light</p>
+                  <p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 400;font-size: 18px;  ">Noto sans CJK
+                    KR Regular</p>
+                  <p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 500;font-size: 18px;  ">Noto sans CJK
+                    KR Medium</p>
+                  <p style="font-family: 'Noto Sans KR', sans-serif; font-weight: 700;font-size: 18px;  ">Noto sans CJK
+                    KR Bold</p>
+                </td>
+              </tr>
+              <tr>
+              </tr>
+            </table>
+          </div>
+          <div class="apdiv">
+            <img src="./images/sub1/airplane.png" alt="">
+          </div>
+          <div class="colorsdiv">
+            <div class="colrbar">
+              <div>
+                <p>RGB</p>
+                <p>5/78/164</p>
+              </div>
+            </div>
+            <div class="colrbar">
+              <div>
+                <p>RGB</p>
+                <p>5/78/164</p>
+              </div>
+            </div>
+            <div class="colrbar">
+              <div>
+                <p>RGB</p>
+                <p>5/78/164</p>
+              </div>
+            </div>
+            <div class="colrbar">
+              <div>
+                <p>RGB</p>
+                <p>5/78/164</p>
+              </div>
+            </div>
+          </div>
+          <div class="pdiv">
+            <div class="ctitle">
+              <p class="pbold">Keyword</p>
+            </div>
+            <div class="cparagraph">
+              <p>
+                자기분석을 통해 나에 대해 고찰해보고, 대표적인 키워드를 몇가지 추출하여 셀프 브랜딩의 아이덴티티를 정의했습니다.
+                디자이너로서 목표로 하고자 하는 삶의 방식과 나를 분석한 키워드 사이의 연결고리를 찾고, ‘나’라는 사람이 가진 스토리
+                를 브랜드에 담았습니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="center">
+        <div class="b_top">
+          <p class="footer_p">어쩌구 저쩌구 디자이너 신창은입니다</p>
+        </div>
+        <div class="b_bottom">
+          <!-- 페이지 이동 버튼 -->
+          <div class="pageBtnDiv">
+            <div class="pageBtn">
+              <a href="./sub1.html">
+                <button class="circle-btn" aria-label="Button back">
+                  <div class="circle-arrow" aria-hidden="true">
+                  </div>
+                </button>
+              </a>
+            </div>
+            <p class="p_p">Branding</p>
+
+            <div class="pageBtn">
+              <a href="./sub3_s/sce_w.html">
+                <button class="circle-btn" aria-label="Button back">
+                  <div class="circle-arrow" aria-hidden="true"></div>
+                </button>
+              </a>
+            </div>
+            <p class="p_p">Portfolio</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 <script>
@@ -655,7 +1973,106 @@
     navigation.classList.toggle("active");
   }
 
+
+
+
+  //slider
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let currentSlide = 0;
+
+  function showSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    slides[n].classList.add('active');
+    dots[currentSlide].classList.remove('active');
+    dots[n].classList.add('active');
+    currentSlide = n;
+  }
+
+  function nextSlide() {
+    let next = (currentSlide + 1) % slides.length;
+    showSlide(next);
+  }
+
+  function prevSlide() {
+    let prev = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(prev);
+  }
+
+  document.querySelector('.next').addEventListener('click', nextSlide);
+  document.querySelector('.prev').addEventListener('click', prevSlide);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      showSlide(index);
+    });
+  });
+
+  showSlide(currentSlide); // 초기 슬라이드 표시
+
+
+
 </script>
+
+<!-- scroll txt color -->
+
+<!-- 1 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script id="rendered-js">
+  $(document).ready(function () {
+    $(window).scroll(function () {
+      var scroll = $(window).scrollTop();
+      if (scroll > 1) {
+        $(".scrollTxt").css("color", "#fffff").css("opacity", "0.1");
+      }
+      else {
+        $(".scrollTxt").css("color", "#797979").css("opacity", "1.0");
+      }
+    })
+  })
+//# sourceURL=pen.js
+</script>
+
+<!-- 2 -->
+<script id="rendered-js">
+  $(document).ready(function () {
+    $(window).scroll(function () {
+      var scroll = $(window).scrollTop();
+      if (scroll > 1) {
+        $(".scroll-button").css("border-color", "#fffff").css("opacity", "0.1");
+      }
+      else {
+        $(".scroll-button").css("border-color", "#797979").css("opacity", "1.0");
+      }
+    })
+  })
+//# sourceURL=pen.js
+</script>
+
+<!-- 3 -->
+<!-- <script id="rendered-js">
+  $(document).ready(function () {
+    $(window).scroll(function () {
+      var scroll = $(window).scrollTop();
+      if (scroll > 1) {
+        $(".scroll-button::after").css("background-color", "#ff0f0f");
+      }
+      else {
+        $(".scroll-button::after").css("background-color", "#797979");
+      }
+    })
+  })
+//# sourceURL=pen.js
+</script>
+ -->
+
+<!-- 애니메이션 -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init() 
+</script>
+
+
 
 
 </html>
